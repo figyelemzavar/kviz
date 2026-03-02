@@ -1,0 +1,20 @@
+{
+  "theme": "Csillagászat és az Univerzum",
+  "questions": [
+    { "q": "Melyik a Naprendszer legnagyobb bolygója?", "a": ["Szaturnusz", "Jupiter", "Neptunusz"], "c": 1, "p": 1, "l": "Easy", "color": "#34d399" },
+    { "q": "Hogy hívják a hozzánk legközelebbi csillagot?", "a": ["Sziriusz", "Nap", "Sarki csillag"], "c": 1, "p": 1, "l": "Easy", "color": "#34d399" },
+    { "q": "Hány kőzetbolygó található a Naprendszerben?", "a": ["2", "4", "6"], "c": 1, "p": 1, "l": "Easy", "color": "#34d399" },
+    { "q": "Melyik bolygót nevezik Esthajnalcsillagnak?", "a": ["Mars", "Vénusz", "Merkúr"], "c": 1, "p": 1, "l": "Easy", "color": "#34d399" },
+    { "q": "Ki volt az első ember a Holdon?", "a": ["Jurij Gagarin", "Neil Armstrong", "Buzz Aldrin"], "c": 1, "p": 1, "l": "Easy", "color": "#34d399" },
+    { "q": "Melyik bolygónak vannak látványos gyűrűi?", "a": ["Uránusz", "Szaturnusz", "Jupiter"], "c": 1, "p": 2, "l": "Medium", "color": "#fbbf24" },
+    { "q": "Mennyi idő alatt ér ide a Nap fénye?", "a": ["8 perc", "1 óra", "30 mp"], "c": 0, "p": 2, "l": "Medium", "color": "#fbbf24" },
+    { "q": "Melyik galaxisban lakunk?", "a": ["Androméda", "Tejútrendszer", "Sombrero"], "c": 1, "p": 2, "l": "Medium", "color": "#fbbf24" },
+    { "q": "Hány holdja van a Földnek?", "a": ["0", "1", "2"], "c": 1, "p": 2, "l": "Medium", "color": "#fbbf24" },
+    { "q": "Ki fedezte fel a Jupiter 4 nagy holdját?", "a": ["Newton", "Galilei", "Kepler"], "c": 1, "p": 2, "l": "Medium", "color": "#fbbf24" },
+    { "q": "Hol van a legmagasabb hegy (Olympus Mons)?", "a": ["Mars", "Vénusz", "Hold"], "c": 0, "p": 3, "l": "Hard", "color": "#f87171" },
+    { "q": "Mi a neve a Nap látható felszínének?", "a": ["Kromoszféra", "Fotoszféra", "Korona"], "c": 1, "p": 3, "l": "Hard", "color": "#f87171" },
+    { "q": "Mit fokoztak le törpebolygóvá 2006-ban?", "a": ["Ceres", "Plútó", "Eris"], "c": 1, "p": 3, "l": "Hard", "color": "#f87171" },
+    { "q": "Milyen típusú csillag a Nap?", "a": ["Vörös óriás", "Sárga törpe", "Fehér törpe"], "c": 1, "p": 3, "l": "Hard", "color": "#f87171" },
+    { "q": "Melyik bolygó 'gördül' az oldalán?", "a": ["Neptunusz", "Uránusz", "Szaturnusz"], "c": 1, "p": 3, "l": "Hard", "color": "#f87171" }
+  ]
+}
