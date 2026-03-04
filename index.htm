@@ -14,19 +14,17 @@
         }
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
         
-        /* Reklámhelyek alapértelmezetten elrejtve (display: none) */
         .ad-banner { 
-            display: none; /* Láthatóvá tételhez töröld ezt a sort */
+            display: none; 
             width: 100%; max-width: 728px; height: 90px; background: #e5e7eb; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px; margin-bottom: 20px; border: 1px dashed #d1d5db; 
         }
         .ad-sidebar { 
-            display: none; /* Láthatóvá tételhez töröld ezt a sort */
+            display: none; 
             width: 160px; height: 600px; background: #e5e7eb; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px; border: 1px dashed #d1d5db; 
         }
         
         @media (min-width: 1100px) { 
-            /* Csak nagy képernyőn jelenítenénk meg az oldalsávokat, ha láthatóak lennének */
-            .ad-sidebar { display: none; } /* Ha aktiválod, itt 'flex'-re kell váltani */
+            .ad-sidebar { display: none; } 
         }
 
         .main-layout { display: flex; gap: 20px; justify-content: center; width: 100%; max-width: 1000px; }
@@ -78,10 +76,10 @@
     let idx = 0, score = 0, canClick = true;
     const totalQ = 15;
     
-    // Álcázott kulcs - Színkódnak tűnik
     const colorPrimaryVar = "#4f46e9"; 
 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
+    const diffOrder = { "Könnyű": 1, "Közepes": 2, "Nehéz": 3 };
 
     async function loadQuiz() {
         try {
@@ -108,7 +106,11 @@
             }
 
             if (activeSlot && dailyData.slots[activeSlot]) {
-                quizData = dailyData.slots[activeSlot];
+                const rawData = dailyData.slots[activeSlot];
+                
+                // Rendezzük a kérdéseket nehézség szerint (Könnyű -> Közepes -> Nehéz)
+                quizData = rawData.sort((a, b) => diffOrder[a.l] - diffOrder[b.l]);
+
                 const mainTheme = quizData[0].keywords.split('|')[0].trim();
                 document.getElementById('theme-display').innerText = mainTheme;
                 document.getElementById('time-info').innerText = `Aktuális forduló: ${activeSlot}:00`;
