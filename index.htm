@@ -134,9 +134,13 @@
         tag.innerText = q.l;
         tag.style.background = diffColors[q.l];
         document.getElementById('q-text').innerText = q.q;
+        
+        // VÁLASZOK MEKKEVERÉSE (Shuffle)
+        const shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
+        
         const box = document.getElementById('options-box');
         box.innerHTML = '';
-        q.o.forEach((txt) => {
+        shuffledOptions.forEach((txt) => {
             const b = document.createElement('button');
             b.className = 'option-btn';
             b.innerText = txt;
