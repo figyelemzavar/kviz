@@ -239,11 +239,17 @@
         const box = document.getElementById('options-box');
         box.innerHTML = '';
         
-        // Módosított keverési logika:
         let optionsToDisplay = [...q.o];
         
-        // Ha nem 2 válaszlehetőség van, akkor keverjük meg
-        if (optionsToDisplay.length !== 2) {
+        // Fixálás: Ha Igaz/Hamis a válaszadási lehetőség, mindig Igaz legyen felül
+        const isTrueFalse = optionsToDisplay.length === 2 && 
+                            optionsToDisplay.includes("Igaz") && 
+                            optionsToDisplay.includes("Hamis");
+
+        if (isTrueFalse) {
+            optionsToDisplay = ["Igaz", "Hamis"];
+        } else if (optionsToDisplay.length !== 2) {
+            // Minden más esetben (pl. 4 válasz) véletlenszerű keverés
             optionsToDisplay.sort(() => Math.random() - 0.5);
         }
 
