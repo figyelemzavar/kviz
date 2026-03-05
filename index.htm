@@ -94,21 +94,34 @@
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
         
         .option-btn { 
-            background: #fff; 
-            border: 2px solid #f1f5f9; 
+            background: #ffffff; 
+            border: 3px solid #f1f5f9; 
             padding: 16px; 
             border-radius: 18px; 
             font-weight: 600; 
             cursor: pointer; 
-            transition: all 0.2s ease; 
+            transition: all 0.25s ease; 
             margin-bottom: 10px; 
             width: 100%; 
             font-family: inherit; 
             font-size: 16px; 
             color: #334155;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: relative;
         }
 
-        .option-btn:hover { border-color: var(--primary); background: #f8faff; }
+        .option-btn:hover { 
+            border-color: var(--primary); 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1); 
+            background: #ffffff;
+        }
+
+        .option-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
         .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; }
         .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; animation: shake 0.4s; }
         
