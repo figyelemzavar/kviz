@@ -16,65 +16,161 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         :root {
-            --primary: #4f46e5; --secondary: #10b981; --error: #ef4444;
-            --bg: #f3f4f6; --text: #1f2937; --card: #ffffff;
+            /* Frissített, modernebb vibráló színek */
+            --primary: #6366f1; 
+            --primary-dark: #4f46e5;
+            --secondary: #10b981; 
+            --error: #f43f5e;
+            --bg: #f8fafc; 
+            --text: #0f172a; 
+            --card: #ffffff;
             --fb: #1877F2;
         }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        
-        .ad-banner { display: none; width: 100%; max-width: 728px; height: 90px; background: #e5e7eb; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px; margin-bottom: 20px; border: 1px dashed #d1d5db; }
-        .ad-sidebar { display: none; width: 160px; height: 600px; background: #e5e7eb; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px; border: 1px dashed #d1d5db; }
-        
-        @media (min-width: 1100px) { .ad-sidebar { display: none; } }
 
-        .main-layout { display: flex; gap: 20px; justify-content: center; width: 100%; max-width: 1000px; }
-        .quiz-container { width: 100%; max-width: 450px; position: relative; }
-        .card { background: var(--card); border-radius: 24px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; border: 1px solid rgba(0,0,0,0.1); position: relative; }
-        .live-score-tag { background: var(--primary); color: white; padding: 5px 15px; border-radius: 12px; font-weight: 800; font-size: 14px; }
-        .progress-text { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 8px; font-weight: 600; color: #6b7280; }
-        .bar-bg { height: 8px; background: #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
-        .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.4s; }
-        .difficulty-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; color: white; margin-bottom: 10px; text-transform: uppercase; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--bg); 
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px; 
+        }
         
-        .option-btn { background: #fff; border: 2px solid #f3f4f6; padding: 16px; border-radius: 16px; font-weight: 600; cursor: pointer; transition: 0.2s; margin-bottom: 10px; width: 100%; font-family: inherit; font-size: 16px; position: relative; overflow: visible; }
-        .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; }
-        .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; animation: shake 0.3s; }
-        
-        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-8px);} 75% {transform: translateX(8px);} }
-        
-        .score-float { position: absolute; color: var(--secondary); font-weight: 800; font-size: 24px; pointer-events: none; animation: floatUp 1s ease-out forwards; z-index: 100; left: 50%; transform: translateX(-50%); }
-        @keyframes floatUp { 0% { opacity: 1; bottom: 20px; } 100% { opacity: 0; bottom: 80px; } }
+        /* Modern fejléc design */
+        .logo-text {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin: 10px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+        }
 
-        .start-btn { background: var(--primary); color: white; border: none; padding: 20px; width: 100%; border-radius: 16px; font-weight: 700; cursor: pointer; font-size: 18px; transition: 0.3s; }
-        .fb-btn { background: var(--fb); color: white; border: none; padding: 15px; width: 100%; border-radius: 16px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .main-layout { display: flex; gap: 30px; justify-content: center; width: 100%; max-width: 1000px; margin-top: 20px; }
+        .quiz-container { width: 100%; max-width: 480px; position: relative; }
+        
+        .card { 
+            background: var(--card); 
+            border-radius: 32px; 
+            padding: 40px 30px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.04); 
+            text-align: center; 
+            border: 1px solid rgba(255,255,255,0.8); 
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .live-score-tag { 
+            background: #f1f5f9; 
+            color: var(--primary-dark); 
+            padding: 6px 16px; 
+            border-radius: 14px; 
+            font-weight: 700; 
+            font-size: 14px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .progress-text { display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 12px; font-weight: 600; color: #64748b; }
+        .bar-bg { height: 10px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 25px; border: 1px solid #e2e8f0; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        
+        .difficulty-tag { 
+            display: inline-block; 
+            padding: 5px 14px; 
+            border-radius: 10px; 
+            font-size: 11px; 
+            font-weight: 800; 
+            color: white; 
+            margin-bottom: 15px; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .option-btn { 
+            background: #fff; 
+            border: 2px solid #f1f5f9; 
+            padding: 18px; 
+            border-radius: 20px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+            margin-bottom: 12px; 
+            width: 100%; 
+            font-family: inherit; 
+            font-size: 16px; 
+            color: #334155;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .option-btn:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 15px rgba(99, 102, 241, 0.1); }
+        .option-btn:active { transform: translateY(0); }
+
+        .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important; }
+        .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; animation: shake 0.4s; }
+        
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-10px);} 75% {transform: translateX(10px);} }
+        
+        .score-float { position: absolute; color: var(--secondary); font-weight: 800; font-size: 28px; pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 100; left: 50%; }
+        @keyframes floatUp { 0% { opacity: 0; transform: translate(-50%, 0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -100px); } }
+
+        .start-btn { 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 22px; 
+            width: 100%; 
+            border-radius: 20px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            font-size: 18px; 
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+        .start-btn:hover { background: var(--primary-dark); transform: scale(1.02); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3); }
+
+        .fb-btn { background: var(--fb); color: white; border: none; padding: 18px; width: 100%; border-radius: 20px; font-weight: 700; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        
+        .ad-banner, .ad-sidebar { display: none; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 12px; color: #94a3b8; }
     </style>
 </head>
 <body>
-    <div class="ad-banner">Hirdetés (728x90)</div>
+    <div class="ad-banner" style="width: 100%; max-width: 728px; height: 90px; margin-bottom: 20px; align-items: center; justify-content: center;">Hirdetés</div>
+    
     <div class="main-layout">
-        <div class="ad-sidebar">Hirdetés (160x600)</div>
         <div class="quiz-container">
             <div id="start-panel" class="card">
-                <span id="theme-display" style="color:var(--primary); font-weight:800; text-transform:uppercase;">NAPI FORDULÓ</span>
-                <h1 style="margin: 10px 0;">KvízParti</h1>
-                <p id="time-info" style="font-size: 14px; color: #6b7280; margin-bottom: 25px;">Töltsd fel a tudásodat!</p>
+                <span id="theme-display" style="color:var(--primary); font-weight:800; font-size:12px; letter-spacing:2px; text-transform:uppercase;">Napi Kihívás</span>
+                <h1 class="logo-text">KvízParti</h1>
+                <p id="time-info" style="font-size: 15px; color: #64748b; margin-bottom: 35px; line-height: 1.6;">Üdvözlünk! Készen állsz a mai tudáspróbára?</p>
                 <button class="start-btn" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
             </div>
+
             <div id="game-panel" class="card" style="display:none;">
-                <div class="progress-text"><span id="q-count">1 / 15</span><div class="live-score-tag">Pont: <span id="live-score">0</span></div></div>
+                <div class="progress-text">
+                    <span id="q-count">1 / 15</span>
+                    <div class="live-score-tag">PONT: <span id="live-score">0</span></div>
+                </div>
                 <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
                 <div id="diff-tag" class="difficulty-tag">SZINT</div>
-                <h2 id="q-text" style="font-size: 19px; margin-bottom: 25px;">Kérdés?</h2>
-                <div id="options-box" style="position: relative;"></div>
+                <h2 id="q-text" style="font-size: 22px; line-height: 1.4; margin-bottom: 30px; color: #1e293b;">Kérdés?</h2>
+                <div id="options-box"></div>
             </div>
+
             <div id="result-panel" class="card" style="display:none;">
-                <h1 style="color:var(--secondary)">Szép munka!</h1>
-                <div style="font-size:60px; font-weight:800; color:var(--primary); margin: 20px 0;" id="final-p">0</div>
-                <p style="font-weight: 600; color: #6b7280;">GRATULÁLUNK!</p>
+                <h1 style="color:var(--secondary); font-size: 32px;">Gratulálunk!</h1>
+                <p style="color: #64748b; margin-bottom: 10px;">A mai eredményed:</p>
+                <div style="font-size:72px; font-weight:800; color:var(--primary); margin: 10px 0; letter-spacing: -2px;" id="final-p">0</div>
+                <p style="font-weight: 600; color: #334155; margin-bottom: 30px;">Várunk vissza holnap is!</p>
                 <button class="fb-btn" onclick="window.location.reload()">ÚJ JÁTÉK</button>
             </div>
         </div>
-        <div class="ad-sidebar">Hirdetés (160x600)</div>
     </div>
 
 <script>
@@ -105,14 +201,14 @@
 
             if (activeSlot && dailyData.slots[activeSlot]) {
                 quizData = dailyData.slots[activeSlot].sort((a, b) => diffOrder[a.l] - diffOrder[b.l]);
-                document.getElementById('theme-display').innerText = "NAPI FORDULÓ";
-                document.getElementById('time-info').innerText = `Aktuális idősáv: ${activeSlot}:00`;
+                document.getElementById('time-info').innerHTML = `Mai kihívás elérhető.<br><small style="opacity:0.7">Idősáv: ${activeSlot}:00</small>`;
             } else {
                 document.getElementById('theme-display').innerText = "VÁRAKOZÁS";
-                document.querySelector('.start-btn').style.display = "none";
+                document.querySelector('.start-btn').innerText = "KÉSŐBB ELÉRHETŐ";
+                document.querySelector('.start-btn').style.opacity = "0.5";
             }
         } catch (e) {
-            document.getElementById('theme-display').innerText = "HAMAROSAN...";
+            document.getElementById('theme-display').innerText = "Hamarosan";
             document.querySelector('.start-btn').style.display = "none";
         }
     }
@@ -135,7 +231,6 @@
         tag.style.background = diffColors[q.l];
         document.getElementById('q-text').innerText = q.q;
         
-        // VÁLASZOK MEKKEVERÉSE (Shuffle)
         const shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
         
         const box = document.getElementById('options-box');
