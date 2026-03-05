@@ -241,6 +241,8 @@
         
         // Módosított keverési logika:
         let optionsToDisplay = [...q.o];
+        
+        // Ha nem 2 válaszlehetőség van, akkor keverjük meg
         if (optionsToDisplay.length !== 2) {
             optionsToDisplay.sort(() => Math.random() - 0.5);
         }
