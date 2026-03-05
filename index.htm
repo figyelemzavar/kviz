@@ -24,6 +24,9 @@
             --text: #0f172a; 
             --card: #ffffff;
             --fb: #1877F2;
+            /* Új kék árnyalatok a gombokhoz */
+            --btn-bg: #eff6ff;
+            --btn-border: #dbeafe;
         }
 
         body { 
@@ -62,7 +65,6 @@
             border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Felső sáv stílusa */
         .progress-header {
             display: flex;
             justify-content: space-between;
@@ -93,9 +95,10 @@
         .bar-bg { height: 8px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
         
+        /* Módosított válaszgombok */
         .option-btn { 
-            background: #ffffff; 
-            border: 3px solid #f1f5f9; 
+            background: var(--btn-bg); 
+            border: 3px solid var(--btn-border); 
             padding: 16px; 
             border-radius: 18px; 
             font-weight: 600; 
@@ -106,15 +109,15 @@
             font-family: inherit; 
             font-size: 16px; 
             color: #334155;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.05);
             position: relative;
         }
 
         .option-btn:hover { 
             border-color: var(--primary); 
+            background: #dbeafe; /* Kicsit telítettebb kék hoverre */
             transform: translateY(-3px); 
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1); 
-            background: #ffffff;
         }
 
         .option-btn:active {
@@ -122,8 +125,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; }
-        .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; animation: shake 0.4s; }
+        .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; box-shadow: none !important; }
+        .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; box-shadow: none !important; animation: shake 0.4s; }
         
         @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-8px);} 75% {transform: translateX(8px);} }
         
@@ -253,7 +256,7 @@
         
         if(selected === q.a) {
             btn.classList.add('correct-flash');
-            score += 1; // Fix +1 pont
+            score += 1; 
             document.getElementById('live-score').innerText = score; 
             showPoints(btn, 1);
         } else {
@@ -283,7 +286,6 @@
         document.getElementById('result-panel').style.display = 'block';
         document.getElementById('final-p').innerText = score;
 
-        // Dicséret rendszer
         const titles = { 
             low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel, próbáld újra!"],
             mid: ["Nem rossz, de tudsz te jobbat is!", "Alakul ez, csak így tovább!", "Szép próbálkozás!"],
@@ -302,7 +304,6 @@
         document.getElementById('result-title').innerText = score >= 11 ? "Gratulálunk!" : "Kész!";
         document.getElementById('result-msg').innerText = randomText;
 
-        // Következő idősáv kiszámítása
         const next = slots.find(s => s > parseInt(currentSlot)) || slots[0];
         document.getElementById('next-slot').innerText = next.toString().padStart(2, '0') + ":00";
     }
