@@ -171,11 +171,12 @@
         try {
             const now = new Date();
             const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            const url = `./json/data_${dateStr}.json?t=${new Date().getTime()}`;
-            console.log("JSON betöltése innen:", url);
+            // JAVÍTÁS: A "./" eltávolítva a biztosabb betöltés érdekében
+            const url = `json/data_${dateStr}.json?t=${new Date().getTime()}`;
+            console.log("Próbálkozás a JSON betöltésével:", url);
 
             const response = await fetch(url);
-            if (!response.ok) throw new Error("Nincs fájl");
+            if (!response.ok) throw new Error("A szerver nem találta a JSON fájlt.");
             
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
@@ -190,7 +191,9 @@
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return order[a.l] - order[b.l];
             });
+            console.log("Sikeres betöltés!");
         } catch (e) { 
+            console.error("Betöltési hiba:", e);
             const btn = document.getElementById('start-btn');
             if(btn) {
                 btn.innerText = "Hiba: Nincs mai kvíz";
@@ -231,6 +234,17 @@
             box.appendChild(b);
         });
         document.getElementById('fifty-fifty').disabled = fiftyUsed;
+    }
+
+    function useFiftyFifty() {
+        if (fiftyUsed || !canClick) return;
+        fiftyUsed = true;
+        const q = quizData[idx];
+        const buttons = Array.from(document.querySelectorAll('.option-btn'));
+        let wrongButtons = buttons.filter(b => b.innerText !== q.a);
+        wrongButtons.sort(() => Math.random() - 0.5);
+        wrongButtons.slice(0, 2).forEach(b => b.style.visibility = 'hidden');
+        document.getElementById('fifty-fifty').disabled = true;
     }
 
     function check(selected, btn) {
