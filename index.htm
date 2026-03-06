@@ -119,7 +119,7 @@
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
-        <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
+        <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra?</p>
         <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
 
@@ -151,58 +151,47 @@
 
 <script>
     let quizData = [];
-    let idx = 0, score = 0, canClick = true;
-    let fiftyUsed = false;
+    let idx = 0, score = 0, canClick = true, fiftyUsed = false;
     const totalQ = 15;
-    const colorPrimaryVar = "#4f46e9";
+    const key = "#4f46e9";
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    document.addEventListener('keydown', function(event) {
-        const key = event.key.toLowerCase();
-        if (key === 'r') { restartGame(); }
+    document.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 'r') restartGame();
     });
 
     function restartGame() {
-        window.location.href = window.location.origin + window.location.pathname + "?refresh=" + Date.now();
+        location.reload();
     }
 
     async function loadQuiz() {
         try {
-            const now = new Date();
-            const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            // JSON elérése közvetlenül a főmappából
-            const url = `data_${dateStr}.json?t=${new Date().getTime()}`;
-            console.log("JSON betöltése...", url);
-
-            const response = await fetch(url);
-            if (!response.ok) throw new Error("A JSON fájl nem található a főmappában!");
+            const d = new Date();
+            const dateStr = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+            const res = await fetch(`data_${dateStr}.json?v=${Date.now()}`);
+            if(!res.ok) throw new Error();
             
-            const encrypted = await response.text();
-            const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            const encrypted = await res.text();
+            const bytes = CryptoJS.AES.decrypt(encrypted, key);
+            const data = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
             
-            const hour = now.getHours();
+            const h = d.getHours();
             const slots = [8, 10, 12, 14, 16, 18];
-            let activeSlot = "08";
-            for (let s of [...slots].reverse()) { if (hour >= s) { activeSlot = s.toString().padStart(2, '0'); break; } }
+            let s = "08";
+            for(let t of [...slots].reverse()) { if(h >= t) { s = t.toString().padStart(2,'0'); break; } }
 
-            quizData = dailyData.slots[activeSlot].sort((a,b) => {
-                const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
-                return order[a.l] - order[b.l];
+            quizData = data.slots[s].sort((a,b) => {
+                const map = {"Könnyű":1, "Közepes":2, "Nehéz":3};
+                return map[a.l] - map[b.l];
             });
-            console.log("Kvíz adatok sikeresen betöltve.");
-        } catch (e) { 
-            console.error("Hiba történt:", e);
-            const btn = document.getElementById('start-btn');
-            if(btn) {
-                btn.innerText = "Hiba: Fájl nem található!";
-                btn.disabled = true;
-            }
+        } catch (e) {
+            const b = document.getElementById('start-btn');
+            if(b) b.innerText = "Fájl hiba (JSON a főmappában?)";
         }
     }
 
     function startQuiz() {
-        if(!quizData || quizData.length === 0) return;
+        if(!quizData.length) return;
         document.getElementById('start-panel').style.display='none';
         document.getElementById('game-panel').style.display='block';
         renderQ();
@@ -212,20 +201,18 @@
         canClick = true;
         document.getElementById('next-btn').style.display = 'none';
         const q = quizData[idx];
-        if(!q) return;
         
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
-        const tag = document.getElementById('diff-tag');
-        tag.innerText = q.l;
-        tag.style.background = diffColors[q.l] || "#64748b";
+        const t = document.getElementById('diff-tag');
+        t.innerText = q.l;
+        t.style.background = diffColors[q.l];
         document.getElementById('q-text').innerText = q.q;
+        
         const box = document.getElementById('options-box');
         box.innerHTML = '';
-        
-        let shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
-        shuffledOptions.forEach(txt => {
+        [...q.o].sort(() => Math.random() - 0.5).forEach(txt => {
             const b = document.createElement('button');
             b.className = 'option-btn';
             b.innerText = txt;
@@ -239,69 +226,48 @@
         if (fiftyUsed || !canClick) return;
         fiftyUsed = true;
         const q = quizData[idx];
-        const buttons = Array.from(document.querySelectorAll('.option-btn'));
-        let wrongButtons = buttons.filter(b => b.innerText !== q.a);
-        wrongButtons.sort(() => Math.random() - 0.5);
-        wrongButtons.slice(0, 2).forEach(b => b.style.visibility = 'hidden');
+        const btns = Array.from(document.querySelectorAll('.option-btn'));
+        btns.filter(b => b.innerText !== q.a).sort(() => Math.random()-0.5).slice(0,2).forEach(b => b.style.visibility = 'hidden');
         document.getElementById('fifty-fifty').disabled = true;
     }
 
-    function check(selected, btn) {
+    function check(val, btn) {
         if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
-        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-        
-        if(selected === q.a) {
+        if(val === q.a) {
             btn.classList.add('correct-flash');
             score++;
-            const anim = document.getElementById('score-anim');
-            anim.classList.add('show');
-            setTimeout(() => anim.classList.remove('show'), 1000);
+            const a = document.getElementById('score-anim');
+            a.classList.add('show');
+            setTimeout(() => a.classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
-            document.querySelectorAll('.option-btn').forEach(b => {
-                if(b.innerText === q.a) b.classList.add('correct-flash');
-            });
+            document.querySelectorAll('.option-btn').forEach(b => { if(b.innerText === q.a) b.classList.add('correct-flash'); });
         }
         document.getElementById('next-btn').style.display = 'block';
     }
 
     function goToNext() {
         idx++;
-        if(idx < totalQ) {
-            renderQ();
-        } else {
-            finish();
-        }
+        if(idx < totalQ) renderQ();
+        else finish();
     }
 
     function finish() {
-        document.getElementById('start-panel').style.display='none';
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = score;
         
-        const titles = { 
-            low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
-            mid: ["Nem rossz!", "Alakul ez!", "Szép próbálkozás!"],
-            good: ["Ügyes voltál!", "Szép eredmény!", "Jó formában vagy!"],
-            high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
-            perfect: ["Zseniális!", "Tökéletes tudás!", "Mesterfok!"]
-        };
+        let b = "", l = "", c = "";
+        if(score <= 4) { b = "img/bronze.png"; l = "Bronz"; c = "bronz"; }
+        else if(score <= 9) { b = "img/silver.png"; l = "Ezüst"; c = "ezust"; }
+        else if(score <= 14) { b = "img/gold.png"; l = "Arany"; c = "arany"; }
+        else { b = "img/diamond.png"; l = "Gyémánt"; c = "gyemant"; }
         
-        let badgeSrc = "", league = "", cls = "", cat = "low";
-        // KÉPEK AZ IMG MAPPÁBAN
-        if(score <= 4) { badgeSrc = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
-        else if(score <= 9) { badgeSrc = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
-        else if(score <= 14) { badgeSrc = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
-        else { badgeSrc = "img/diamond.png"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
-        
-        const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
-        document.getElementById('result-msg').innerText = randomMsg;
-        document.getElementById('badge-img').src = badgeSrc;
-        document.getElementById('league-text').innerText = league;
-        document.getElementById('league-text').className = "league-name " + cls;
+        document.getElementById('badge-img').src = b;
+        document.getElementById('league-text').innerText = l;
+        document.getElementById('league-text').className = "league-name " + c;
     }
 
     loadQuiz();
