@@ -138,27 +138,6 @@
             font-size: 18px;
         }
 
-        .next-btn {
-            background: var(--secondary);
-            margin-top: 15px;
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        #insight-box {
-            margin-top: 15px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 15px;
-            font-size: 14px;
-            color: #475569;
-            line-height: 1.5;
-            border-left: 4px solid var(--primary);
-            text-align: left;
-            display: none;
-        }
-
         .fb-btn { background: var(--fb); color: white; border: none; padding: 18px; width: 100%; border-radius: 18px; font-weight: 700; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
@@ -181,8 +160,6 @@
                 <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
                 <h2 id="q-text" style="font-size: 20px; line-height: 1.4; margin-bottom: 25px; color: #1e293b;">Kérdés?</h2>
                 <div id="options-box"></div>
-                <div id="insight-box"></div>
-                <button id="manual-next" class="next-btn" style="display:none;" onclick="nextStep()">KÖVETKEZŐ KÉRDÉS</button>
             </div>
 
             <div id="result-panel" class="card" style="display:none;">
@@ -247,10 +224,6 @@
         canClick = true;
         const q = quizData[idx];
         
-        // UI Reset
-        document.getElementById('insight-box').style.display = 'none';
-        document.getElementById('manual-next').style.display = 'none';
-        
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
@@ -286,7 +259,6 @@
         canClick = false;
         const q = quizData[idx];
         
-        // Megakadályozzuk a többi gomb kattinthatóságát
         document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
         
         if(selected === q.a) {
@@ -301,20 +273,10 @@
             });
         }
         
-        // Logika: Igaz/Hamis esetén (ha van insight) megmutatjuk és várunk a gombra
-        const hasInsight = q.insight && q.insight.length > 0;
-        
-        if(hasInsight) {
-            const ibox = document.getElementById('insight-box');
-            ibox.innerText = q.insight;
-            ibox.style.display = 'block';
-            document.getElementById('manual-next').style.display = 'block';
-        } else {
-            // Ha nincs insight (pl. 4 válaszos), megy az eredeti 2 mp-es automata léptetés
-            setTimeout(() => {
-                nextStep();
-            }, 2000);
-        }
+        // Egységes 2 másodperces várakozás, majd továbbugrás
+        setTimeout(() => {
+            nextStep();
+        }, 2000);
     }
 
     function nextStep() {
@@ -342,26 +304,4 @@
         const titles = { 
             low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel, próbáld újra!"],
             mid: ["Nem rossz, de tudsz te jobbat is!", "Alakul ez, csak így tovább!", "Szép próbálkozás!"],
-            good: ["Ügyes voltál!", "Szép eredmény!", "Jó formában vagy!"],
-            high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
-            perfect: ["Tökéletes!", "Zseniális!", "Kevesen képesek erre!"]
-        };
-
-        let cat = "low";
-        if(score === 15) cat = "perfect";
-        else if(score >= 11) cat = "high";
-        else if(score >= 7) cat = "good";
-        else if(score >= 4) cat = "mid";
-
-        const randomText = titles[cat][Math.floor(Math.random() * titles[cat].length)];
-        document.getElementById('result-title').innerText = score >= 11 ? "Gratulálunk!" : "Kész!";
-        document.getElementById('result-msg').innerText = randomText;
-
-        const next = slots.find(s => s > parseInt(currentSlot)) || slots[0];
-        document.getElementById('next-slot').innerText = next.toString().padStart(2, '0') + ":00";
-    }
-
-    loadQuiz();
-</script>
-</body>
-</html>
+            good: ["Ügyes voltál
