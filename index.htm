@@ -154,7 +154,7 @@
 
     // ÚJRAINDÍTÁS FUNKCIÓ (Az r betű és az új gomb közös parancsa)
     function restartGame() {
-        window.location.replace(window.location.href.split('#')[0]);
+    window.location.href = window.location.pathname + "?t=" + Date.now();
     }
 
     async function loadQuiz() {
@@ -294,3 +294,4 @@
 </script>
 </body>
 </html>
+
