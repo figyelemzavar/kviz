@@ -85,7 +85,7 @@
         .score-pop { position: absolute; right: 25px; top: 100px; color: var(--secondary); font-weight: 800; opacity: 0; pointer-events: none; transform: translateY(0); transition: all 0.5s; font-size: 18px; }
         .score-pop.show { opacity: 1; transform: translateY(-30px); }
 
-        .badge-img { height: 100px; width: auto; margin: 15px 0; display: inline-block; }
+        .badge { font-size: 70px; margin: 15px 0; display: block; }
         .league-name { font-weight: 800; font-size: 26px; text-transform: uppercase; margin-bottom: 10px; }
         .bronz { color: #cd7f32; }
         .ezust { color: #94a3b8; }
@@ -98,29 +98,15 @@
         
         .bar-bg { height: 10px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 25px; border: 1px solid #e2e8f0; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
-
-        #next-btn {
-            display: none;
-            background: var(--text);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 20px;
-            font-weight: 800;
-            width: 100%;
-            margin-top: 10px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
     </style>
 </head>
 <body>
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
+        
         <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
-        <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
+        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
 
     <div id="game-panel" class="card" style="display:none;">
@@ -136,103 +122,82 @@
         <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
         <h2 id="q-text" style="font-size: 22px; margin-bottom: 30px; line-height: 1.4; font-weight: 600;"></h2>
         <div id="options-box"></div>
-        <button id="next-btn" onclick="goToNext()">Tovább</button>
     </div>
 
     <div id="result-panel" class="card" style="display:none;">
-        <h1 id="result-title" style="margin-bottom: 5px;">Eredmény:</h1>
+        <h1 id="result-title" style="margin-bottom: 5px;">Kész!</h1>
         <p id="result-msg" style="color: #64748b; font-size: 16px; margin-bottom: 20px;"></p>
-        <div id="badge-container"><img id="badge-img" class="badge-img" src="" alt="Érem"></div>
+        <div id="badge-icon" class="badge"></div>
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
         <p style="margin-top: 10px; margin-bottom: 30px; font-weight: 600; color: #64748b;">helyes válasz</p>
-        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="restartGame()">JÁTÉK ÚJRA</button>
+        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="resetGame()">JÁTÉK ÚJRA</button>
     </div>
 
 <script>
     let quizData = [];
-    let idx = 0, score = 0, canClick = true, fiftyUsed = false;
+    let idx = 0, score = 0, canClick = true;
+    let fiftyUsed = false;
     const totalQ = 15;
-    const decryptionKey = "#4f46e9"; // ELLENŐRIZD: Ez a kulcs van a Python titkosítóban is?
+    const colorPrimaryVar = "#4f46e9";
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    // Billentyűzet parancsok
-    document.addEventListener('keydown', (e) => {
-        if (e.key.toLowerCase() === 'r') {
-            restartGame();
-        }
-    });
-
-    function restartGame() {
-        // Frissítéskor töröljük a cache-t egy random paraméterrel
-        window.location.href = window.location.origin + window.location.pathname + "?v=" + Date.now();
-    }
-
     async function loadQuiz() {
-        const startBtn = document.getElementById('start-btn');
         try {
-            const d = new Date();
-            const dateStr = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-            // JSON elérése a főmappából
-            const url = `data_${dateStr}.json?t=${Date.now()}`;
-            
-            const response = await fetch(url);
-            if (!response.ok) throw new Error("A JSON fájl nem található!");
-            
+            const now = new Date();
+            const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+            const response = await fetch(`data_${dateStr}.json?t=${new Date().getTime()}`);
             const encrypted = await response.text();
-            const bytes = CryptoJS.AES.decrypt(encrypted, decryptionKey);
-            const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+            const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
+            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
             
-            if (!decryptedText) throw new Error("Titkosítási hiba (rossz kulcs?)");
-            
-            const data = JSON.parse(decryptedText);
-            
-            const h = d.getHours();
+            const hour = now.getHours();
             const slots = [8, 10, 12, 14, 16, 18];
-            let s = "08";
-            for(let t of [...slots].reverse()) { if(h >= t) { s = t.toString().padStart(2,'0'); break; } }
+            let activeSlot = "08";
+            for (let s of [...slots].reverse()) { if (hour >= s) { activeSlot = s.toString().padStart(2, '0'); break; } }
 
-            quizData = data.slots[s].sort((a,b) => {
-                const map = {"Könnyű":1, "Közepes":2, "Nehéz":3};
-                return map[a.l] - map[b.l];
+            quizData = dailyData.slots[activeSlot].sort((a,b) => {
+                const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
+                return order[a.l] - order[b.l];
             });
-            console.log("Kvíz betöltve.");
-        } catch (e) {
-            console.error(e);
-            if(startBtn) startBtn.innerText = "Hiba: " + e.message;
-        }
+        } catch (e) { console.error("Hiba a betöltésnél"); }
     }
 
     function startQuiz() {
-        if(!quizData || quizData.length === 0) return;
+        if(!quizData.length) return;
         document.getElementById('start-panel').style.display='none';
         document.getElementById('game-panel').style.display='block';
         renderQ();
     }
 
+function resetGame() {
+        idx = 0;
+        score = 0;
+        fiftyUsed = false;
+        canClick = true;
+        // Vizuális elemek azonnali alaphelyzetbe állítása
+        document.getElementById('live-score').innerText = '0';
+        document.getElementById('bar').style.width = '0%';
+        document.getElementById('fifty-fifty').disabled = false;
+        
+        document.getElementById('result-panel').style.display='none';
+        document.getElementById('start-panel').style.display='block';
+    }
+
     function renderQ() {
         canClick = true;
-        document.getElementById('next-btn').style.display = 'none';
         const q = quizData[idx];
-        
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
-        const t = document.getElementById('diff-tag');
-        t.innerText = q.l;
-        t.style.background = diffColors[q.l] || "#64748b";
+        const tag = document.getElementById('diff-tag');
+        tag.innerText = q.l;
+        tag.style.background = diffColors[q.l] || "#64748b";
         document.getElementById('q-text').innerText = q.q;
-        
         const box = document.getElementById('options-box');
         box.innerHTML = '';
-        
-        // Opciók keverése (ha 4 van, keverünk)
-        let options = [...q.o];
-        if(options.length > 2) {
-            options.sort(() => Math.random() - 0.5);
-        }
-
-        options.forEach(txt => {
+        let shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
+        shuffledOptions.forEach(txt => {
             const b = document.createElement('button');
             b.className = 'option-btn';
             b.innerText = txt;
@@ -243,56 +208,69 @@
     }
 
     function useFiftyFifty() {
-        if (fiftyUsed || !canClick) return;
-        fiftyUsed = true;
+        if(fiftyUsed || !canClick) return;
         const q = quizData[idx];
-        const btns = Array.from(document.querySelectorAll('.option-btn'));
-        let wrong = btns.filter(b => b.innerText !== q.a);
-        wrong.sort(() => Math.random() - 0.5);
-        wrong.slice(0, 2).forEach(b => b.style.visibility = 'hidden');
+        const box = document.getElementById('options-box');
+        let wrongOptions = q.o.filter(opt => opt !== q.a);
+        let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
+        let remainingOptions = [q.a, randomWrong].sort(() => Math.random() - 0.5);
+        box.innerHTML = '';
+        remainingOptions.forEach(txt => {
+            const b = document.createElement('button');
+            b.className = 'option-btn';
+            b.innerText = txt;
+            b.onclick = () => check(txt, b);
+            box.appendChild(b);
+        });
+        fiftyUsed = true;
         document.getElementById('fifty-fifty').disabled = true;
     }
 
-    function check(val, btn) {
+    function check(selected, btn) {
         if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
-        
-        if(val === q.a) {
+        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
-            const a = document.getElementById('score-anim');
-            a.classList.add('show');
-            setTimeout(() => a.classList.remove('show'), 1000);
+            const anim = document.getElementById('score-anim');
+            anim.classList.add('show');
+            setTimeout(() => anim.classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
             document.querySelectorAll('.option-btn').forEach(b => {
                 if(b.innerText === q.a) b.classList.add('correct-flash');
             });
         }
-        document.getElementById('next-btn').style.display = 'block';
-    }
-
-    function goToNext() {
-        idx++;
-        if(idx < totalQ) renderQ();
-        else finish();
+        setTimeout(() => {
+            idx++;
+            if(idx < totalQ) renderQ(); else finish();
+        }, 2000);
     }
 
     function finish() {
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = score;
-        
-        let b = "", l = "", c = "";
-        if(score <= 4) { b = "img/bronze.png"; l = "Bronz"; c = "bronz"; }
-        else if(score <= 9) { b = "img/silver.png"; l = "Ezüst"; c = "ezust"; }
-        else if(score <= 14) { b = "img/gold.png"; l = "Arany"; c = "arany"; }
-        else { b = "img/diamond.png"; l = "Gyémánt"; c = "gyemant"; }
-        
-        document.getElementById('badge-img').src = b;
-        document.getElementById('league-text').innerText = l;
-        document.getElementById('league-text').className = "league-name " + c;
+        const titles = { 
+            low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
+            mid: ["Nem rossz!", "Alakul ez!", "Szép próbálkozás!"],
+            good: ["Ügyes voltál!", "Szép eredmény!", "Jó formában vagy!"],
+            high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
+            perfect: ["Zseniális!", "Tökéletes tudás!", "Mesterfok!"]
+        };
+        let badge = "", league = "", cls = "", cat = "low";
+        if(score <= 4) { badge = "🥉"; league = "Bronz"; cls = "bronz"; cat = "low"; }
+        else if(score <= 9) { badge = "🥈"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
+        else if(score <= 14) { badge = "🥇"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
+        else { badge = "💎"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
+        const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
+        document.getElementById('result-msg').innerText = randomMsg;
+        document.getElementById('result-title').innerText = score >= 11 ? "Gratulálunk!" : "Szép volt!";
+        document.getElementById('badge-icon').innerText = badge;
+        document.getElementById('league-text').innerText = league;
+        document.getElementById('league-text').className = "league-name " + cls;
     }
 
     loadQuiz();
