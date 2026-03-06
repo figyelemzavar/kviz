@@ -98,6 +98,22 @@
         
         .bar-bg { height: 10px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 25px; border: 1px solid #e2e8f0; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
+
+        /* Tovább gomb stílusa */
+        #next-btn {
+            display: none;
+            background: var(--text);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +137,7 @@
         <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
         <h2 id="q-text" style="font-size: 22px; margin-bottom: 30px; line-height: 1.4; font-weight: 600;"></h2>
         <div id="options-box"></div>
+        <button id="next-btn" onclick="goToNext()">Tovább</button>
     </div>
 
     <div id="result-panel" class="card" style="display:none;">
@@ -141,16 +158,13 @@
     const colorPrimaryVar = "#4f46e9";
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    // BILLENTYŰZET FIGYELŐ
     document.addEventListener('keydown', function(event) {
         const key = event.key.toLowerCase();
         if (key === 'e') { finish(); }
         else if (key === 'r') { restartGame(); }
     });
 
-    // ÚJRAINDÍTÁS FUNKCIÓ - IDŐBÉLYEGGEL A TISZTA LAPÉRT
     function restartGame() {
-        // Hozzáadunk egy egyedi azonosítót az URL-hez, hogy a böngésző mindenképpen frissen töltsön be
         window.location.href = window.location.origin + window.location.pathname + "?refresh=" + Date.now();
     }
 
@@ -192,6 +206,7 @@
 
     function renderQ() {
         canClick = true;
+        document.getElementById('next-btn').style.display = 'none'; // Elrejtjük a tovább gombot
         const q = quizData[idx];
         if(!q) return;
         
@@ -216,25 +231,6 @@
         document.getElementById('fifty-fifty').disabled = fiftyUsed;
     }
 
-    function useFiftyFifty() {
-        if(fiftyUsed || !canClick) return;
-        const q = quizData[idx];
-        const box = document.getElementById('options-box');
-        let wrongOptions = q.o.filter(opt => opt !== q.a);
-        let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
-        let remainingOptions = [q.a, randomWrong].sort(() => Math.random() - 0.5);
-        box.innerHTML = '';
-        remainingOptions.forEach(txt => {
-            const b = document.createElement('button');
-            b.className = 'option-btn';
-            b.innerText = txt;
-            b.onclick = () => check(txt, b);
-            box.appendChild(b);
-        });
-        fiftyUsed = true;
-        document.getElementById('fifty-fifty').disabled = true;
-    }
-
     function check(selected, btn) {
         if(!canClick) return;
         canClick = false;
@@ -254,10 +250,17 @@
             });
         }
         
-        setTimeout(() => {
-            idx++;
-            if(idx < totalQ) renderQ(); else finish();
-        }, 2000);
+        // Időzített továbbugrás HELYETT megjelenítjük a gombot
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function goToNext() {
+        idx++;
+        if(idx < totalQ) {
+            renderQ();
+        } else {
+            finish();
+        }
     }
 
     function finish() {
