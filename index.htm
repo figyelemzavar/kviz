@@ -28,11 +28,15 @@
 
         body { 
             font-family: 'Poppins', sans-serif; 
-            background: radial-gradient(circle at top right, #e0e7ff, #f8fafc);
+            background-color: var(--bg);
+            /* Apró pöttyözött háttér */
+            background-image: radial-gradient(#cbd5e1 0.8px, transparent 0.8px);
+            background-size: 15px 15px;
             color: var(--text); 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
+            justify-content: center;
             min-height: 100vh; 
             margin: 0; 
             padding: 15px; 
@@ -44,8 +48,9 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             letter-spacing: -1px;
+            display: block;
         }
 
         .card { 
@@ -66,7 +71,6 @@
             padding: 10px 24px; border-radius: 50px; font-weight: 800; cursor: pointer;
             transition: all 0.2s; font-size: 14px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
         }
-        .lifeline-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(99, 102, 241, 0.2); }
         .lifeline-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
 
         .option-btn { 
@@ -75,7 +79,6 @@
             margin-bottom: 12px; width: 100%; font-size: 16px; transition: 0.2s;
             color: var(--text);
         }
-        .option-btn:hover { border-color: var(--primary); background: #fff; }
 
         .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; }
         .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; }
@@ -83,7 +86,7 @@
         .score-pop { position: absolute; right: 25px; top: 100px; color: var(--secondary); font-weight: 800; opacity: 0; pointer-events: none; transform: translateY(0); transition: all 0.5s; font-size: 18px; }
         .score-pop.show { opacity: 1; transform: translateY(-30px); }
 
-        .badge { font-size: 70px; margin: 15px 0; display: block; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); }
+        .badge { font-size: 70px; margin: 15px 0; display: block; }
         .league-name { font-weight: 800; font-size: 26px; text-transform: uppercase; margin-bottom: 10px; }
         .bronz { color: #cd7f32; }
         .ezust { color: #94a3b8; }
@@ -99,9 +102,9 @@
     </style>
 </head>
 <body>
-    <div class="logo-text">KvízParti</div>
 
     <div id="start-panel" class="card">
+        <div class="logo-text">KvízParti</div>
         <h2 style="margin-top:0;">Üdvözöllek!</h2>
         <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
@@ -171,19 +174,15 @@
     function renderQ() {
         canClick = true;
         const q = quizData[idx];
-        
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
-        
         const tag = document.getElementById('diff-tag');
         tag.innerText = q.l;
         tag.style.background = diffColors[q.l] || "#64748b";
         document.getElementById('q-text').innerText = q.q;
-        
         const box = document.getElementById('options-box');
         box.innerHTML = '';
-        
         let shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
         shuffledOptions.forEach(txt => {
             const b = document.createElement('button');
@@ -192,7 +191,6 @@
             b.onclick = () => check(txt, b);
             box.appendChild(b);
         });
-
         document.getElementById('fifty-fifty').disabled = fiftyUsed;
     }
 
@@ -200,11 +198,9 @@
         if(fiftyUsed || !canClick) return;
         const q = quizData[idx];
         const box = document.getElementById('options-box');
-        
         let wrongOptions = q.o.filter(opt => opt !== q.a);
         let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
         let remainingOptions = [q.a, randomWrong].sort(() => Math.random() - 0.5);
-        
         box.innerHTML = '';
         remainingOptions.forEach(txt => {
             const b = document.createElement('button');
@@ -213,7 +209,6 @@
             b.onclick = () => check(txt, b);
             box.appendChild(b);
         });
-
         fiftyUsed = true;
         document.getElementById('fifty-fifty').disabled = true;
     }
@@ -222,9 +217,7 @@
         if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
-        
         document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-        
         if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
@@ -237,7 +230,6 @@
                 if(b.innerText === q.a) b.classList.add('correct-flash');
             });
         }
-        
         setTimeout(() => {
             idx++;
             if(idx < totalQ) renderQ(); else finish();
@@ -248,7 +240,6 @@
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = score;
-        
         const titles = { 
             low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
             mid: ["Nem rossz!", "Alakul ez!", "Szép próbálkozás!"],
@@ -256,13 +247,11 @@
             high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
             perfect: ["Zseniális!", "Tökéletes tudás!", "Mesterfok!"]
         };
-
         let badge = "", league = "", cls = "", cat = "low";
         if(score <= 4) { badge = "🥉"; league = "Bronz"; cls = "bronz"; cat = "low"; }
         else if(score <= 9) { badge = "🥈"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
         else if(score <= 14) { badge = "🥇"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
         else { badge = "💎"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
-        
         const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
         document.getElementById('result-msg').innerText = randomMsg;
         document.getElementById('result-title').innerText = score >= 11 ? "Gratulálunk!" : "Szép volt!";
