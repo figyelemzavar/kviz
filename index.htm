@@ -141,14 +141,17 @@
     const colorPrimaryVar = "#4f46e9";
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    // TITKOS GOMB FIGYELŐ
+    // BILLENTYŰZET FIGYELŐ (REJTETT FUNKCIÓK)
     document.addEventListener('keydown', function(event) {
-        if (event.key.toLowerCase() === 'e') {
+        const key = event.key.toLowerCase();
+        if (key === 'e') {
             finish();
+        } else if (key === 'r') {
+            restartGame();
         }
     });
 
-    // ÚJRAINDÍTÁS FUNKCIÓ - KÉNYSZERÍTETT TISZTA LAP
+    // ÚJRAINDÍTÁS FUNKCIÓ
     function restartGame() {
         window.location.replace(window.location.href.split('#')[0]);
     }
@@ -286,7 +289,6 @@
         document.getElementById('league-text').className = "league-name " + cls;
     }
 
-    // Azonnali betöltés
     loadQuiz();
 </script>
 </body>
