@@ -126,7 +126,7 @@
     <div id="result-panel" class="card" style="display:none;">
         <h1 id="result-title" style="margin-bottom: 5px;">Kész!</h1>
         <p id="result-msg" style="color: #64748b; font-size: 16px; margin-bottom: 20px;"></p>
-        <div id="badge-container"><img id="badge-img" class="badge-img" src="" alt="Badge"></div>
+        <div id="badge-container"><img id="badge-img" class="badge-img" src="" alt="Érem"></div>
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
         <p style="margin-top: 10px; margin-bottom: 30px; font-weight: 600; color: #64748b;">helyes válasz</p>
@@ -137,31 +137,37 @@
     let quizData = [];
     let idx = 0, score = 0, canClick = true, fiftyUsed = false;
     const totalQ = 15;
-    const colorPrimaryVar = "#4f46e9";
+    const colorPrimaryVar = "#4f46e9"; 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    // "R" betű figyelése az újraindításhoz
-    document.addEventListener('keydown', function(event) {
-        if (event.key.toLowerCase() === 'r') {
-            resetGame();
-        }
+    // "R" betű figyelése
+    document.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 'r') resetGame();
     });
+
+    function resetGame() {
+        window.location.reload();
+    }
 
     async function loadQuiz() {
         const btn = document.getElementById('start-btn');
         try {
             const now = new Date();
-            const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            
-            // JSON a főmappából
-            const response = await fetch(`data_${dateStr}.json?t=${new Date().getTime()}`);
-            if (!response.ok) throw new Error("Fájl nem található");
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const fileName = `data_${year}-${month}-${day}.json`;
+
+            console.log("Keresett fájl:", fileName);
+
+            const response = await fetch(fileName + '?v=' + Date.now());
+            if (!response.ok) throw new Error("A fájl nem található: " + fileName);
             
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
             const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
             
-            if (!decryptedText) throw new Error("Hibás titkosítás");
+            if (!decryptedText) throw new Error("Rossz titkosítási kulcs!");
             
             const dailyData = JSON.parse(decryptedText);
             const hour = now.getHours();
@@ -173,10 +179,12 @@
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return order[a.l] - order[b.l];
             });
-            console.log("Adatok betöltve!");
+
+            console.log("Sikeres betöltés!");
         } catch (e) { 
             console.error(e);
-            btn.innerText = "Hiba: JSON nem található!";
+            btn.innerText = e.message;
+            btn.style.fontSize = "12px";
             btn.disabled = true;
         }
     }
@@ -186,11 +194,6 @@
         document.getElementById('start-panel').style.display='none';
         document.getElementById('game-panel').style.display='block';
         renderQ();
-    }
-
-    function resetGame() {
-        // Teljes oldal frissítés az "r" gomb és a Játék újra gomb esetén
-        window.location.reload();
     }
 
     function renderQ() {
@@ -207,7 +210,6 @@
         const box = document.getElementById('options-box');
         box.innerHTML = '';
         
-        // 4 válasznál keverünk, 2-nél (felező után) nem
         let options = [...q.o];
         if (options.length > 2) {
             options.sort(() => Math.random() - 0.5);
@@ -228,10 +230,10 @@
         fiftyUsed = true;
         const q = quizData[idx];
         const box = document.getElementById('options-box');
-        let wrongOptions = q.o.filter(opt => opt !== q.a);
-        let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
+        let wrong = q.o.filter(opt => opt !== q.a);
+        let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
         
-        // Mentett szabály: 2 válasznál NE keverje meg az opciókat
+        // 2 válasznál NE keverje meg az opciókat
         let remainingOptions = [q.a, randomWrong]; 
         
         box.innerHTML = '';
@@ -285,7 +287,6 @@
         
         let badgeImg = "", league = "", cls = "", cat = "low";
         
-        // KÉPEK AZ IMG MAPPÁBAN
         if(score <= 4) { badgeImg = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
         else if(score <= 9) { badgeImg = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
         else if(score <= 14) { badgeImg = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
