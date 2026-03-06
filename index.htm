@@ -104,7 +104,6 @@
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
-    
         <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
@@ -131,7 +130,7 @@
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
         <p style="margin-top: 10px; margin-bottom: 30px; font-weight: 600; color: #64748b;">helyes válasz</p>
-        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="location.reload()">JÁTÉK ÚJRA</button>
+        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="restartGame()">JÁTÉK ÚJRA</button>
     </div>
 
 <script>
@@ -148,6 +147,11 @@
             finish();
         }
     });
+
+    // ÚJRAINDÍTÁS FUNKCIÓ - KÉNYSZERÍTETT TISZTA LAP
+    function restartGame() {
+        window.location.replace(window.location.href.split('#')[0]);
+    }
 
     async function loadQuiz() {
         try {
@@ -170,8 +174,11 @@
                 return order[a.l] - order[b.l];
             });
         } catch (e) { 
-            document.getElementById('start-btn').innerText = "Hiba: Nincs mai kvíz";
-            document.getElementById('start-btn').disabled = true;
+            const btn = document.getElementById('start-btn');
+            if(btn) {
+                btn.innerText = "Hiba: Nincs mai kvíz";
+                btn.disabled = true;
+            }
         }
     }
 
@@ -185,6 +192,8 @@
     function renderQ() {
         canClick = true;
         const q = quizData[idx];
+        if(!q) return;
+        
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
@@ -194,6 +203,7 @@
         document.getElementById('q-text').innerText = q.q;
         const box = document.getElementById('options-box');
         box.innerHTML = '';
+        
         let shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
         shuffledOptions.forEach(txt => {
             const b = document.createElement('button');
@@ -229,6 +239,7 @@
         canClick = false;
         const q = quizData[idx];
         document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        
         if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
@@ -241,6 +252,7 @@
                 if(b.innerText === q.a) b.classList.add('correct-flash');
             });
         }
+        
         setTimeout(() => {
             idx++;
             if(idx < totalQ) renderQ(); else finish();
@@ -252,6 +264,7 @@
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = score;
+        
         const titles = { 
             low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
             mid: ["Nem rossz!", "Alakul ez!", "Szép próbálkozás!"],
@@ -259,20 +272,22 @@
             high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
             perfect: ["Zseniális!", "Tökéletes tudás!", "Mesterfok!"]
         };
+        
         let badge = "", league = "", cls = "", cat = "low";
         if(score <= 4) { badge = "🥉"; league = "Bronz"; cls = "bronz"; cat = "low"; }
         else if(score <= 9) { badge = "🥈"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
         else if(score <= 14) { badge = "🥇"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
         else { badge = "💎"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
+        
         const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
         document.getElementById('result-msg').innerText = randomMsg;
-        
         document.getElementById('badge-icon').innerText = badge;
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + cls;
     }
 
-    window.onload = loadQuiz;
+    // Azonnali betöltés
+    loadQuiz();
 </script>
 </body>
 </html>
