@@ -154,16 +154,24 @@
         document.getElementById('fifty-fifty').disabled = fiftyUsed;
     }
 
-    function useFiftyFifty() {
+function useFiftyFifty() {
         if(fiftyUsed || !canClick) return;
+        
         const q = quizData[idx];
         const btns = Array.from(document.querySelectorAll('.option-btn'));
+        
+        // Megkeressük az összes olyan gombot, ami NEM a helyes választ tartalmazza
         let wrongButtons = btns.filter(b => b.innerText !== q.a);
+        
+        // Összekeverjük a rossz válaszokat, hogy véletlenszerű legyen, melyik tűnik el
         wrongButtons.sort(() => Math.random() - 0.5);
         
+        // Elrejtünk pontosan kettőt a rossz válaszok közül
+        // Így marad 1 jó és 1 rossz (összesen 2 gomb látható)
         if (wrongButtons.length >= 2) {
             wrongButtons[0].classList.add('hidden');
             wrongButtons[1].classList.add('hidden');
+            
             fiftyUsed = true;
             document.getElementById('fifty-fifty').disabled = true;
         }
@@ -224,4 +232,5 @@
 </script>
 </body>
 </html>
+
 
