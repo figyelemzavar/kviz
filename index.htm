@@ -98,6 +98,16 @@
         
         .bar-bg { height: 10px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 25px; border: 1px solid #e2e8f0; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
+
+        .next-quiz-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #64748b;
+            border: 1px dashed #cbd5e1;
+        }
     </style>
 </head>
 <body>
@@ -129,8 +139,13 @@
         <div id="badge-container"><img id="badge-img" class="badge-img" src="" alt="Érem"></div>
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
-        <p style="margin-top: 10px; margin-bottom: 30px; font-weight: 600; color: #64748b;">helyes válasz</p>
-        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="resetGame()">JÁTÉK ÚJRA</button>
+        <p style="margin-top: 10px; margin-bottom: 10px; font-weight: 600; color: #64748b;">helyes válasz</p>
+        
+        <div class="next-quiz-info">
+            Köszönjük a játékot! <br>
+            A következő kvíz kezdete: <br>
+            <strong id="next-time" style="color: var(--primary); font-size: 16px;">--:--</strong>
+        </div>
     </div>
 
 <script>
@@ -139,8 +154,8 @@
     const totalQ = 15;
     const colorPrimaryVar = "#4f46e9"; 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
+    const slots = [8, 10, 12, 14, 16, 18];
 
-    // "R" betű figyelése (kezdőképernyőre dob, lenullázza az 50:50-et is)
     document.addEventListener('keydown', (e) => {
         if (e.key.toLowerCase() === 'r') resetGame();
     });
@@ -164,23 +179,23 @@
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
             const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-            
-            if (!decryptedText) throw new Error("Hibás titkosítási kulcs!");
+            if (!decryptedText) throw new Error("Hibás titkosítás!");
             
             const dailyData = JSON.parse(decryptedText);
             const hour = now.getHours();
             
-            // Megkeressük az aktuális sávot
-            const slots = [8, 10, 12, 14, 16, 18];
             let activeSlot = "08";
-            for (let s of [...slots].reverse()) { 
-                if (hour >= s) { 
-                    activeSlot = s.toString().padStart(2, '0'); 
-                    break; 
-                } 
+            let nextSlot = slots[0];
+
+            for (let i = 0; i < slots.length; i++) {
+                if (hour >= slots[i]) {
+                    activeSlot = slots[i].toString().padStart(2, '0');
+                    nextSlot = slots[i + 1] || slots[0];
+                }
             }
 
-            // Biztonsági ellenőrzés az idősávra
+            document.getElementById('next-time').innerText = nextSlot.toString().padStart(2, '0') + ":00";
+
             let questions = dailyData.slots[activeSlot];
             if (!questions) {
                 const available = Object.keys(dailyData.slots);
@@ -197,9 +212,7 @@
             btn.innerText = "JÁTÉK INDÍTÁSA";
             btn.disabled = false;
         } catch (e) { 
-            console.error(e);
             btn.innerText = "Hiba: " + e.message;
-            btn.style.fontSize = "12px";
             btn.disabled = true;
         }
     }
@@ -226,7 +239,6 @@
         box.innerHTML = '';
         
         let options = [...q.o];
-        // Csak akkor keverünk, ha 4 opció van (mentett szabály)
         if (options.length > 2) {
             options.sort(() => Math.random() - 0.5);
         }
@@ -248,8 +260,6 @@
         const box = document.getElementById('options-box');
         let wrong = q.o.filter(opt => opt !== q.a);
         let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
-        
-        // Mentett szabály: 2 válasznál NE keverje meg az opciókat
         let remainingOptions = [q.a, randomWrong]; 
         
         box.innerHTML = '';
@@ -303,7 +313,6 @@
         
         let badgeImg = "", league = "", cls = "", cat = "low";
         
-        // Badge-ek betöltése az img/ mappából
         if(score <= 4) { badgeImg = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
         else if(score <= 9) { badgeImg = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
         else if(score <= 14) { badgeImg = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
