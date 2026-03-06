@@ -119,7 +119,7 @@
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
-        <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra?</p>
+        <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
 
@@ -153,27 +153,39 @@
     let quizData = [];
     let idx = 0, score = 0, canClick = true, fiftyUsed = false;
     const totalQ = 15;
-    const key = "#4f46e9";
+    const decryptionKey = "#4f46e9"; // ELLENŐRIZD: Ez a kulcs van a Python titkosítóban is?
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
+    // Billentyűzet parancsok
     document.addEventListener('keydown', (e) => {
-        if (e.key.toLowerCase() === 'r') restartGame();
+        if (e.key.toLowerCase() === 'r') {
+            restartGame();
+        }
     });
 
     function restartGame() {
-        location.reload();
+        // Frissítéskor töröljük a cache-t egy random paraméterrel
+        window.location.href = window.location.origin + window.location.pathname + "?v=" + Date.now();
     }
 
     async function loadQuiz() {
+        const startBtn = document.getElementById('start-btn');
         try {
             const d = new Date();
-            const dateStr = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-            const res = await fetch(`data_${dateStr}.json?v=${Date.now()}`);
-            if(!res.ok) throw new Error();
+            const dateStr = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+            // JSON elérése a főmappából
+            const url = `data_${dateStr}.json?t=${Date.now()}`;
             
-            const encrypted = await res.text();
-            const bytes = CryptoJS.AES.decrypt(encrypted, key);
-            const data = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("A JSON fájl nem található!");
+            
+            const encrypted = await response.text();
+            const bytes = CryptoJS.AES.decrypt(encrypted, decryptionKey);
+            const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+            
+            if (!decryptedText) throw new Error("Titkosítási hiba (rossz kulcs?)");
+            
+            const data = JSON.parse(decryptedText);
             
             const h = d.getHours();
             const slots = [8, 10, 12, 14, 16, 18];
@@ -184,14 +196,15 @@
                 const map = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return map[a.l] - map[b.l];
             });
+            console.log("Kvíz betöltve.");
         } catch (e) {
-            const b = document.getElementById('start-btn');
-            if(b) b.innerText = "Fájl hiba (JSON a főmappában?)";
+            console.error(e);
+            if(startBtn) startBtn.innerText = "Hiba: " + e.message;
         }
     }
 
     function startQuiz() {
-        if(!quizData.length) return;
+        if(!quizData || quizData.length === 0) return;
         document.getElementById('start-panel').style.display='none';
         document.getElementById('game-panel').style.display='block';
         renderQ();
@@ -207,12 +220,19 @@
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
         const t = document.getElementById('diff-tag');
         t.innerText = q.l;
-        t.style.background = diffColors[q.l];
+        t.style.background = diffColors[q.l] || "#64748b";
         document.getElementById('q-text').innerText = q.q;
         
         const box = document.getElementById('options-box');
         box.innerHTML = '';
-        [...q.o].sort(() => Math.random() - 0.5).forEach(txt => {
+        
+        // Opciók keverése (ha 4 van, keverünk)
+        let options = [...q.o];
+        if(options.length > 2) {
+            options.sort(() => Math.random() - 0.5);
+        }
+
+        options.forEach(txt => {
             const b = document.createElement('button');
             b.className = 'option-btn';
             b.innerText = txt;
@@ -227,7 +247,9 @@
         fiftyUsed = true;
         const q = quizData[idx];
         const btns = Array.from(document.querySelectorAll('.option-btn'));
-        btns.filter(b => b.innerText !== q.a).sort(() => Math.random()-0.5).slice(0,2).forEach(b => b.style.visibility = 'hidden');
+        let wrong = btns.filter(b => b.innerText !== q.a);
+        wrong.sort(() => Math.random() - 0.5);
+        wrong.slice(0, 2).forEach(b => b.style.visibility = 'hidden');
         document.getElementById('fifty-fifty').disabled = true;
     }
 
@@ -235,6 +257,7 @@
         if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
+        
         if(val === q.a) {
             btn.classList.add('correct-flash');
             score++;
@@ -243,7 +266,9 @@
             setTimeout(() => a.classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
-            document.querySelectorAll('.option-btn').forEach(b => { if(b.innerText === q.a) b.classList.add('correct-flash'); });
+            document.querySelectorAll('.option-btn').forEach(b => {
+                if(b.innerText === q.a) b.classList.add('correct-flash');
+            });
         }
         document.getElementById('next-btn').style.display = 'block';
     }
