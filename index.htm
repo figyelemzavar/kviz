@@ -86,7 +86,7 @@
         .score-pop.show { opacity: 1; transform: translateY(-30px); }
 
         .badge-img { 
-            height: 80px; /* Itt tudod módosítani az érem méretét */
+            height: 100px; 
             width: auto; 
             margin: 15px 0; 
             display: inline-block; 
@@ -176,12 +176,11 @@
         try {
             const now = new Date();
             const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            // VISSZAÁLLÍTVA: Mostantól újra közvetlenül a főmappában keresi a fájlt
+            // JSON A FŐMAPPÁBAN
             const url = `data_${dateStr}.json?t=${new Date().getTime()}`;
-            console.log("JSON betöltése a főmappából:", url);
 
             const response = await fetch(url);
-            if (!response.ok) throw new Error("Nincs fájl");
+            if (!response.ok) throw new Error("Hiba");
             
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
@@ -198,10 +197,7 @@
             });
         } catch (e) { 
             const btn = document.getElementById('start-btn');
-            if(btn) {
-                btn.innerText = "Hiba: Nincs mai kvíz";
-                btn.disabled = true;
-            }
+            if(btn) { btn.innerText = "Hiba: Nincs mai kvíz"; btn.disabled = true; }
         }
     }
 
@@ -273,11 +269,8 @@
 
     function goToNext() {
         idx++;
-        if(idx < totalQ) {
-            renderQ();
-        } else {
-            finish();
-        }
+        if(idx < totalQ) renderQ();
+        else finish();
     }
 
     function finish() {
@@ -295,20 +288,4 @@
         };
         
         let badgeSrc = "", league = "", cls = "", cat = "low";
-        // A képek elérési útja marad az img/ mappában kérésed szerint
-        if(score <= 4) { badgeSrc = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
-        else if(score <= 9) { badgeSrc = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
-        else if(score <= 14) { badgeSrc = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
-        else { badgeSrc = "img/diamond.png"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
-        
-        const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
-        document.getElementById('result-msg').innerText = randomMsg;
-        document.getElementById('badge-img').src = badgeSrc;
-        document.getElementById('league-text').innerText = league;
-        document.getElementById('league-text').className = "league-name " + cls;
-    }
-
-    loadQuiz();
-</script>
-</body>
-</html>
+        // KÉPEK AZ IMG M
