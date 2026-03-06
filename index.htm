@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-275XYFWD28"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-275XYFWD28');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvízParti - Milliomos Kihívás</title>
+    <title>KvízParti - Javított Felező</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
@@ -29,7 +21,6 @@
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 15px; }
         .card { background: var(--card); border-radius: 28px; padding: 30px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); text-align: center; width: 100%; max-width: 480px; border: 1px solid rgba(0,0,0,0.05); }
         
-        /* Lifeline Button */
         .lifeline-container { display: flex; justify-content: center; margin-bottom: 15px; }
         .lifeline-btn { 
             background: #fff; border: 2px solid var(--primary); color: var(--primary); 
@@ -37,14 +28,12 @@
             transition: all 0.2s; font-size: 14px;
         }
         .lifeline-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
-        .lifeline-btn:hover:not(:disabled) { background: var(--primary); color: white; }
 
         .option-btn { background: var(--btn-bg); border: 3px solid var(--btn-border); padding: 16px; border-radius: 18px; font-weight: 600; cursor: pointer; margin-bottom: 10px; width: 100%; font-size: 16px; transition: 0.2s; }
         .option-btn.hidden { visibility: hidden; pointer-events: none; }
         .correct-flash { background: var(--secondary) !important; color: white !important; }
         .wrong-flash { background: var(--error) !important; color: white !important; }
 
-        /* Badge Styles */
         .badge { font-size: 60px; margin: 20px 0; display: block; }
         .league-name { font-weight: 800; font-size: 24px; text-transform: uppercase; margin-top: -10px; }
         .bronz { color: #cd7f32; }
@@ -101,10 +90,16 @@
             const response = await fetch(`data_${dateStr}.json?t=${new Date().getTime()}`);
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+            const dailyData = JSON.parse(decrypted);
             
-            // Itt kiválasztunk egy aktuális slotot (pl. "08")
-            quizData = dailyData.slots["08"].sort((a,b) => {
+            // Itt a legfrissebb slotot keressük ki
+            const hour = now.getHours();
+            const slots = [8, 10, 12, 14, 16, 18];
+            let activeSlot = "08";
+            for (let s of [...slots].reverse()) { if (hour >= s) { activeSlot = s.toString().padStart(2, '0'); break; } }
+
+            quizData = dailyData.slots[activeSlot].sort((a,b) => {
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return order[a.l] - order[b.l];
             });
@@ -125,80 +120,4 @@
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
         
-        const box = document.getElementById('options-box');
-        box.innerHTML = '';
-        
-        q.o.forEach(txt => {
-            const b = document.createElement('button');
-            b.className = 'option-btn';
-            b.innerText = txt;
-            b.onclick = () => check(txt, b);
-            box.appendChild(b);
-        });
-
-        // Felező gomb frissítése
-        document.getElementById('fifty-fifty').disabled = fiftyUsed;
-    }
-
-    function useFiftyFifty() {
-        if(fiftyUsed || !canClick) return;
-        fiftyUsed = true;
-        document.getElementById('fifty-fifty').disabled = true;
-        
-        const q = quizData[idx];
-        const btns = Array.from(document.querySelectorAll('.option-btn'));
-        let removed = 0;
-        
-        // Összekeverjük a gombokat, hogy ne mindig ugyanazt a kettőt vegye ki
-        const shuffledBtns = btns.sort(() => Math.random() - 0.5);
-        
-        for (let btn of shuffledBtns) {
-            if (btn.innerText !== q.a && removed < 2) {
-                btn.classList.add('hidden');
-                removed++;
-            }
-        }
-    }
-
-    function check(selected, btn) {
-        if(!canClick) return;
-        canClick = false;
-        const q = quizData[idx];
-        
-        if(selected === q.a) {
-            btn.classList.add('correct-flash');
-            score++;
-        } else {
-            btn.classList.add('wrong-flash');
-            document.querySelectorAll('.option-btn').forEach(b => {
-                if(b.innerText === q.a) b.classList.add('correct-flash');
-            });
-        }
-        
-        setTimeout(() => {
-            idx++;
-            if(idx < totalQ) renderQ(); else finish();
-        }, 2000);
-    }
-
-    function finish() {
-        document.getElementById('game-panel').style.display='none';
-        document.getElementById('result-panel').style.display='block';
-        document.getElementById('final-p').innerText = score;
-        
-        let badge = "", league = "", cls = "";
-        
-        if(score <= 4) { badge = "🥉"; league = "Bronz Liga"; cls = "bronz"; }
-        else if(score <= 9) { badge = "🥈"; league = "Silver Liga"; cls = "silver"; }
-        else if(score <= 14) { badge = "🥇"; league = "Arany Liga"; cls = "arany"; }
-        else { badge = "💎"; league = "Gyémánt Liga"; cls = "gyemant"; }
-        
-        document.getElementById('badge-icon').innerText = badge;
-        document.getElementById('league-text').innerText = league;
-        document.getElementById('league-text').className = "league-name " + cls;
-    }
-
-    loadQuiz();
-</script>
-</body>
-</html>
+        const box = document.getElementById('options
