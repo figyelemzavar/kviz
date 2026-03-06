@@ -171,8 +171,10 @@
         try {
             const now = new Date();
             const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            // Módosítva az új json/ mappára
-            const response = await fetch(`json/data_${dateStr}.json?t=${new Date().getTime()}`);
+            const url = `./json/data_${dateStr}.json?t=${new Date().getTime()}`;
+            console.log("JSON betöltése innen:", url);
+
+            const response = await fetch(url);
             if (!response.ok) throw new Error("Nincs fájl");
             
             const encrypted = await response.text();
@@ -276,7 +278,6 @@
         };
         
         let badgeSrc = "", league = "", cls = "", cat = "low";
-        // Érmek elérési útjának beállítása az img/ mappából
         if(score <= 4) { badgeSrc = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
         else if(score <= 9) { badgeSrc = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
         else if(score <= 14) { badgeSrc = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
@@ -284,10 +285,7 @@
         
         const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
         document.getElementById('result-msg').innerText = randomMsg;
-        
-        // Emojik helyett a kép beállítása
         document.getElementById('badge-img').src = badgeSrc;
-        
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + cls;
     }
