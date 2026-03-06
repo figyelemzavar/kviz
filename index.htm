@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-275XYFWD28"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-275XYFWD28');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvízParti - Javított Felező</title>
+    <title>KvízParti - Milliomos Kihívás</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
@@ -34,15 +42,17 @@
         .correct-flash { background: var(--secondary) !important; color: white !important; }
         .wrong-flash { background: var(--error) !important; color: white !important; }
 
-        .badge { font-size: 60px; margin: 20px 0; display: block; }
-        .league-name { font-weight: 800; font-size: 24px; text-transform: uppercase; margin-top: -10px; }
+        .badge { font-size: 60px; margin: 15px 0; display: block; }
+        .league-name { font-weight: 800; font-size: 24px; text-transform: uppercase; margin-top: -5px; margin-bottom: 10px; }
         .bronz { color: #cd7f32; }
-        .silver { color: #94a3b8; }
+        .ezust { color: #94a3b8; }
         .arany { color: #fbbf24; }
         .gyemant { color: #22d3ee; text-shadow: 0 0 15px rgba(34, 211, 238, 0.4); }
 
-        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .status-pill { background: #f1f5f9; padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #64748b; }
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px; }
+        .status-pill { background: #f1f5f9; padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #64748b; white-space: nowrap; border: 1px solid #e2e8f0; }
+        .difficulty-pill { color: white; text-transform: uppercase; font-size: 10px; padding: 4px 8px; border-radius: 8px; }
+        
         .bar-bg { height: 8px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
     </style>
@@ -60,19 +70,21 @@
         </div>
         <div class="progress-header">
             <span class="status-pill" id="q-count">1 / 15</span>
+            <span id="diff-tag" class="status-pill difficulty-pill">SZINT</span>
             <span class="status-pill">PONT: <span id="live-score">0</span></span>
         </div>
         <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
-        <h2 id="q-text" style="font-size: 20px; margin-bottom: 25px;"></h2>
+        <h2 id="q-text" style="font-size: 20px; margin-bottom: 25px; line-height: 1.4;"></h2>
         <div id="options-box"></div>
     </div>
 
     <div id="result-panel" class="card" style="display:none;">
-        <h2 id="result-title">Játék vége!</h2>
+        <h1 id="result-title" style="margin-bottom: 5px;">Kész!</h1>
+        <p id="result-msg" style="color: #64748b; font-size: 14px; margin-bottom: 15px;"></p>
         <div id="badge-icon" class="badge"></div>
         <div id="league-text" class="league-name"></div>
         <div style="font-size:48px; font-weight:800; color:var(--primary);" id="final-p">0</div>
-        <p>Helyes válasz</p>
+        <p style="margin-bottom: 20px;">Helyes válasz</p>
         <button class="option-btn" onclick="location.reload()">ÚJ JÁTÉK</button>
     </div>
 
@@ -82,6 +94,7 @@
     let fiftyUsed = false;
     const totalQ = 15;
     const colorPrimaryVar = "#4f46e9";
+    const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
     async function loadQuiz() {
         try {
@@ -90,10 +103,8 @@
             const response = await fetch(`data_${dateStr}.json?t=${new Date().getTime()}`);
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const decrypted = bytes.toString(CryptoJS.enc.Utf8);
-            const dailyData = JSON.parse(decrypted);
+            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
             
-            // Itt a legfrissebb slotot keressük ki
             const hour = now.getHours();
             const slots = [8, 10, 12, 14, 16, 18];
             let activeSlot = "08";
@@ -116,8 +127,100 @@
     function renderQ() {
         canClick = true;
         const q = quizData[idx];
-        document.getElementById('q-text').innerText = q.q;
+        
+        // Progress UI
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
+        document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
         
-        const box = document.getElementById('options
+        // Difficulty tag
+        const tag = document.getElementById('diff-tag');
+        tag.innerText = q.l;
+        tag.style.background = diffColors[q.l] || "#64748b";
+
+        document.getElementById('q-text').innerText = q.q;
+        
+        const box = document.getElementById('options-box');
+        box.innerHTML = '';
+        
+        q.o.forEach(txt => {
+            const b = document.createElement('button');
+            b.className = 'option-btn';
+            b.innerText = txt;
+            b.onclick = () => check(txt, b);
+            box.appendChild(b);
+        });
+
+        document.getElementById('fifty-fifty').disabled = fiftyUsed;
+    }
+
+    function useFiftyFifty() {
+        if(fiftyUsed || !canClick) return;
+        const q = quizData[idx];
+        const btns = Array.from(document.querySelectorAll('.option-btn'));
+        let wrongButtons = btns.filter(b => b.innerText !== q.a);
+        wrongButtons.sort(() => Math.random() - 0.5);
+        
+        if (wrongButtons.length >= 2) {
+            wrongButtons[0].classList.add('hidden');
+            wrongButtons[1].classList.add('hidden');
+            fiftyUsed = true;
+            document.getElementById('fifty-fifty').disabled = true;
+        }
+    }
+
+    function check(selected, btn) {
+        if(!canClick) return;
+        canClick = false;
+        const q = quizData[idx];
+        
+        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        
+        if(selected === q.a) {
+            btn.classList.add('correct-flash');
+            score++;
+        } else {
+            btn.classList.add('wrong-flash');
+            document.querySelectorAll('.option-btn').forEach(b => {
+                if(b.innerText === q.a) b.classList.add('correct-flash');
+            });
+        }
+        
+        setTimeout(() => {
+            idx++;
+            if(idx < totalQ) renderQ(); else finish();
+        }, 2000);
+    }
+
+    function finish() {
+        document.getElementById('game-panel').style.display='none';
+        document.getElementById('result-panel').style.display='block';
+        document.getElementById('final-p').innerText = score;
+        
+        const titles = { 
+            low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
+            mid: ["Nem rossz!", "Alakul ez!", "Szép próbálkozás!"],
+            good: ["Ügyes voltál!", "Szép eredmény!", "Jó formában vagy!"],
+            high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
+            perfect: ["Zseniális!", "Tökéletes tudás!", "Mesterfok!"]
+        };
+
+        let badge = "", league = "", cls = "", cat = "low";
+        
+        if(score <= 4) { badge = "🥉"; league = "Bronz Liga"; cls = "bronz"; cat = "low"; }
+        else if(score <= 9) { badge = "🥈"; league = "Ezüst Liga"; cls = "ezust"; cat = "mid"; }
+        else if(score <= 14) { badge = "🥇"; league = "Arany Liga"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
+        else { badge = "💎"; league = "Gyémánt Liga"; cls = "gyemant"; cat = "perfect"; }
+        
+        const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
+        document.getElementById('result-msg').innerText = randomMsg;
+        document.getElementById('result-title').innerText = score >= 11 ? "Gratulálunk!" : "Szép volt!";
+        document.getElementById('badge-icon').innerText = badge;
+        document.getElementById('league-text').innerText = league;
+        document.getElementById('league-text').className = "league-name " + cls;
+    }
+
+    loadQuiz();
+</script>
+</body>
+</html>
