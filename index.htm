@@ -141,7 +141,7 @@
     const colorPrimaryVar = "#4f46e9";
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    // BILLENTYŰZET FIGYELŐ (REJTETT FUNKCIÓK)
+    // BILLENTYŰZET FIGYELŐ
     document.addEventListener('keydown', function(event) {
         const key = event.key.toLowerCase();
         if (key === 'e') {
@@ -151,7 +151,7 @@
         }
     });
 
-    // ÚJRAINDÍTÁS FUNKCIÓ
+    // ÚJRAINDÍTÁS FUNKCIÓ (Ez nulláz mindent és visszadob a startra)
     function restartGame() {
         window.location.replace(window.location.href.split('#')[0]);
     }
