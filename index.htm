@@ -163,24 +163,33 @@ function useFiftyFifty() {
         if(fiftyUsed || !canClick) return;
         
         const q = quizData[idx];
-        const btns = Array.from(document.querySelectorAll('.option-btn'));
+        const box = document.getElementById('options-box');
         
-        // Összegyűjtjük az összes gombot, ami rossz választ tartalmaz
-        let wrongButtons = btns.filter(b => b.innerText !== q.a);
+        // Kikeressük a rossz válaszokat
+        let wrongOptions = q.o.filter(opt => opt !== q.a);
         
-        // Megkeverjük a rossz válaszokat, hogy ne mindig ugyanaz a kettő tűnjön el
-        wrongButtons.sort(() => Math.random() - 0.5);
+        // Kiválasztunk egyet véletlenszerűen a rosszak közül
+        let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
         
-        // Egy számláló segítségével pontosan 2 rossz választ rejtünk el
-        let removedCount = 0;
-        for (let btn of wrongButtons) {
-            if (removedCount < 2) {
-                btn.classList.add('hidden');
-                removedCount++;
-            } else {
-                break; // Ha megvan a kettő, megállunk
-            }
-        }
+        // Az új készlet: a jó válasz + az az egy szem rossz
+        let remainingOptions = [q.a, randomWrong];
+        
+        // Megkeverjük őket, hogy ne mindig ugyanott legyen a jó
+        remainingOptions.sort(() => Math.random() - 0.5);
+        
+        // Ürítjük a dobozt és csak ezt a kettőt tesszük bele
+        box.innerHTML = '';
+        remainingOptions.forEach(txt => {
+            const b = document.createElement('button');
+            b.className = 'option-btn';
+            b.innerText = txt;
+            b.onclick = () => check(txt, b);
+            box.appendChild(b);
+        });
+
+        fiftyUsed = true;
+        document.getElementById('fifty-fifty').disabled = true;
+    }
 
         if (removedCount >= 2) {
             fiftyUsed = true;
@@ -247,4 +256,5 @@ function useFiftyFifty() {
 </script>
 </body>
 </html>
+
 
