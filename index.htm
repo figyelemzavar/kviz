@@ -130,7 +130,8 @@
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
         <p style="margin-top: 10px; margin-bottom: 30px; font-weight: 600; color: #64748b;">helyes válasz</p>
-        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="restartGame()">JÁTÉK ÚJRA</button>
+        
+        <button id="new-restart-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="restartGame()">JÁTÉK ÚJRA</button>
     </div>
 
 <script>
@@ -151,7 +152,7 @@
         }
     });
 
-    // ÚJRAINDÍTÁS FUNKCIÓ (Ez nulláz mindent és visszadob a startra)
+    // ÚJRAINDÍTÁS FUNKCIÓ (Az r betű és az új gomb közös parancsa)
     function restartGame() {
         window.location.replace(window.location.href.split('#')[0]);
     }
