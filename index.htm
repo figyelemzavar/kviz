@@ -128,12 +128,10 @@
         canClick = true;
         const q = quizData[idx];
         
-        // Progress UI
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
         
-        // Difficulty tag
         const tag = document.getElementById('diff-tag');
         tag.innerText = q.l;
         tag.style.background = diffColors[q.l] || "#64748b";
@@ -143,7 +141,10 @@
         const box = document.getElementById('options-box');
         box.innerHTML = '';
         
-        q.o.forEach(txt => {
+        // VÁLASZOK KEVERÉSE: Készítünk egy másolatot az opciókról és megkeverjük
+        let shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
+        
+        shuffledOptions.forEach(txt => {
             const b = document.createElement('button');
             b.className = 'option-btn';
             b.innerText = txt;
@@ -154,24 +155,16 @@
         document.getElementById('fifty-fifty').disabled = fiftyUsed;
     }
 
-function useFiftyFifty() {
+    function useFiftyFifty() {
         if(fiftyUsed || !canClick) return;
-        
         const q = quizData[idx];
         const btns = Array.from(document.querySelectorAll('.option-btn'));
-        
-        // Megkeressük az összes olyan gombot, ami NEM a helyes választ tartalmazza
         let wrongButtons = btns.filter(b => b.innerText !== q.a);
-        
-        // Összekeverjük a rossz válaszokat, hogy véletlenszerű legyen, melyik tűnik el
         wrongButtons.sort(() => Math.random() - 0.5);
         
-        // Elrejtünk pontosan kettőt a rossz válaszok közül
-        // Így marad 1 jó és 1 rossz (összesen 2 gomb látható)
         if (wrongButtons.length >= 2) {
             wrongButtons[0].classList.add('hidden');
             wrongButtons[1].classList.add('hidden');
-            
             fiftyUsed = true;
             document.getElementById('fifty-fifty').disabled = true;
         }
@@ -215,10 +208,10 @@ function useFiftyFifty() {
 
         let badge = "", league = "", cls = "", cat = "low";
         
-        if(score <= 4) { badge = "🥉"; league = "Bronz Liga"; cls = "bronz"; cat = "low"; }
-        else if(score <= 9) { badge = "🥈"; league = "Ezüst Liga"; cls = "ezust"; cat = "mid"; }
-        else if(score <= 14) { badge = "🥇"; league = "Arany Liga"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
-        else { badge = "💎"; league = "Gyémánt Liga"; cls = "gyemant"; cat = "perfect"; }
+        if(score <= 4) { badge = "🥉"; league = "Bronz"; cls = "bronz"; cat = "low"; }
+        else if(score <= 9) { badge = "🥈"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
+        else if(score <= 14) { badge = "🥇"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
+        else { badge = "💎"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
         
         const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
         document.getElementById('result-msg').innerText = randomMsg;
@@ -232,5 +225,3 @@ function useFiftyFifty() {
 </script>
 </body>
 </html>
-
-
