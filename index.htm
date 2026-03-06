@@ -11,297 +11,194 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KvízParti - Napi Kihívás</title>
+    <title>KvízParti - Milliomos Kihívás</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         :root {
             --primary: #6366f1; 
-            --primary-dark: #4f46e5;
             --secondary: #10b981; 
             --error: #f43f5e;
             --bg: #f8fafc; 
             --text: #0f172a; 
             --card: #ffffff;
-            --fb: #1877F2;
             --btn-bg: #eff6ff;
             --btn-border: #dbeafe;
         }
 
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: var(--bg); 
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: var(--text); 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            padding: 15px; 
-        }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 15px; }
+        .card { background: var(--card); border-radius: 28px; padding: 30px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); text-align: center; width: 100%; max-width: 480px; border: 1px solid rgba(0,0,0,0.05); }
         
-        .logo-text {
-            font-size: 38px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            margin: 10px 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Lifeline Button */
+        .lifeline-container { display: flex; justify-content: center; margin-bottom: 15px; }
+        .lifeline-btn { 
+            background: #fff; border: 2px solid var(--primary); color: var(--primary); 
+            padding: 8px 20px; border-radius: 50px; font-weight: 800; cursor: pointer;
+            transition: all 0.2s; font-size: 14px;
         }
+        .lifeline-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
+        .lifeline-btn:hover:not(:disabled) { background: var(--primary); color: white; }
 
-        .main-layout { display: flex; gap: 20px; justify-content: center; width: 100%; max-width: 1000px; }
-        .quiz-container { width: 100%; max-width: 480px; position: relative; }
-        
-        .card { 
-            background: var(--card); 
-            border-radius: 28px; 
-            padding: 30px 20px; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.04); 
-            text-align: center; 
-            border: 1px solid rgba(0,0,0,0.05);
-        }
+        .option-btn { background: var(--btn-bg); border: 3px solid var(--btn-border); padding: 16px; border-radius: 18px; font-weight: 600; cursor: pointer; margin-bottom: 10px; width: 100%; font-size: 16px; transition: 0.2s; }
+        .option-btn.hidden { visibility: hidden; pointer-events: none; }
+        .correct-flash { background: var(--secondary) !important; color: white !important; }
+        .wrong-flash { background: var(--error) !important; color: white !important; }
 
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            gap: 10px;
-        }
+        /* Badge Styles */
+        .badge { font-size: 60px; margin: 20px 0; display: block; }
+        .league-name { font-weight: 800; font-size: 24px; text-transform: uppercase; margin-top: -10px; }
+        .bronz { color: #cd7f32; }
+        .silver { color: #94a3b8; }
+        .arany { color: #fbbf24; }
+        .gyemant { color: #22d3ee; text-shadow: 0 0 15px rgba(34, 211, 238, 0.4); }
 
-        .status-pill {
-            background: #f1f5f9;
-            padding: 4px 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-            white-space: nowrap;
-        }
-
-        .difficulty-pill {
-            color: white;
-            text-transform: uppercase;
-            font-size: 10px;
-            padding: 4px 8px;
-            border-radius: 8px;
-        }
-
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .status-pill { background: #f1f5f9; padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #64748b; }
         .bar-bg { height: 8px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
-        .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        
-        .option-btn { 
-            background: var(--btn-bg); 
-            border: 3px solid var(--btn-border); 
-            padding: 16px; 
-            border-radius: 18px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: all 0.25s ease; 
-            margin-bottom: 10px; 
-            width: 100%; 
-            font-family: inherit; 
-            font-size: 16px; 
-            color: #334155;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.05);
-            position: relative;
-        }
-
-        .option-btn:hover:not(:disabled) { 
-            border-color: var(--primary); 
-            background: #dbeafe; 
-            transform: translateY(-3px); 
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1); 
-        }
-
-        .correct-flash { background: var(--secondary) !important; color: white !important; border-color: var(--secondary) !important; box-shadow: none !important; }
-        .wrong-flash { background: var(--error) !important; color: white !important; border-color: var(--error) !important; box-shadow: none !important; animation: shake 0.4s; }
-        
-        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-8px);} 75% {transform: translateX(8px);} }
-        
-        .score-float { position: absolute; color: #6366f1; font-weight: 800; font-size: 28px; pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 100; left: 50%; }
-        @keyframes floatUp { 0% { opacity: 0; transform: translate(-50%, 0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -80px); } }
-
-        .start-btn, .next-btn { 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            padding: 20px; 
-            width: 100%; 
-            border-radius: 18px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            font-size: 18px;
-        }
-
-        .fb-btn { background: var(--fb); color: white; border: none; padding: 18px; width: 100%; border-radius: 18px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
     </style>
 </head>
 <body>
-    <div class="main-layout">
-        <div class="quiz-container">
-            <div id="start-panel" class="card">
-                <span id="theme-display" style="color:var(--primary); font-weight:800; font-size:12px; letter-spacing:2px; text-transform:uppercase;">Napi Kihívás</span>
-                <h1 class="logo-text">KvízParti</h1>
-                <p id="time-info" style="font-size: 14px; color: #64748b; margin-bottom: 30px;">Készen állsz a mai tudáspróbára?</p>
-                <button class="start-btn" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
-            </div>
+    <div id="start-panel" class="card">
+        <h1 style="margin:0;">KvízParti</h1>
+        <p>15 kérdés, 1 felezési lehetőség. Felkészültél?</p>
+        <button class="option-btn" style="background:var(--primary); color:white;" onclick="startQuiz()">INDÍTÁS</button>
+    </div>
 
-            <div id="game-panel" class="card" style="display:none;">
-                <div class="progress-header">
-                    <span class="status-pill" id="q-count">1 / 15</span>
-                    <span id="diff-tag" class="status-pill difficulty-pill">SZINT</span>
-                    <span class="status-pill">PONT: <span id="live-score">0</span></span>
-                </div>
-                <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
-                <h2 id="q-text" style="font-size: 20px; line-height: 1.4; margin-bottom: 25px; color: #1e293b;">Kérdés?</h2>
-                <div id="options-box"></div>
-            </div>
-
-            <div id="result-panel" class="card" style="display:none;">
-                <h1 id="result-title" style="color:var(--secondary); font-size: 28px; margin-bottom: 5px;">Szép!</h1>
-                <p id="result-msg" style="color: #64748b; font-size: 14px; margin-bottom: 15px; padding: 0 10px;"></p>
-                <div style="font-size:64px; font-weight:800; color:var(--primary); margin: 5px 0;" id="final-p">0</div>
-                <p style="font-weight: 600; color: #334155; margin-top: 20px; font-size: 13px;">Következő kvíz kezdődik:</p>
-                <div id="next-slot" style="font-weight: 800; color: var(--primary); font-size: 18px; margin-bottom: 20px;">--:--</div>
-                <button class="fb-btn" onclick="window.location.reload()">FŐOLDAL</button>
-            </div>
+    <div id="game-panel" class="card" style="display:none;">
+        <div class="lifeline-container">
+            <button id="fifty-fifty" class="lifeline-btn" onclick="useFiftyFifty()">50:50 FELEZÉS</button>
         </div>
+        <div class="progress-header">
+            <span class="status-pill" id="q-count">1 / 15</span>
+            <span class="status-pill">PONT: <span id="live-score">0</span></span>
+        </div>
+        <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
+        <h2 id="q-text" style="font-size: 20px; margin-bottom: 25px;"></h2>
+        <div id="options-box"></div>
+    </div>
+
+    <div id="result-panel" class="card" style="display:none;">
+        <h2 id="result-title">Játék vége!</h2>
+        <div id="badge-icon" class="badge"></div>
+        <div id="league-text" class="league-name"></div>
+        <div style="font-size:48px; font-weight:800; color:var(--primary);" id="final-p">0</div>
+        <p>Helyes válasz</p>
+        <button class="option-btn" onclick="location.reload()">ÚJ JÁTÉK</button>
     </div>
 
 <script>
     let quizData = [];
-    let idx = 0, score = 0, canClick = true, currentSlot = "08";
+    let idx = 0, score = 0, canClick = true;
+    let fiftyUsed = false;
     const totalQ = 15;
-    const colorPrimaryVar = "#4f46e9"; 
-    const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
-    const slots = [8, 10, 12, 14, 16, 18];
+    const colorPrimaryVar = "#4f46e9";
 
     async function loadQuiz() {
         try {
             const now = new Date();
             const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-            const hour = now.getHours();
-
             const response = await fetch(`data_${dateStr}.json?t=${new Date().getTime()}`);
-            if(!response.ok) throw new Error("Hiba");
-            
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-            const dailyData = JSON.parse(decryptedText);
-
-            let activeSlot = null;
-            for (let s of [...slots].reverse()) { if (hour >= s) { activeSlot = s.toString().padStart(2, '0'); break; } }
-
-            if (activeSlot && dailyData.slots[activeSlot]) {
-                currentSlot = activeSlot;
-                quizData = dailyData.slots[activeSlot].sort((a, b) => {
-                    const order = { "Könnyű": 1, "Közepes": 2, "Nehéz": 3 };
-                    return order[a.l] - order[b.l];
-                });
-                document.getElementById('time-info').innerHTML = `Aktuális kör: ${activeSlot}:00`;
-            } else {
-                document.querySelector('.start-btn').innerText = "HAMAROSAN...";
-            }
-        } catch (e) {
-            document.getElementById('theme-display').innerText = "HIBA";
-        }
+            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            
+            // Itt kiválasztunk egy aktuális slotot (pl. "08")
+            quizData = dailyData.slots["08"].sort((a,b) => {
+                const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
+                return order[a.l] - order[b.l];
+            });
+        } catch (e) { console.error("Hiba a betöltésnél"); }
     }
 
     function startQuiz() {
-        if(quizData.length === 0) return;
-        document.getElementById('start-panel').style.display = 'none';
-        document.getElementById('game-panel').style.display = 'block';
+        if(!quizData.length) return;
+        document.getElementById('start-panel').style.display='none';
+        document.getElementById('game-panel').style.display='block';
         renderQ();
     }
 
     function renderQ() {
         canClick = true;
         const q = quizData[idx];
-        
-        document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
-        document.getElementById('live-score').innerText = score;
-        document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
-        
-        const tag = document.getElementById('diff-tag');
-        tag.innerText = q.l;
-        tag.style.background = diffColors[q.l];
         document.getElementById('q-text').innerText = q.q;
+        document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
+        document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
         
         const box = document.getElementById('options-box');
         box.innerHTML = '';
         
-        let optionsToDisplay = [...q.o];
-        const isTrueFalse = optionsToDisplay.length === 2 && optionsToDisplay.includes("Igaz") && optionsToDisplay.includes("Hamis");
-
-        if (isTrueFalse) {
-            optionsToDisplay = ["Igaz", "Hamis"];
-        } else if (optionsToDisplay.length !== 2) {
-            optionsToDisplay.sort(() => Math.random() - 0.5);
-        }
-
-        optionsToDisplay.forEach((txt) => {
+        q.o.forEach(txt => {
             const b = document.createElement('button');
             b.className = 'option-btn';
             b.innerText = txt;
             b.onclick = () => check(txt, b);
             box.appendChild(b);
         });
+
+        // Felező gomb frissítése
+        document.getElementById('fifty-fifty').disabled = fiftyUsed;
+    }
+
+    function useFiftyFifty() {
+        if(fiftyUsed || !canClick) return;
+        fiftyUsed = true;
+        document.getElementById('fifty-fifty').disabled = true;
+        
+        const q = quizData[idx];
+        const btns = Array.from(document.querySelectorAll('.option-btn'));
+        let removed = 0;
+        
+        // Összekeverjük a gombokat, hogy ne mindig ugyanazt a kettőt vegye ki
+        const shuffledBtns = btns.sort(() => Math.random() - 0.5);
+        
+        for (let btn of shuffledBtns) {
+            if (btn.innerText !== q.a && removed < 2) {
+                btn.classList.add('hidden');
+                removed++;
+            }
+        }
     }
 
     function check(selected, btn) {
-        if(!canClick) return; 
+        if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
         
-        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-        
         if(selected === q.a) {
             btn.classList.add('correct-flash');
-            score += 1; 
-            document.getElementById('live-score').innerText = score; 
-            showPoints(btn, 1);
+            score++;
         } else {
             btn.classList.add('wrong-flash');
-            document.querySelectorAll('.option-btn').forEach(b => { 
-                if(b.innerText === q.a) b.classList.add('correct-flash'); 
+            document.querySelectorAll('.option-btn').forEach(b => {
+                if(b.innerText === q.a) b.classList.add('correct-flash');
             });
         }
         
-        // Egységes 2 másodperces várakozás, majd továbbugrás
         setTimeout(() => {
-            nextStep();
+            idx++;
+            if(idx < totalQ) renderQ(); else finish();
         }, 2000);
     }
 
-    function nextStep() {
-        idx++;
-        if(idx < totalQ && idx < quizData.length) {
-            renderQ();
-        } else {
-            finish();
-        }
-    }
-
-    function showPoints(parent, pts) {
-        const float = document.createElement('div');
-        float.className = 'score-float';
-        float.innerText = `+${pts}`;
-        parent.appendChild(float);
-        setTimeout(() => float.remove(), 1000);
-    }
-
     function finish() {
-        document.getElementById('game-panel').style.display = 'none';
-        document.getElementById('result-panel').style.display = 'block';
+        document.getElementById('game-panel').style.display='none';
+        document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = score;
+        
+        let badge = "", league = "", cls = "";
+        
+        if(score <= 4) { badge = "🥉"; league = "Bronz Liga"; cls = "bronz"; }
+        else if(score <= 9) { badge = "🥈"; league = "Silver Liga"; cls = "silver"; }
+        else if(score <= 14) { badge = "🥇"; league = "Arany Liga"; cls = "arany"; }
+        else { badge = "💎"; league = "Gyémánt Liga"; cls = "gyemant"; }
+        
+        document.getElementById('badge-icon').innerText = badge;
+        document.getElementById('league-text').innerText = league;
+        document.getElementById('league-text').className = "league-name " + cls;
+    }
 
-        const titles = { 
-            low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel, próbáld újra!"],
-            mid: ["Nem rossz, de tudsz te jobbat is!", "Alakul ez, csak így tovább!", "Szép próbálkozás!"],
-            good: ["Ügyes voltál
+    loadQuiz();
+</script>
+</body>
+</html>
