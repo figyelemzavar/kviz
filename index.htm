@@ -27,7 +27,7 @@
         }
 
         body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 15px; }
-        .card { background: var(--card); border-radius: 28px; padding: 30px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); text-align: center; width: 100%; max-width: 480px; border: 1px solid rgba(0,0,0,0.05); }
+        .card { background: var(--card); border-radius: 28px; padding: 30px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); text-align: center; width: 100%; max-width: 480px; border: 1px solid rgba(0,0,0,0.05); position: relative; }
         
         .lifeline-container { display: flex; justify-content: center; margin-bottom: 15px; }
         .lifeline-btn { 
@@ -41,6 +41,10 @@
         .option-btn.hidden { visibility: hidden; pointer-events: none; }
         .correct-flash { background: var(--secondary) !important; color: white !important; }
         .wrong-flash { background: var(--error) !important; color: white !important; }
+
+        /* +1 Pont animáció */
+        .score-pop { position: absolute; right: 20px; top: 80px; color: var(--secondary); font-weight: 800; opacity: 0; pointer-events: none; transform: translateY(0); transition: all 0.5s; }
+        .score-pop.show { opacity: 1; transform: translateY(-20px); }
 
         .badge { font-size: 60px; margin: 15px 0; display: block; }
         .league-name { font-weight: 800; font-size: 24px; text-transform: uppercase; margin-top: -5px; margin-bottom: 10px; }
@@ -65,6 +69,7 @@
     </div>
 
     <div id="game-panel" class="card" style="display:none;">
+        <div id="score-anim" class="score-pop">+1 PONT</div>
         <div class="lifeline-container">
             <button id="fifty-fifty" class="lifeline-btn" onclick="useFiftyFifty()">50:50 FELEZÉS</button>
         </div>
@@ -141,7 +146,6 @@
         const box = document.getElementById('options-box');
         box.innerHTML = '';
         
-        // VÁLASZOK KEVERÉSE: Készítünk egy másolatot az opciókról és megkeverjük
         let shuffledOptions = [...q.o].sort(() => Math.random() - 0.5);
         
         shuffledOptions.forEach(txt => {
@@ -180,6 +184,10 @@
         if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
+            // Animáció indítása
+            const anim = document.getElementById('score-anim');
+            anim.classList.add('show');
+            setTimeout(() => anim.classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
             document.querySelectorAll('.option-btn').forEach(b => {
