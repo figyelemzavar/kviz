@@ -100,10 +100,10 @@
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
 
         .next-quiz-info {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 30px;
+            padding: 20px;
             background: #f8fafc;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 14px;
             color: #64748b;
             border: 1px dashed #cbd5e1;
@@ -134,17 +134,15 @@
     </div>
 
     <div id="result-panel" class="card" style="display:none;">
-        <h1 id="result-title" style="margin-bottom: 5px;">Kész!</h1>
-        <p id="result-msg" style="color: #64748b; font-size: 16px; margin-bottom: 20px;"></p>
+        <p id="result-msg" style="color: #64748b; font-size: 16px; margin-bottom: 20px; margin-top: 10px;"></p>
         <div id="badge-container"><img id="badge-img" class="badge-img" src="" alt="Érem"></div>
         <div id="league-text" class="league-name"></div>
-        <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
-        <p style="margin-top: 10px; margin-bottom: 10px; font-weight: 600; color: #64748b;">helyes válasz</p>
+        <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0 / 15</div>
         
         <div class="next-quiz-info">
             Köszönjük a játékot! <br>
             A következő kvíz kezdete: <br>
-            <strong id="next-time" style="color: var(--primary); font-size: 16px;">--:--</strong>
+            <strong id="next-time" style="color: var(--primary); font-size: 18px; display: block; margin-top: 5px;">--:--</strong>
         </div>
     </div>
 
@@ -301,7 +299,7 @@
     function finish() {
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
-        document.getElementById('final-p').innerText = score;
+        document.getElementById('final-p').innerText = `${score} / ${totalQ}`;
         
         const titles = { 
             low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
@@ -329,4 +327,3 @@
 </script>
 </body>
 </html>
-
