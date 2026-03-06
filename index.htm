@@ -104,7 +104,7 @@
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
-        <h2 style="margin-top:0;">Üdvözöllek!</h2>
+        
         <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
@@ -170,10 +170,16 @@
         renderQ();
     }
 
-    function resetGame() {
+function resetGame() {
         idx = 0;
         score = 0;
         fiftyUsed = false;
+        canClick = true;
+        // Vizuális elemek azonnali alaphelyzetbe állítása
+        document.getElementById('live-score').innerText = '0';
+        document.getElementById('bar').style.width = '0%';
+        document.getElementById('fifty-fifty').disabled = false;
+        
         document.getElementById('result-panel').style.display='none';
         document.getElementById('start-panel').style.display='block';
     }
@@ -271,3 +277,4 @@
 </script>
 </body>
 </html>
+
