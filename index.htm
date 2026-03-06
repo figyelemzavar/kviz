@@ -130,8 +130,7 @@
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0</div>
         <p style="margin-top: 10px; margin-bottom: 30px; font-weight: 600; color: #64748b;">helyes válasz</p>
-        
-        <button id="new-restart-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="restartGame()">JÁTÉK ÚJRA</button>
+        <button class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="restartGame()">JÁTÉK ÚJRA</button>
     </div>
 
 <script>
@@ -145,16 +144,14 @@
     // BILLENTYŰZET FIGYELŐ
     document.addEventListener('keydown', function(event) {
         const key = event.key.toLowerCase();
-        if (key === 'e') {
-            finish();
-        } else if (key === 'r') {
-            restartGame();
-        }
+        if (key === 'e') { finish(); }
+        else if (key === 'r') { restartGame(); }
     });
 
-    // ÚJRAINDÍTÁS FUNKCIÓ (Az r betű és az új gomb közös parancsa)
+    // ÚJRAINDÍTÁS FUNKCIÓ - IDŐBÉLYEGGEL A TISZTA LAPÉRT
     function restartGame() {
-    window.location.href = window.location.pathname + "?t=" + Date.now();
+        // Hozzáadunk egy egyedi azonosítót az URL-hez, hogy a böngésző mindenképpen frissen töltsön be
+        window.location.href = window.location.origin + window.location.pathname + "?refresh=" + Date.now();
     }
 
     async function loadQuiz() {
@@ -294,4 +291,3 @@
 </script>
 </body>
 </html>
-
