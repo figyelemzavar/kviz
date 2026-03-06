@@ -104,7 +104,7 @@
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
-        <h2 style="margin-top:0;">Üdvözöllek!</h2>
+    
         <p style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
@@ -142,12 +142,19 @@
     const colorPrimaryVar = "#4f46e9";
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
+    // TITKOS GOMB FIGYELŐ
+    document.addEventListener('keydown', function(event) {
+        if (event.key.toLowerCase() === 'e') {
+            finish();
+        }
+    });
+
     async function loadQuiz() {
         try {
             const now = new Date();
             const dateStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
             const response = await fetch(`data_${dateStr}.json?t=${new Date().getTime()}`);
-            if (!response.ok) throw new Error("Fájl nem található");
+            if (!response.ok) throw new Error("Nincs fájl");
             
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
@@ -162,9 +169,7 @@
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return order[a.l] - order[b.l];
             });
-            console.log("Kvíz betöltve");
         } catch (e) { 
-            console.error("Hiba:", e); 
             document.getElementById('start-btn').innerText = "Hiba: Nincs mai kvíz";
             document.getElementById('start-btn').disabled = true;
         }
@@ -243,6 +248,7 @@
     }
 
     function finish() {
+        document.getElementById('start-panel').style.display='none';
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = score;
@@ -260,7 +266,7 @@
         else { badge = "💎"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
         const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
         document.getElementById('result-msg').innerText = randomMsg;
-        document.getElementById('result-title').innerText = score >= 11 ? "Gratulálunk!" : "Szép volt!";
+        
         document.getElementById('badge-icon').innerText = badge;
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + cls;
