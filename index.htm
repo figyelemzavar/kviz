@@ -140,7 +140,7 @@
     const colorPrimaryVar = "#4f46e9"; 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
 
-    // "R" betű figyelése
+    // "R" betű figyelése (kezdőképernyőre dob, lenullázza az 50:50-et is)
     document.addEventListener('keydown', (e) => {
         if (e.key.toLowerCase() === 'r') resetGame();
     });
@@ -158,32 +158,47 @@
             const day = String(now.getDate()).padStart(2, '0');
             const fileName = `data_${year}-${month}-${day}.json`;
 
-            console.log("Keresett fájl:", fileName);
-
             const response = await fetch(fileName + '?v=' + Date.now());
-            if (!response.ok) throw new Error("A fájl nem található: " + fileName);
+            if (!response.ok) throw new Error("Fájl hiba: " + fileName);
             
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
             const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
             
-            if (!decryptedText) throw new Error("Rossz titkosítási kulcs!");
+            if (!decryptedText) throw new Error("Hibás titkosítási kulcs!");
             
             const dailyData = JSON.parse(decryptedText);
             const hour = now.getHours();
+            
+            // Megkeressük az aktuális sávot
             const slots = [8, 10, 12, 14, 16, 18];
             let activeSlot = "08";
-            for (let s of [...slots].reverse()) { if (hour >= s) { activeSlot = s.toString().padStart(2, '0'); break; } }
+            for (let s of [...slots].reverse()) { 
+                if (hour >= s) { 
+                    activeSlot = s.toString().padStart(2, '0'); 
+                    break; 
+                } 
+            }
 
-            quizData = dailyData.slots[activeSlot].sort((a,b) => {
+            // Biztonsági ellenőrzés az idősávra
+            let questions = dailyData.slots[activeSlot];
+            if (!questions) {
+                const available = Object.keys(dailyData.slots);
+                if (available.length > 0) questions = dailyData.slots[available[0]];
+            }
+
+            if (!questions) throw new Error("Nincsenek elérhető kérdések!");
+
+            quizData = questions.sort((a,b) => {
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
-                return order[a.l] - order[b.l];
+                return (order[a.l] || 0) - (order[b.l] || 0);
             });
 
-            console.log("Sikeres betöltés!");
+            btn.innerText = "JÁTÉK INDÍTÁSA";
+            btn.disabled = false;
         } catch (e) { 
             console.error(e);
-            btn.innerText = e.message;
+            btn.innerText = "Hiba: " + e.message;
             btn.style.fontSize = "12px";
             btn.disabled = true;
         }
@@ -211,6 +226,7 @@
         box.innerHTML = '';
         
         let options = [...q.o];
+        // Csak akkor keverünk, ha 4 opció van (mentett szabály)
         if (options.length > 2) {
             options.sort(() => Math.random() - 0.5);
         }
@@ -233,7 +249,7 @@
         let wrong = q.o.filter(opt => opt !== q.a);
         let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
         
-        // 2 válasznál NE keverje meg az opciókat
+        // Mentett szabály: 2 válasznál NE keverje meg az opciókat
         let remainingOptions = [q.a, randomWrong]; 
         
         box.innerHTML = '';
@@ -287,6 +303,7 @@
         
         let badgeImg = "", league = "", cls = "", cat = "low";
         
+        // Badge-ek betöltése az img/ mappából
         if(score <= 4) { badgeImg = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
         else if(score <= 9) { badgeImg = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
         else if(score <= 14) { badgeImg = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
