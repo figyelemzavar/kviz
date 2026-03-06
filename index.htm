@@ -159,16 +159,30 @@
         document.getElementById('fifty-fifty').disabled = fiftyUsed;
     }
 
-    function useFiftyFifty() {
+function useFiftyFifty() {
         if(fiftyUsed || !canClick) return;
+        
         const q = quizData[idx];
         const btns = Array.from(document.querySelectorAll('.option-btn'));
+        
+        // Összegyűjtjük az összes gombot, ami rossz választ tartalmaz
         let wrongButtons = btns.filter(b => b.innerText !== q.a);
+        
+        // Megkeverjük a rossz válaszokat, hogy ne mindig ugyanaz a kettő tűnjön el
         wrongButtons.sort(() => Math.random() - 0.5);
         
-        if (wrongButtons.length >= 2) {
-            wrongButtons[0].classList.add('hidden');
-            wrongButtons[1].classList.add('hidden');
+        // Egy számláló segítségével pontosan 2 rossz választ rejtünk el
+        let removedCount = 0;
+        for (let btn of wrongButtons) {
+            if (removedCount < 2) {
+                btn.classList.add('hidden');
+                removedCount++;
+            } else {
+                break; // Ha megvan a kettő, megállunk
+            }
+        }
+
+        if (removedCount >= 2) {
             fiftyUsed = true;
             document.getElementById('fifty-fifty').disabled = true;
         }
@@ -233,3 +247,4 @@
 </script>
 </body>
 </html>
+
