@@ -256,9 +256,18 @@
         fiftyUsed = true;
         const q = quizData[idx];
         const box = document.getElementById('options-box');
+        
+        // Kiszűrjük a rossz válaszokat
         let wrong = q.o.filter(opt => opt !== q.a);
+        // Választunk egy véletlenszerű rosszat
         let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
+        
+        // Betesszük a helyeset és a választott rosszat egy tömbbe
         let remainingOptions = [q.a, randomWrong]; 
+        
+        // --- EZ AZ ÚJ RÉSZ: Megkeverjük a maradék két választ ---
+        remainingOptions.sort(() => Math.random() - 0.5);
+        // -------------------------------------------------------
         
         box.innerHTML = '';
         remainingOptions.forEach(txt => {
