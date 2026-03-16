@@ -12,8 +12,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KvízParti</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kvizparti.hu/">
+    <meta property="og:title" content="KvízParti - Napi agytorna mindenkinek">
+    <meta property="og:description" content="Teszteld a tudásod minden nap frissülő kvízeinkkel!">
+    <meta property="og:image" content="https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/kvizparti.jpg">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1024">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "KvízParti",
+      "operatingSystem": "Web",
+      "applicationCategory": "GameApplication",
+      "genre": "Quiz",
+      "description": "Teszteld a tudásod minden nap frissülő kvízeinkkel! 15 kérdés, 3 nehézségi szint.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HUF"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
     <style>
         :root {
             --primary: #6366f1; 
@@ -147,6 +174,7 @@
     </div>
 
 <script>
+    /* ... (A korábbi JavaScript kód változatlanul marad) ... */
     let quizData = [];
     let idx = 0, score = 0, canClick = true, fiftyUsed = false;
     const totalQ = 15;
@@ -256,18 +284,10 @@
         fiftyUsed = true;
         const q = quizData[idx];
         const box = document.getElementById('options-box');
-        
-        // Kiszűrjük a rossz válaszokat
         let wrong = q.o.filter(opt => opt !== q.a);
-        // Választunk egy véletlenszerű rosszat
         let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
-        
-        // Betesszük a helyeset és a választott rosszat egy tömbbe
         let remainingOptions = [q.a, randomWrong]; 
-        
-        // --- EZ AZ ÚJ RÉSZ: Megkeverjük a maradék két választ ---
         remainingOptions.sort(() => Math.random() - 0.5);
-        // -------------------------------------------------------
         
         box.innerHTML = '';
         remainingOptions.forEach(txt => {
