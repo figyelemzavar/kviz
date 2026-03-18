@@ -1,0 +1,1172 @@
+[
+  {
+    "q": "Mit jelent az etimológia szó?",
+    "o": [
+      "Nyelvhelyesség",
+      "Szófejtés (szóeredet)",
+      "Helyesírás",
+      "Mondattan"
+    ],
+    "a": "Szófejtés (szóeredet)",
+    "l": "Könnyű",
+    "theme": "nyelv-etimológia",
+    "keywords": "Etimológia | Meghatározás"
+  },
+  {
+    "q": "Mit jelentett latinul a 'veni, vidi, vici' kifejezés, amelyet Julius Caesarnak tulajdonítanak?",
+    "o": [
+      "Harcolj, győzz, élj!",
+      "Jöttem, láttam, győztem",
+      "Rómáért, a seregért, a dicsőségért",
+      "Élek, látok, győzök"
+    ],
+    "a": "Jöttem, láttam, győztem",
+    "l": "Könnyű",
+    "theme": "ókor",
+    "keywords": "Caesar | latin | veni vidi vici"
+  },
+  {
+    "q": "Mi a funkciója az inzulin hormonnak a szervezetben?",
+    "o": [
+      "Vércukorszint csökkentése",
+      "Vércukorszint emelése",
+      "Izomnövelés",
+      "Zsírraktározás gátlása"
+    ],
+    "a": "Vércukorszint csökkentése",
+    "l": "Könnyű",
+    "theme": "életmód és egészség",
+    "keywords": "Inzulin | cukoranyagcsere szabályozás"
+  },
+  {
+    "q": "Melyik zenekar énekelte a 'Dancing Queen' című slágert a 70-es években?",
+    "o": [
+      "Boney M.",
+      "ABBA",
+      "Bee Gees",
+      "Blondie"
+    ],
+    "a": "ABBA",
+    "l": "Könnyű",
+    "theme": "retro",
+    "keywords": "ABBA | Sláger"
+  },
+  {
+    "q": "Ki festette a világ egyik legismertebb portréját, a Mona Lisát?",
+    "o": [
+      "Michelangelo",
+      "Raffaello",
+      "Leonardo da Vinci",
+      "Donatello"
+    ],
+    "a": "Leonardo da Vinci",
+    "l": "Könnyű",
+    "theme": "képzőművészet",
+    "keywords": "Mona Lisa | Leonardo da Vinci"
+  },
+  {
+    "q": "Melyik sivatag terül el Kína és Mongólia határán?",
+    "o": [
+      "Kalahári",
+      "Gobi",
+      "Atacama",
+      "Takla-Makán"
+    ],
+    "a": "Gobi",
+    "l": "Közepes",
+    "theme": "földrajz",
+    "keywords": "Gobi | Ázsiai sivatag"
+  },
+  {
+    "q": "Ki fedezte fel az elektron létezését 1897-ben?",
+    "o": [
+      "J.J. Thomson",
+      "Robert Millikan",
+      "Max Planck",
+      "James Clerk Maxwell"
+    ],
+    "a": "J.J. Thomson",
+    "l": "Közepes",
+    "theme": "nagy felfedezések és találmányok",
+    "keywords": "J.J. Thomson | Elektron"
+  },
+  {
+    "q": "Ki volt az utolsó magyar király?",
+    "o": [
+      "I. Ferenc József",
+      "IV. Károly",
+      "V. Ferdinánd",
+      "Horthy Miklós"
+    ],
+    "a": "IV. Károly",
+    "l": "Közepes",
+    "theme": "történelem",
+    "keywords": "Habsburg-Lotharingiai ház | IV. Károly"
+  },
+  {
+    "q": "Melyik elem allotróp módosulata a gyémánt és a grafit?",
+    "o": [
+      "Szilícium",
+      "Szén",
+      "Foszfor",
+      "Oxigén"
+    ],
+    "a": "Szén",
+    "l": "Közepes",
+    "theme": "kémia",
+    "keywords": "Szén | Allotrópia"
+  },
+  {
+    "q": "Mi Zimbabwe fővárosa?",
+    "o": [
+      "Bulawayo",
+      "Chitungwiza",
+      "Harare",
+      "Mutare"
+    ],
+    "a": "Harare",
+    "l": "Közepes",
+    "theme": "ország-város",
+    "keywords": "Zimbabwe | Harare"
+  },
+  {
+    "q": "Mi a csillagászati egység (CsE) meghatározása?",
+    "o": [
+      "Fényév",
+      "Föld-Nap átlagos távolság",
+      "Hold-Föld távolság",
+      "Naprendszer sugara"
+    ],
+    "a": "Föld-Nap átlagos távolság",
+    "l": "Nehéz",
+    "theme": "csillagászat",
+    "keywords": "Csillagászati egység | Távolságmérés"
+  },
+  {
+    "q": "Ki volt az a görög szobrász, aki beleszeretett saját elefántcsont szobrába?",
+    "o": [
+      "Pygmalion",
+      "Daidalosz",
+      "Heidiasz",
+      "Praxitelész"
+    ],
+    "a": "Pygmalion",
+    "l": "Nehéz",
+    "theme": "mitológia",
+    "keywords": "Pygmalion | Galateia"
+  },
+  {
+    "q": "Melyik növény bibéjéből nyerik a sáfrányt?",
+    "o": [
+      "Írisz",
+      "Jóféle sáfrány (Krókusz)",
+      "Pipacs",
+      "Orchidea"
+    ],
+    "a": "Jóféle sáfrány (Krókusz)",
+    "l": "Nehéz",
+    "theme": "gasztronómia",
+    "keywords": "Sáfrány | Botanika"
+  },
+  {
+    "q": "Hogy hívják az emberi szív természetes 'ritmusszabályozóját'?",
+    "o": [
+      "AV-csomó",
+      "Sinus-csomó",
+      "His-köteg",
+      "Tawara-szárak"
+    ],
+    "a": "Sinus-csomó",
+    "l": "Nehéz",
+    "theme": "természet-biológia",
+    "keywords": "Sinus-csomó | Szívműködés"
+  },
+  {
+    "q": "Hogy hívják a főhőst Stendhal 'Vörös és fekete' című regényében?",
+    "o": [
+      "Julien Sorel",
+      "Fabrice del Dongo",
+      "Jean Valjean",
+      "Eugene de Rastignac"
+    ],
+    "a": "Julien Sorel",
+    "l": "Nehéz",
+    "theme": "irodalom",
+    "keywords": "Stendhal | Vörös és fekete"
+  },
+  {
+    "q": "Mi az arany vegyjele?",
+    "o": [
+      "Ag",
+      "Au",
+      "Fe",
+      "Pb"
+    ],
+    "a": "Au",
+    "l": "Könnyű",
+    "theme": "kémia",
+    "keywords": "Arany | Vegyjel"
+  },
+  {
+    "q": "Ki találta fel a golyóstollat?",
+    "o": [
+      "Bíró László József",
+      "Rubik Ernő",
+      "Gábor Dénes",
+      "Telkes Mária"
+    ],
+    "a": "Bíró László József",
+    "l": "Könnyű",
+    "theme": "nagy felfedezések és találmányok",
+    "keywords": "Bíró László József | Golyóstoll"
+  },
+  {
+    "q": "Melyik állat húzta a Nap szekerét az ókori görög mitológiában?",
+    "o": [
+      "Oroszlánok",
+      "Fehér lovak",
+      "Szárnyaló sasok",
+      "Fehér bikák"
+    ],
+    "a": "Fehér lovak",
+    "l": "Könnyű",
+    "theme": "ókor",
+    "keywords": "Héliosz | Nap szekere | görög mitológia"
+  },
+  {
+    "q": "Melyik japán városra dobták le az első atombombát 1945. augusztus 6-án?",
+    "o": [
+      "Nagaszaki",
+      "Tokió",
+      "Hirosima",
+      "Oszaka"
+    ],
+    "a": "Hirosima",
+    "l": "Könnyű",
+    "theme": "történelem",
+    "keywords": "Hirosima | Atombomba"
+  },
+  {
+    "q": "Melyik teremtmény teste félig ember, félig bika, és a krétai labirintusban lakott?",
+    "o": [
+      "Kentaur",
+      "Minótaurosz",
+      "Szatír",
+      "Szfinx"
+    ],
+    "a": "Minótaurosz",
+    "l": "Könnyű",
+    "theme": "mitológia",
+    "keywords": "Minótaurosz | Krétai labirintus"
+  },
+  {
+    "q": "Ki alkotta meg 'A gondolkodó' című híres bronzszobrot?",
+    "o": [
+      "Auguste Rodin",
+      "Alberto Giacometti",
+      "Constantin Brâncuși",
+      "Edgar Degas"
+    ],
+    "a": "Auguste Rodin",
+    "l": "Közepes",
+    "theme": "képzőművészet",
+    "keywords": "Auguste Rodin | A gondolkodó"
+  },
+  {
+    "q": "Melyik nyelvből származik a 'vigéc' (vándorkereskedő) szavunk?",
+    "o": [
+      "Német",
+      "Jiddis",
+      "Szláv",
+      "Francia"
+    ],
+    "a": "Német",
+    "l": "Közepes",
+    "theme": "nyelv-etimológia",
+    "keywords": "Vigéc | Wie geht's"
+  },
+  {
+    "q": "Mi a neve a virágok hímivarszervének?",
+    "o": [
+      "Termő",
+      "Porzó",
+      "Szirom",
+      "Vackor"
+    ],
+    "a": "Porzó",
+    "l": "Közepes",
+    "theme": "természet-biológia",
+    "keywords": "Virág | Szaporítószerv"
+  },
+  {
+    "q": "Mi a fő alapanyaga a hagyományos olasz polentának?",
+    "o": [
+      "Búzadara",
+      "Kukoricadara",
+      "Árpa",
+      "Rizs"
+    ],
+    "a": "Kukoricadara",
+    "l": "Közepes",
+    "theme": "gasztronómia",
+    "keywords": "Polenta | Kukoricadara"
+  },
+  {
+    "q": "Melyik gyógynövény teája segít a leginkább a vese és a húgyutak átmosásában?",
+    "o": [
+      "Mezei zsurló",
+      "Levendula",
+      "Menta",
+      "Hársfa"
+    ],
+    "a": "Mezei zsurló",
+    "l": "Közepes",
+    "theme": "életmód és egészség",
+    "keywords": "Zsurló | vizelethajtó hatás"
+  },
+  {
+    "q": "Mi a hivatalos neve a londoni 'Gherkin' (Uborka) néven elhíresült felhőkarcolónak?",
+    "o": [
+      "Shard",
+      "30 St Mary Axe",
+      "The Pinnacle",
+      "One Canada Square"
+    ],
+    "a": "30 St Mary Axe",
+    "l": "Nehéz",
+    "theme": "építészet-világörökség",
+    "keywords": "Gherkin | Hivatalos név"
+  },
+  {
+    "q": "Mi volt a neve a szocialista korszak népszerű, sárga színű, golyós dezodorának?",
+    "o": [
+      "Ami",
+      "Gabi",
+      "Wu2",
+      "Fa"
+    ],
+    "a": "Ami",
+    "l": "Nehéz",
+    "theme": "retro",
+    "keywords": "Ami dezodor | Retro kozmetikum"
+  },
+  {
+    "q": "Melyik tengeri csatorna köti össze a Földközi-tengert a Vörös-tengerrel?",
+    "o": [
+      "Panama-csatorna",
+      "Kieli-csatorna",
+      "Szuezi-csatorna",
+      "Korinthoszi-csatorna"
+    ],
+    "a": "Szuezi-csatorna",
+    "l": "Nehéz",
+    "theme": "földrajz",
+    "keywords": "Szuezi-csatorna | Vízi út"
+  },
+  {
+    "q": "Mi a Hertzsprung-Russell diagram fő célja?",
+    "o": [
+      "Bolygók méretének mérése",
+      "Csillagok osztályozása fényesség és hőmérséklet alapján",
+      "Galaxisok távolságának mérése",
+      "A fekete lyukak tömegének becslése"
+    ],
+    "a": "Csillagok osztályozása fényesség és hőmérséklet alapján",
+    "l": "Nehéz",
+    "theme": "csillagászat",
+    "keywords": "Hertzsprung-Russell diagram | Csillagfejlődés"
+  },
+  {
+    "q": "Ki írta 'A kőbaltás ember' és más őskori történeteket?",
+    "o": [
+      "Láng Tamás",
+      "Móra Ferenc",
+      "Gárdonyi Géza",
+      "Sánta Ferenc"
+    ],
+    "a": "Gárdonyi Géza",
+    "l": "Nehéz",
+    "theme": "irodalom",
+    "keywords": "Gárdonyi Géza | Őskori regények"
+  },
+  {
+    "q": "Melyik sajtféle híres a jellegzetes kék penészerezetéről?",
+    "o": [
+      "Cheddar",
+      "Roquefort",
+      "Mozzarella",
+      "Emmentáli"
+    ],
+    "a": "Roquefort",
+    "l": "Könnyű",
+    "theme": "gasztronómia",
+    "keywords": "Roquefort | Penészes sajtok"
+  },
+  {
+    "q": "Hány liter vért pumpál át a szív egy nyugalomban lévő ember szervezetén percenként?",
+    "o": [
+      "5 liter",
+      "2 liter",
+      "10 liter",
+      "1 liter"
+    ],
+    "a": "5 liter",
+    "l": "Könnyű",
+    "theme": "életmód és egészség",
+    "keywords": "Percvolumen | nyugalmi keringés"
+  },
+  {
+    "q": "Melyik a Naphoz legközelebbi bolygó?",
+    "o": [
+      "Vénusz",
+      "Merkúr",
+      "Mars",
+      "Föld"
+    ],
+    "a": "Merkúr",
+    "l": "Könnyű",
+    "theme": "csillagászat",
+    "keywords": "Merkúr | Legközelebbi bolygó"
+  },
+  {
+    "q": "Ki volt az a krétai mesterember, aki szárnyakat készített magának és fiának?",
+    "o": [
+      "Daidalosz",
+      "Ikarosz",
+      "Talósz",
+      "Minósz"
+    ],
+    "a": "Daidalosz",
+    "l": "Könnyű",
+    "theme": "mitológia",
+    "keywords": "Daidalosz | Szárnyak"
+  },
+  {
+    "q": "Melyik magyar származású művész volt az op-art (optikai művészet) legfőbb képviselője?",
+    "o": [
+      "Moholy-Nagy László",
+      "Victor Vasarely",
+      "Kassák Lajos",
+      "Hantai Simon"
+    ],
+    "a": "Victor Vasarely",
+    "l": "Könnyű",
+    "theme": "képzőművészet",
+    "keywords": "Victor Vasarely | Op-art"
+  },
+  {
+    "q": "Honnan ered a 'múzeum' kifejezés?",
+    "o": [
+      "A múzsák csarnoka",
+      "A tudás háza",
+      "Régi tárgyak helye",
+      "Királyi gyűjtemény"
+    ],
+    "a": "A múzsák csarnoka",
+    "l": "Közepes",
+    "theme": "nyelv-etimológia",
+    "keywords": "Múzeum | Múzsák"
+  },
+  {
+    "q": "Melyik drámaíró műve az 'Az öreg hölgy látogatása'?",
+    "o": [
+      "Friedrich Dürrenmatt",
+      "Max Frisch",
+      "Bertolt Brecht",
+      "Thomas Mann"
+    ],
+    "a": "Friedrich Dürrenmatt",
+    "l": "Közepes",
+    "theme": "irodalom",
+    "keywords": "Friedrich Dürrenmatt | Tragikomédia"
+  },
+  {
+    "q": "Melyik a Földközi-tenger legnagyobb szigete?",
+    "o": [
+      "Szardínia",
+      "Kréta",
+      "Ciprus",
+      "Szicília"
+    ],
+    "a": "Szicília",
+    "l": "Közepes",
+    "theme": "földrajz",
+    "keywords": "Szicília | Legnagyobb sziget"
+  },
+  {
+    "q": "Ki találta fel a biztonsági gyufát?",
+    "o": [
+      "Irinyi János",
+      "Kandó Kálmán",
+      "Déri Miksa",
+      "Galamb József"
+    ],
+    "a": "Irinyi János",
+    "l": "Közepes",
+    "theme": "nagy felfedezések és találmányok",
+    "keywords": "Irinyi János | Biztonsági gyufa"
+  },
+  {
+    "q": "Melyik római épületet avattak fel i.sz. 80-ban és kb. 50 000 néző befogadására volt alkalmas?",
+    "o": [
+      "Pantheon",
+      "Circus Maximus",
+      "Colosseum",
+      "Forum Romanum"
+    ],
+    "a": "Colosseum",
+    "l": "Közepes",
+    "theme": "ókor",
+    "keywords": "Colosseum | Róma | gladiátor | amfiteátrum"
+  },
+  {
+    "q": "Ki tervezte a párizsi Louvre udvarán álló modern üvegpiramist?",
+    "o": [
+      "Norman Foster",
+      "I. M. Pei",
+      "Renzo Piano",
+      "Jean Nouvel"
+    ],
+    "a": "I. M. Pei",
+    "l": "Nehéz",
+    "theme": "építészet-világörökség",
+    "keywords": "Louvre piramis | Tervező"
+  },
+  {
+    "q": "Mi a neve az NH3 képletű vegyületnek?",
+    "o": [
+      "Metán",
+      "Ammónia",
+      "Salétromsav",
+      "Hidrazin"
+    ],
+    "a": "Ammónia",
+    "l": "Nehéz",
+    "theme": "kémia",
+    "keywords": "Ammónia | Vegyületnév"
+  },
+  {
+    "q": "Hány lába van egy rákonak az ízeltlábúak rendszertanában?",
+    "o": [
+      "6",
+      "8",
+      "10",
+      "14"
+    ],
+    "a": "10",
+    "l": "Nehéz",
+    "theme": "természet-biológia",
+    "keywords": "Rákok | Tízlábú rákok"
+  },
+  {
+    "q": "Hogy hívták az oroszlánfókát a 80-as évek népszerű gyurmafilm-sorozatában?",
+    "o": [
+      "Pingu",
+      "Robby",
+      "Pingo",
+      "Balu"
+    ],
+    "a": "Robby",
+    "l": "Nehéz",
+    "theme": "retro",
+    "keywords": "Robby | Pingu"
+  },
+  {
+    "q": "Melyik pápai-császári konfliktust nevezzük invesztitúraharcnak?",
+    "o": [
+      "VII. Gergely és IV. Henrik",
+      "III. Ince és II. Frigyes",
+      "II. Orbán és I. Elek",
+      "VI. Sándor és Savonarola"
+    ],
+    "a": "VII. Gergely és IV. Henrik",
+    "l": "Nehéz",
+    "theme": "történelem",
+    "keywords": "Invesztitúraharc | Canossa-járás"
+  },
+  {
+    "q": "Hogy hívják azt a jelenséget, amikor a Hold a Nap és a Föld közé kerül?",
+    "o": [
+      "Holdfogyatkozás",
+      "Napfogyatkozás",
+      "Holdtölte",
+      "Szuperhold"
+    ],
+    "a": "Napfogyatkozás",
+    "l": "Könnyű",
+    "theme": "csillagászat",
+    "keywords": "Napfogyatkozás | Égi mechanika"
+  },
+  {
+    "q": "Melyik ókori görög városállam volt Athén legnagyobb vetélytársa?",
+    "o": [
+      "Korinthosz",
+      "Théba",
+      "Spárta",
+      "Argosz"
+    ],
+    "a": "Spárta",
+    "l": "Könnyű",
+    "theme": "ókor",
+    "keywords": "Spárta | Athén | görög városállamok"
+  },
+  {
+    "q": "Hogy hívják Magyarország legmagasabb pontját?",
+    "o": [
+      "Badacsony",
+      "Kékes-tető",
+      "Galyatető",
+      "Dobogókő"
+    ],
+    "a": "Kékes-tető",
+    "l": "Könnyű",
+    "theme": "földrajz",
+    "keywords": "Kékes-tető | Magyarország csúcsa"
+  },
+  {
+    "q": "Ki volt az osztrák császár és magyar király az 1848-as forradalom leverésekor és a kiegyezéskor is?",
+    "o": [
+      "V. Ferdinánd",
+      "I. Ferenc József",
+      "IV. Károly",
+      "II. József"
+    ],
+    "a": "I. Ferenc József",
+    "l": "Könnyű",
+    "theme": "történelem",
+    "keywords": "I. Ferenc József | Uralkodás"
+  },
+  {
+    "q": "Hogy hívják a növények azon folyamatát, amely során napfény segítségével energiát termelnek?",
+    "o": [
+      "Légzés",
+      "Fotoszintézis",
+      "Párologtatás",
+      "Kiválasztás"
+    ],
+    "a": "Fotoszintézis",
+    "l": "Könnyű",
+    "theme": "természet-biológia",
+    "keywords": "Fotoszintézis | Növényi energiatermelés"
+  },
+  {
+    "q": "Ki fedezte fel az atommagot az aranyfólia-kísérlettel?",
+    "o": [
+      "Ernest Rutherford",
+      "Niels Bohr",
+      "Erwin Schrödinger",
+      "Werner Heisenberg"
+    ],
+    "a": "Ernest Rutherford",
+    "l": "Közepes",
+    "theme": "nagy felfedezések és találmányok",
+    "keywords": "Ernest Rutherford | Atommag felfedezése"
+  },
+  {
+    "q": "Melyik nyelvből került hozzánk a 'kastély' és a 'tábla'?",
+    "o": [
+      "Német",
+      "Latin",
+      "Szláv",
+      "Francia"
+    ],
+    "a": "Latin",
+    "l": "Közepes",
+    "theme": "nyelv-etimológia",
+    "keywords": "Latin jövevényszavak | Műveltség"
+  },
+  {
+    "q": "Melyik görög hős vezette az argonautákat az Aranygyapjú megszerzésére?",
+    "o": [
+      "Iaszón",
+      "Héraklész",
+      "Meleagrosz",
+      "Orfeusz"
+    ],
+    "a": "Iaszón",
+    "l": "Közepes",
+    "theme": "mitológia",
+    "keywords": "Iaszón | Aranygyapjú"
+  },
+  {
+    "q": "Mi Norvégia fővárosa?",
+    "o": [
+      "Bergen",
+      "Stavanger",
+      "Trondheim",
+      "Oslo"
+    ],
+    "a": "Oslo",
+    "l": "Közepes",
+    "theme": "ország-város",
+    "keywords": "Norvégia | Oslo"
+  },
+  {
+    "q": "Ki volt a barcelonai Güell park és a Casa Batlló tervező építésze?",
+    "o": [
+      "Salvador Dalí",
+      "Antoni Gaudí",
+      "Le Corbusier",
+      "Frank Gehry"
+    ],
+    "a": "Antoni Gaudí",
+    "l": "Közepes",
+    "theme": "építészet-világörökség",
+    "keywords": "Antoni Gaudí | Művek"
+  },
+  {
+    "q": "Melyik irányzat elindítója volt Henri Matisse?",
+    "o": [
+      "Fauvizmus (Vadultak)",
+      "Futurizmus",
+      "Dadaizmus",
+      "Expresszionizmus"
+    ],
+    "a": "Fauvizmus (Vadultak)",
+    "l": "Nehéz",
+    "theme": "képzőművészet",
+    "keywords": "Henri Matisse | Fauvizmus"
+  },
+  {
+    "q": "Mi az alapja a 'Bouillabaisse' levesnek?",
+    "o": [
+      "Vadhús",
+      "Hal és tenger gyümölcsei",
+      "Marha",
+      "Zöldborsó"
+    ],
+    "a": "Hal és tenger gyümölcsei",
+    "l": "Nehéz",
+    "theme": "gasztronómia",
+    "keywords": "Bouillabaisse | Francia halleves"
+  },
+  {
+    "q": "Hány darab szénatom található egy benzolmolekulában?",
+    "o": [
+      "4",
+      "5",
+      "6",
+      "12"
+    ],
+    "a": "6",
+    "l": "Nehéz",
+    "theme": "kémia",
+    "keywords": "Benzol | Szerkezet"
+  },
+  {
+    "q": "Mi a neve az agyunkat és gerincvelőnket körülvevő folyadéknak?",
+    "o": [
+      "Agy-gerincvelői folyadék",
+      "Vérplazma",
+      "Nyirok",
+      "Sejt közötti állomány"
+    ],
+    "a": "Agy-gerincvelői folyadék",
+    "l": "Nehéz",
+    "theme": "életmód és egészség",
+    "keywords": "Idegrendszer | likvor szerepe"
+  },
+  {
+    "q": "Hogy hívták az első sikeres magyar internetes portált, amely 1995-ben indult?",
+    "o": [
+      "Origo",
+      "Index",
+      "Internetto",
+      "Startlap"
+    ],
+    "a": "Internetto",
+    "l": "Nehéz",
+    "theme": "retro",
+    "keywords": "Internetto | Magyar net"
+  },
+  {
+    "q": "Melyik brazil város felett magasodik a Megváltó Krisztus szobra?",
+    "o": [
+      "São Paulo",
+      "Brasília",
+      "Rio de Janeiro",
+      "Salvador"
+    ],
+    "a": "Rio de Janeiro",
+    "l": "Könnyű",
+    "theme": "építészet-világörökség",
+    "keywords": "Megváltó Krisztus szobra | Helyszín"
+  },
+  {
+    "q": "Hogy hívják a tudományt, amely a nyelvek rokonságát kutatja?",
+    "o": [
+      "Összehasonlító nyelvészet",
+      "Leíró nyelvészet",
+      "Alkalmazott nyelvészet",
+      "Társadalmi nyelvészet"
+    ],
+    "a": "Összehasonlító nyelvészet",
+    "l": "Könnyű",
+    "theme": "nyelv-etimológia",
+    "keywords": "Összehasonlító nyelvészet | Rokonság"
+  },
+  {
+    "q": "Hogy hívják a művészetben a tárgyak nélküli, színekre és formákra épülő irányzatot?",
+    "o": [
+      "Realizmus",
+      "Absztrakt",
+      "Naturalizmus",
+      "Akadémizmus"
+    ],
+    "a": "Absztrakt",
+    "l": "Könnyű",
+    "theme": "képzőművészet",
+    "keywords": "Absztrakt művészet | Meghatározás"
+  },
+  {
+    "q": "Melyik ország zászlaján látható egy juharlevél?",
+    "o": [
+      "Ausztrália",
+      "Svájc",
+      "Kanada",
+      "Libanon"
+    ],
+    "a": "Kanada",
+    "l": "Könnyű",
+    "theme": "földrajz",
+    "keywords": "Kanada | Zászló"
+  },
+  {
+    "q": "Hogy hívták a 80-as évek népszerű akciófilm-hősét, akit David Hasselhoff alakított egy beszélő autóval?",
+    "o": [
+      "McGyver",
+      "Columbo",
+      "Michael Knight",
+      "Rick Hunter"
+    ],
+    "a": "Michael Knight",
+    "l": "Könnyű",
+    "theme": "retro",
+    "keywords": "Knight Rider | Sorozathős"
+  },
+  {
+    "q": "Melyik ókori görög szerző írta az Iliászt és az Odüsszeiát?",
+    "o": [
+      "Szophoklész",
+      "Hérodotosz",
+      "Homérosz",
+      "Hésziodosz"
+    ],
+    "a": "Homérosz",
+    "l": "Közepes",
+    "theme": "ókor",
+    "keywords": "Homérosz | Iliász | Odüsszeia | eposz"
+  },
+  {
+    "q": "Melyik húsrészből készül az eredeti bécsi szelet (Wiener Schnitzel)?",
+    "o": [
+      "Sertéskaraj",
+      "Borjúdió",
+      "Csirkemell",
+      "Marhafelsál"
+    ],
+    "a": "Borjúdió",
+    "l": "Közepes",
+    "theme": "gasztronómia",
+    "keywords": "Bécsi szelet | Borjúhús"
+  },
+  {
+    "q": "Melyik évben kötötték meg a trianoni békeszerződést?",
+    "o": [
+      "1914",
+      "1918",
+      "1920",
+      "1947"
+    ],
+    "a": "1920",
+    "l": "Közepes",
+    "theme": "történelem",
+    "keywords": "Trianoni békeszerződés | I. világháború lezárása"
+  },
+  {
+    "q": "Ki a szerzője a 'Frankenstein' című gótikus regénynek?",
+    "o": [
+      "Mary Shelley",
+      "Jane Austen",
+      "Charlotte Brontë",
+      "Ann Radcliffe"
+    ],
+    "a": "Mary Shelley",
+    "l": "Közepes",
+    "theme": "irodalom",
+    "keywords": "Mary Shelley | Frankenstein"
+  },
+  {
+    "q": "Melyik elem rendszáma a 6-os?",
+    "o": [
+      "Hidrogén",
+      "Hélium",
+      "Szén",
+      "Nitrogén"
+    ],
+    "a": "Szén",
+    "l": "Közepes",
+    "theme": "kémia",
+    "keywords": "Szén | Rendszám"
+  },
+  {
+    "q": "Hogy hívják a görög mitológiában az emlékezet istennőjét, a múzsák anyját?",
+    "o": [
+      "Mnémoszüné",
+      "Thémisz",
+      "Létó",
+      "Metisz"
+    ],
+    "a": "Mnémoszüné",
+    "l": "Nehéz",
+    "theme": "mitológia",
+    "keywords": "Mnémoszüné | Emlékezet"
+  },
+  {
+    "q": "Melyik galaxis típusba tartozik az M87, amelyről az első fotó készült egy fekete lyukról?",
+    "o": [
+      "Spirális",
+      "Elliptikus",
+      "Irreguláris",
+      "Lencse alakú"
+    ],
+    "a": "Elliptikus",
+    "l": "Nehéz",
+    "theme": "csillagászat",
+    "keywords": "M87 | Elliptikus galaxis"
+  },
+  {
+    "q": "Ki találta fel a biztonsági borotvát a 20. század elején?",
+    "o": [
+      "King Camp Gillette",
+      "Jacob Schick",
+      "Wilkinson Sword",
+      "Braun"
+    ],
+    "a": "King Camp Gillette",
+    "l": "Nehéz",
+    "theme": "nagy felfedezések és találmányok",
+    "keywords": "King Camp Gillette | Biztonsági borotva"
+  },
+  {
+    "q": "Mi a neve a tüdőt kívülről borító kettős hártyának?",
+    "o": [
+      "Mellhártya",
+      "Hashártya",
+      "Szívburok",
+      "Csonthártya"
+    ],
+    "a": "Mellhártya",
+    "l": "Nehéz",
+    "theme": "életmód és egészség",
+    "keywords": "Légzés | tüdő védelme"
+  },
+  {
+    "q": "Hány csápja van egy átlagos csigának?",
+    "o": [
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "a": "4",
+    "l": "Nehéz",
+    "theme": "természet-biológia",
+    "keywords": "Csiga | Anatómia"
+  },
+  {
+    "q": "Mi a vegyjele a vasnak?",
+    "o": [
+      "Va",
+      "Fe",
+      "Ir",
+      "Sn"
+    ],
+    "a": "Fe",
+    "l": "Könnyű",
+    "theme": "kémia",
+    "keywords": "Vas | Vegyjel"
+  },
+  {
+    "q": "Melyik együttes készítette el a 'Bohemian Rhapsody' című dalt?",
+    "o": [
+      "The Beatles",
+      "Led Zeppelin",
+      "Queen",
+      "Pink Floyd"
+    ],
+    "a": "Queen",
+    "l": "Könnyű",
+    "theme": "retro",
+    "keywords": "Queen | Rockzene"
+  },
+  {
+    "q": "Ki volt az a magyar miniszterelnök, akit 1958-ban végeztek ki az 1956-os forradalomban betöltött szerepéért?",
+    "o": [
+      "Nagy Imre",
+      "Kádár János",
+      "Rákosi Mátyás",
+      "Gerő Ernő"
+    ],
+    "a": "Nagy Imre",
+    "l": "Könnyű",
+    "theme": "történelem",
+    "keywords": "Nagy Imre | 1956-os megtorlás"
+  },
+  {
+    "q": "Melyik ókori görög város volt hírneves harcos katonáiról?",
+    "o": [
+      "Athén",
+      "Korinthosz",
+      "Spárta",
+      "Théba"
+    ],
+    "a": "Spárta",
+    "l": "Könnyű",
+    "theme": "ókor",
+    "keywords": "Spárta | harcos | görög civilizáció"
+  },
+  {
+    "q": "Melyik bolygót nevezik az 'Esthajnalcsillagnak'?",
+    "o": [
+      "Mars",
+      "Vénusz",
+      "Merkúr",
+      "Jupiter"
+    ],
+    "a": "Vénusz",
+    "l": "Könnyű",
+    "theme": "csillagászat",
+    "keywords": "Vénusz | Esthajnalcsillag"
+  },
+  {
+    "q": "Melyik szervünk tárolja a szénhidrátokat glikogén formájában?",
+    "o": [
+      "Máj",
+      "Vese",
+      "Tüdő",
+      "Szív"
+    ],
+    "a": "Máj",
+    "l": "Közepes",
+    "theme": "életmód és egészség",
+    "keywords": "Energia | glikogénraktár helye"
+  },
+  {
+    "q": "Ki alkotta a 'Szamothrakéi Niké' szobrot?",
+    "o": [
+      "Phidias",
+      "Praxiteles",
+      "Ismeretlen görög szobrász",
+      "Lüszipposz"
+    ],
+    "a": "Ismeretlen görög szobrász",
+    "l": "Közepes",
+    "theme": "képzőművészet",
+    "keywords": "Niké | Hellénisztikus művészet"
+  },
+  {
+    "q": "Melyik országot nevezik gyakran 'mélyföldnek' az alacsony fekvése miatt?",
+    "o": [
+      "Belgium",
+      "Hollandia",
+      "Luxemburg",
+      "Dánia"
+    ],
+    "a": "Hollandia",
+    "l": "Közepes",
+    "theme": "földrajz",
+    "keywords": "Hollandia | Mélyföld"
+  },
+  {
+    "q": "Melyik mezopotámiai eposz meséli el a király keresését az örök élet után?",
+    "o": [
+      "Enuma Elis",
+      "Gilgames-eposz",
+      "Atrahaszisz",
+      "Inanna alvilágjárása"
+    ],
+    "a": "Gilgames-eposz",
+    "l": "Közepes",
+    "theme": "mitológia",
+    "keywords": "Gilgames | Örök élet keresése"
+  },
+  {
+    "q": "Melyik híres koktél alapanyaga a tequila, a narancslikőr és a lime-lé?",
+    "o": [
+      "Daiquiri",
+      "Margarita",
+      "Cosmopolitan",
+      "Mojito"
+    ],
+    "a": "Margarita",
+    "l": "Közepes",
+    "theme": "gasztronómia",
+    "keywords": "Margarita | Koktélok"
+  },
+  {
+    "q": "Ki fedezte fel a hidrogén gázt 1766-ban?",
+    "o": [
+      "Henry Cavendish",
+      "Joseph Priestley",
+      "Antoine Lavoisier",
+      "John Dalton"
+    ],
+    "a": "Henry Cavendish",
+    "l": "Nehéz",
+    "theme": "nagy felfedezések és találmányok",
+    "keywords": "Henry Cavendish | Hidrogén felfedezése"
+  },
+  {
+    "q": "Ki a szerzője a 'Jadviga párnája' című naplóregénynek?",
+    "o": [
+      "Závada Pál",
+      "Grecsó Krisztián",
+      "Dragomán György",
+      "Bartis Attila"
+    ],
+    "a": "Závada Pál",
+    "l": "Nehéz",
+    "theme": "irodalom",
+    "keywords": "Závada Pál | Jadviga párnája"
+  },
+  {
+    "q": "Mi a legfőbb technikai érdekessége a Kizsi-sziget fatemplomainak?",
+    "o": [
+      "Víz alatt is rögzítve vannak",
+      "Minden gerendát arannyal vontak be",
+      "Szegek nélkül épültek",
+      "Nincs alapozásuk, a jégen úsznak"
+    ],
+    "a": "Szegek nélkül épültek",
+    "l": "Nehéz",
+    "theme": "építészet-világörökség",
+    "keywords": "Kizsi-sziget | Szerkezet"
+  },
+  {
+    "q": "Mi Zambia fővárosa?",
+    "o": [
+      "Ndola",
+      "Kitwe",
+      "Lusaka",
+      "Kabwe"
+    ],
+    "a": "Lusaka",
+    "l": "Nehéz",
+    "theme": "ország-város",
+    "keywords": "Zambia | Lusaka"
+  },
+  {
+    "q": "Melyik a legkisebb madárfaj a világon?",
+    "o": [
+      "Kolibri",
+      "Méhkolibri",
+      "Ökörszem",
+      "Cinege"
+    ],
+    "a": "Méhkolibri",
+    "l": "Nehéz",
+    "theme": "természet-biológia",
+    "keywords": "Méhkolibri | Legkisebb madár"
+  }
+]
