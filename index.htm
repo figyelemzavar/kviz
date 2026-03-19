@@ -20,23 +20,6 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "KvízParti",
-      "operatingSystem": "Web",
-      "applicationCategory": "GameApplication",
-      "genre": "Quiz",
-      "description": "Teszteld a tudásod minden nap frissülő kvízeinkkel! 15 kérdés, 3 nehézségi szint.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "HUF"
-      }
-    }
-    </script>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
@@ -73,7 +56,7 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             letter-spacing: -1px;
             display: block;
         }
@@ -90,6 +73,19 @@
             position: relative;
         }
         
+        .slot-label {
+            display: inline-block;
+            background: var(--btn-bg);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border: 1px solid var(--btn-border);
+            text-transform: uppercase;
+        }
+
         .lifeline-container { display: flex; justify-content: center; margin-bottom: 20px; }
         .lifeline-btn { 
             background: #fff; border: 2px solid var(--primary); color: var(--primary); 
@@ -140,6 +136,7 @@
 
     <div id="start-panel" class="card">
         <div class="logo-text">KvízParti</div>
+        <div id="quiz-session-name" class="slot-label">Töltés...</div>
         <p id="start-msg" style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
     </div>
@@ -179,18 +176,26 @@
     const colorPrimaryVar = "#4f46e9"; 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
     const slots = [8, 10, 12, 14, 16, 18];
+    
+    // Slot nevek leképezése
+    const slotNames = {
+        "08": "Reggeli kvíz",
+        "10": "Délelőtti kvíz",
+        "12": "Déli kvíz",
+        "14": "Délutáni kvíz",
+        "16": "Kora esti kvíz",
+        "18": "Esti kvíz"
+    };
 
-    // Billentyűzet figyelés az újrakezdéshez
     document.addEventListener('keydown', (e) => {
         if (e.key.toLowerCase() === 'r') resetGame();
     });
 
-    function resetGame() {
-        window.location.reload();
-    }
+    function resetGame() { window.location.reload(); }
 
     async function loadQuiz() {
         const btn = document.getElementById('start-btn');
+        const sessionLabel = document.getElementById('quiz-session-name');
         try {
             const now = new Date();
             const year = now.getFullYear();
@@ -199,16 +204,14 @@
             const fileName = `data_${year}-${month}-${day}.json`;
 
             const response = await fetch(fileName + '?v=' + Date.now());
-            if (!response.ok) throw new Error("Fájl hiba: " + fileName);
+            if (!response.ok) throw new Error("Fájl hiba");
             
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
             const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-            if (!decryptedText) throw new Error("Hibás titkosítás!");
-            
             const dailyData = JSON.parse(decryptedText);
-            const hour = now.getHours();
             
+            const hour = now.getHours();
             let activeSlot = "08";
             let nextSlot = slots[0];
 
@@ -219,27 +222,25 @@
                 }
             }
 
+            // Név beállítása a főoldalon
+            sessionLabel.innerText = slotNames[activeSlot] || "Napi kvíz";
             document.getElementById('next-time').innerText = nextSlot.toString().padStart(2, '0') + ":00";
 
             let questions = dailyData.slots[activeSlot];
             if (!questions) {
                 const available = Object.keys(dailyData.slots);
-                if (available.length > 0) questions = dailyData.slots[available[0]];
+                questions = dailyData.slots[available[0]];
             }
 
-            if (!questions) throw new Error("Nincsenek elérhető kérdések!");
-
-            // Rendezés nehézség szerint
             quizData = questions.sort((a,b) => {
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return (order[a.l] || 0) - (order[b.l] || 0);
             });
 
-            btn.innerText = "JÁTÉK INDÍTÁSA";
             btn.disabled = false;
         } catch (e) { 
-            btn.innerText = "Hiba: " + e.message;
-            btn.disabled = true;
+            btn.innerText = "Hiba a betöltéskor";
+            sessionLabel.innerText = "Hiba";
         }
     }
 
@@ -263,11 +264,8 @@
         
         const box = document.getElementById('options-box');
         box.innerHTML = '';
-        
         let options = [...q.o];
-        if (options.length > 2) {
-            options.sort(() => Math.random() - 0.5);
-        }
+        if (options.length > 2) options.sort(() => Math.random() - 0.5);
 
         options.forEach(txt => {
             const b = document.createElement('button');
@@ -286,8 +284,7 @@
         const box = document.getElementById('options-box');
         let wrong = q.o.filter(opt => opt !== q.a);
         let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
-        let remainingOptions = [q.a, randomWrong]; 
-        remainingOptions.sort(() => Math.random() - 0.5);
+        let remainingOptions = [q.a, randomWrong].sort(() => Math.random() - 0.5);
         
         box.innerHTML = '';
         remainingOptions.forEach(txt => {
@@ -330,34 +327,17 @@
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = `${score} / ${totalQ}`;
         
-        const titles = { 
-            low: ["Menni fog ez jobban is!", "Gyakorlat teszi a mestert!", "Ne add fel!"],
-            mid: ["Nem rossz!", "Alakul ez!", "Szép próbálkozás!"],
-            good: ["Ügyes voltál!", "Szép eredmény!", "Jó formában vagy!"],
-            high: ["Átlagon felüli!", "Nagyszerű teljesítmény!", "Profi vagy!"],
-            perfect: ["Zseniális!", "Tökéletes tudás!", "Mesterfok!"]
-        };
+        let league = "Bronz", cat = "low";
+        if(score <= 4) { league = "Bronz"; cat = "low"; }
+        else if(score <= 9) { league = "Ezüst"; cat = "mid"; }
+        else if(score <= 14) { league = "Arany"; cat = "high"; }
+        else { league = "Gyémánt"; cat = "perfect"; }
         
-        let badgeImg = "", league = "", cls = "", cat = "low";
-        
-        if(score <= 4) { badgeImg = "img/bronze.png"; league = "Bronz"; cls = "bronz"; cat = "low"; }
-        else if(score <= 9) { badgeImg = "img/silver.png"; league = "Ezüst"; cls = "ezust"; cat = "mid"; }
-        else if(score <= 14) { badgeImg = "img/gold.png"; league = "Arany"; cls = "arany"; cat = score >= 11 ? "high" : "good"; }
-        else { badgeImg = "img/diamond.png"; league = "Gyémánt"; cls = "gyemant"; cat = "perfect"; }
-        
-        const randomMsg = titles[cat][Math.floor(Math.random() * titles[cat].length)];
-        document.getElementById('result-msg').innerText = randomMsg;
-        document.getElementById('badge-img').src = badgeImg;
         document.getElementById('league-text').innerText = league;
-        document.getElementById('league-text').className = "league-name " + cls;
+        document.getElementById('league-text').className = "league-name " + league.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-        // Google Analytics esemény küldése
         if (typeof gtag === 'function') {
-            gtag('event', 'quiz_completed', {
-                'score': score,
-                'league': league,
-                'total_questions': totalQ
-            });
+            gtag('event', 'quiz_completed', { 'score': score, 'league': league });
         }
     }
 
