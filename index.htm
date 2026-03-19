@@ -173,7 +173,6 @@
     </div>
 
 <script>
-    /* ... (A korábbi JavaScript kód változatlanul marad) ... */
     let quizData = [];
     let idx = 0, score = 0, canClick = true, fiftyUsed = false;
     const totalQ = 15;
@@ -181,6 +180,7 @@
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
     const slots = [8, 10, 12, 14, 16, 18];
 
+    // Billentyűzet figyelés az újrakezdéshez
     document.addEventListener('keydown', (e) => {
         if (e.key.toLowerCase() === 'r') resetGame();
     });
@@ -229,6 +229,7 @@
 
             if (!questions) throw new Error("Nincsenek elérhető kérdések!");
 
+            // Rendezés nehézség szerint
             quizData = questions.sort((a,b) => {
                 const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
                 return (order[a.l] || 0) - (order[b.l] || 0);
@@ -349,6 +350,15 @@
         document.getElementById('badge-img').src = badgeImg;
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + cls;
+
+        // Google Analytics esemény küldése
+        if (typeof gtag === 'function') {
+            gtag('event', 'quiz_completed', {
+                'score': score,
+                'league': league,
+                'total_questions': totalQ
+            });
+        }
     }
 
     loadQuiz();
