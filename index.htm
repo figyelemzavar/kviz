@@ -157,7 +157,7 @@
     </div>
 
     <div id="result-panel" class="card" style="display:none;">
-        <p id="result-msg" style="color: #64748b; font-size: 16px; margin-bottom: 20px; margin-top: 10px;"></p>
+        <p id="result-msg" style="color: #64748b; font-size: 16px; margin-bottom: 20px; margin-top: 10px;">Gratulálunk a teljesítményedhez!</p>
         <div id="badge-container"><img id="badge-img" class="badge-img" src="" alt="Érem"></div>
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0 / 15</div>
@@ -177,7 +177,6 @@
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
     const slots = [8, 10, 12, 14, 16, 18];
     
-    // Slot nevek leképezése
     const slotNames = {
         "08": "Reggeli kvíz",
         "10": "Délelőtti kvíz",
@@ -222,7 +221,6 @@
                 }
             }
 
-            // Név beállítása a főoldalon
             sessionLabel.innerText = slotNames[activeSlot] || "Napi kvíz";
             document.getElementById('next-time').innerText = nextSlot.toString().padStart(2, '0') + ":00";
 
@@ -327,14 +325,34 @@
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = `${score} / ${totalQ}`;
         
-        let league = "Bronz", cat = "low";
-        if(score <= 4) { league = "Bronz"; cat = "low"; }
-        else if(score <= 9) { league = "Ezüst"; cat = "mid"; }
-        else if(score <= 14) { league = "Arany"; cat = "high"; }
-        else { league = "Gyémánt"; cat = "perfect"; }
+        let league = "Bronz";
+        let imageFilename = "bronze";
+
+        if(score <= 4) { 
+            league = "Bronz"; 
+            imageFilename = "bronze"; 
+        }
+        else if(score <= 9) { 
+            league = "Ezüst"; 
+            imageFilename = "silver"; 
+        }
+        else if(score <= 14) { 
+            league = "Arany"; 
+            imageFilename = "gold"; 
+        }
+        else { 
+            league = "Gyémánt"; 
+            imageFilename = "diamond"; 
+        }
         
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + league.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        // KÉP BEÁLLÍTÁSA A GITHUB IMG MAPPÁBÓL
+        const imgElement = document.getElementById('badge-img');
+        const githubPath = "https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/";
+        imgElement.src = githubPath + imageFilename + ".png";
+        imgElement.alt = league + " fokozat";
 
         if (typeof gtag === 'function') {
             gtag('event', 'quiz_completed', { 'score': score, 'league': league });
