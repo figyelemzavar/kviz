@@ -122,7 +122,7 @@
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
 
         .next-quiz-info {
-            margin-top: 30px;
+            margin-top: 25px;
             padding: 20px;
             background: #f8fafc;
             border-radius: 20px;
@@ -132,11 +132,12 @@
         }
 
         .missed-offer {
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 15px;
             background: #fffbeb;
             border: 1px solid #fef3c7;
-            border-radius: 15px;
+            border-radius: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -147,6 +148,16 @@
         <div id="quiz-session-name" class="slot-label">Töltés...</div>
         <p id="start-msg" style="color: #64748b; margin-bottom: 25px;">Készen állsz a 15 kérdéses kihívásra? Használd okosan a felezőt!</p>
         <button id="start-btn" class="option-btn" style="background:var(--primary); color:white; border:none;" onclick="startQuiz()">JÁTÉK INDÍTÁSA</button>
+        
+        <div id="start-next-info" class="next-quiz-info" style="display:none;">
+            A következő kvíz kezdete: <br>
+            <strong class="next-time-val" style="color: var(--primary); font-size: 18px; display: block; margin-top: 5px;">--:--</strong>
+        </div>
+
+        <div id="start-missed-container" class="missed-offer" style="display:none;">
+            <p class="missed-text-val" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
+            <button class="missed-btn-val option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">KITÖLTÖM MOST</button>
+        </div>
     </div>
 
     <div id="game-panel" class="card" style="display:none;">
@@ -170,15 +181,15 @@
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0 / 15</div>
         
-        <div id="missed-offer-container" class="missed-offer" style="display:none;">
-            <p id="missed-text" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
-            <button id="missed-btn" class="option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">KITÖLTÖM MOST</button>
+        <div id="result-missed-container" class="missed-offer" style="display:none;">
+            <p class="missed-text-val" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
+            <button class="missed-btn-val option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">KITÖLTÖM MOST</button>
         </div>
 
         <div class="next-quiz-info">
             Köszönjük a játékot! <br>
-            <span id="next-info-text">A következő kvíz kezdete:</span> <br>
-            <strong id="next-time" style="color: var(--primary); font-size: 18px; display: block; margin-top: 5px;">--:--</strong>
+            <span>A következő kvíz kezdete:</span> <br>
+            <strong class="next-time-val" style="color: var(--primary); font-size: 18px; display: block; margin-top: 5px;">--:--</strong>
         </div>
     </div>
 
@@ -192,30 +203,17 @@
     const slots = [8, 10, 12, 14, 16, 18];
     
     const slotNames = {
-        "08": "Reggeli kvíz",
-        "10": "Délelőtti kvíz",
-        "12": "Déli kvíz",
-        "14": "Délutáni kvíz",
-        "16": "Késő délutáni kvíz",
-        "18": "Esti kvíz"
+        "08": "Reggeli kvíz", "10": "Délelőtti kvíz", "12": "Déli kvíz",
+        "14": "Délutáni kvíz", "16": "Késő délutáni kvíz", "18": "Esti kvíz"
     };
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key.toLowerCase() === 'r') resetGame();
-    });
-
+    document.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 'r') resetGame(); });
     function resetGame() { window.location.href = window.location.pathname; }
-
-    function playMissed(slotId) {
-        window.location.href = window.location.pathname + "?slot=" + slotId;
-    }
+    function playMissed(slotId) { window.location.href = window.location.pathname + "?slot=" + slotId; }
 
     function getEffectiveDate() {
         const now = new Date();
-        const hour = now.getHours();
-        if (hour < 8) {
-            now.setDate(now.getDate() - 1);
-        }
+        if (now.getHours() < 8) now.setDate(now.getDate() - 1);
         return now;
     }
 
@@ -227,38 +225,31 @@
 
         try {
             const effDate = getEffectiveDate();
-            const year = effDate.getFullYear();
-            const month = String(effDate.getMonth() + 1).padStart(2, '0');
-            const day = String(effDate.getDate()).padStart(2, '0');
-            const dateStr = `${year}-${month}-${day}`;
+            const dateStr = `${effDate.getFullYear()}-${String(effDate.getMonth() + 1).padStart(2, '0')}-${String(effDate.getDate()).padStart(2, '0')}`;
             const fileName = `data_${dateStr}.json`;
 
             const response = await fetch(fileName + '?v=' + Date.now());
-            if (!response.ok) throw new Error("Fájl hiba");
-            
             const encrypted = await response.text();
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-            const dailyData = JSON.parse(decryptedText);
+            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
             
             let activeSlot = "";
             let nextSlotTime = "";
 
             if (forcedSlot && dailyData.slots[forcedSlot]) {
                 activeSlot = forcedSlot;
-                nextSlotTime = "Kézi választás";
+                nextSlotTime = "Folyamatban...";
             } else {
-                const now = new Date();
-                const hour = now.getHours();
+                const hour = new Date().getHours();
                 if (hour < 8) {
                     activeSlot = "18";
                     nextSlotTime = "Ma 08:00";
                 } else {
-                    for (let i = 0; i < slots.length; i++) {
-                        if (hour >= slots[i]) {
-                            activeSlot = slots[i].toString().padStart(2, '0');
-                            const next = slots[i + 1];
-                            nextSlotTime = next ? next.toString().padStart(2, '0') + ":00" : "Holnap 08:00";
+                    for (let s of slots) {
+                        if (hour >= s) {
+                            activeSlot = s.toString().padStart(2, '0');
+                            let idx = slots.indexOf(s);
+                            nextSlotTime = slots[idx+1] ? slots[idx+1].toString().padStart(2, '0') + ":00" : "Holnap 08:00";
                         }
                     }
                 }
@@ -266,53 +257,46 @@
 
             currentSlotKey = `quiz_${dateStr}_${activeSlot}`;
             sessionLabel.innerText = slotNames[activeSlot] || "Napi kvíz";
-            if(nextSlotTime !== "Kézi választás") document.getElementById('next-time').innerText = nextSlotTime;
+            document.querySelectorAll('.next-time-val').forEach(el => el.innerText = nextSlotTime);
 
             if (localStorage.getItem(currentSlotKey)) {
                 btn.disabled = true;
                 btn.innerText = "EZT A KVÍZT MÁR KITÖLTÖTTED";
                 btn.style.background = "#cbd5e1";
-                document.getElementById('start-msg').innerText = "Várd meg a következő időpontot az újabb kihíváshoz!";
+                document.getElementById('start-msg').innerText = "Várd meg a következő időpontot!";
+                document.getElementById('start-next-info').style.display = 'block';
                 checkMissedSlots(dailyData, dateStr, activeSlot);
             }
 
-            let questions = dailyData.slots[activeSlot];
-            if (!questions) {
-                const available = Object.keys(dailyData.slots);
-                questions = dailyData.slots[available[0]];
-            }
-
-            quizData = questions.sort((a,b) => {
-                const order = {"Könnyű":1, "Közepes":2, "Nehéz":3};
-                return (order[a.l] || 0) - (order[b.l] || 0);
-            });
+            let questions = dailyData.slots[activeSlot] || dailyData.slots[Object.keys(dailyData.slots)[0]];
+            quizData = questions.sort((a,b) => ({"Könnyű":1, "Közepes":2, "Nehéz":3}[a.l] || 0) - ({"Könnyű":1, "Közepes":2, "Nehéz":3}[b.l] || 0));
 
         } catch (e) { 
             btn.innerText = "Hiba a betöltéskor";
-            sessionLabel.innerText = "Hiba";
         }
     }
 
     function checkMissedSlots(dailyData, dateStr, activeSlot) {
-        const now = new Date();
-        const hour = now.getHours();
+        const hour = new Date().getHours();
         const effDate = getEffectiveDate();
         
         for (let s of slots) {
             let sStr = s.toString().padStart(2, '0');
-            let isPast = (effDate.getHours() >= 8) ? (s <= hour) : true;
+            let isPast = (new Date().getHours() >= 8) ? (s <= hour) : true;
             
             if (isPast && sStr !== activeSlot) {
-                let key = `quiz_${dateStr}_${sStr}`;
-                if (!localStorage.getItem(key) && dailyData.slots[sStr]) {
-                    const container = document.getElementById('missed-offer-container');
-                    const text = document.getElementById('missed-text');
-                    const mBtn = document.getElementById('missed-btn');
+                if (!localStorage.getItem(`quiz_${dateStr}_${sStr}`) && dailyData.slots[sStr]) {
+                    // Megjelenítés a start és result panelen is
+                    const containers = [document.getElementById('start-missed-container'), document.getElementById('result-missed-container')];
                     
-                    text.innerText = `Úgy látom, a ${slotNames[sStr].toLowerCase()}ról lemaradtál. Szeretnéd kitölteni?`;
-                    mBtn.disabled = false; // BIZTONSÁGI JAVÍTÁS: explicit engedélyezés
-                    mBtn.onclick = () => playMissed(sStr);
-                    container.style.display = 'block';
+                    containers.forEach(c => {
+                        if(!c) return;
+                        c.querySelector('.missed-text-val').innerText = `Úgy látom, a ${slotNames[sStr].toLowerCase()}ról lemaradtál. Szeretnéd kitölteni?`;
+                        const b = c.querySelector('.missed-btn-val');
+                        b.disabled = false;
+                        b.onclick = () => playMissed(sStr);
+                        c.style.display = 'block';
+                    });
                     return; 
                 }
             }
@@ -333,8 +317,7 @@
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
         const tag = document.getElementById('diff-tag');
-        tag.innerText = q.l;
-        tag.style.background = diffColors[q.l] || "#64748b";
+        tag.innerText = q.l; tag.style.background = diffColors[q.l] || "#64748b";
         document.getElementById('q-text').innerText = q.q;
         
         const box = document.getElementById('options-box');
@@ -356,18 +339,13 @@
         if(fiftyUsed || !canClick) return;
         fiftyUsed = true;
         const q = quizData[idx];
-        const box = document.getElementById('options-box');
-        let wrong = q.o.filter(opt => opt !== q.a);
-        let randomWrong = wrong[Math.floor(Math.random() * wrong.length)];
-        let remainingOptions = [q.a, randomWrong].sort(() => Math.random() - 0.5);
-        
-        box.innerHTML = '';
-        remainingOptions.forEach(txt => {
+        let remaining = [q.a, q.o.filter(o => o !== q.a)[Math.floor(Math.random()*3)]].sort(() => Math.random()-0.5);
+        document.getElementById('options-box').innerHTML = '';
+        remaining.forEach(txt => {
             const b = document.createElement('button');
-            b.className = 'option-btn';
-            b.innerText = txt;
+            b.className = 'option-btn'; b.innerText = txt;
             b.onclick = () => check(txt, b);
-            box.appendChild(b);
+            document.getElementById('options-box').appendChild(b);
         });
         document.getElementById('fifty-fifty').disabled = true;
     }
@@ -376,70 +354,41 @@
         if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
-        // JAVÍTÁS: Csak a válaszlehetőségeket tiltjuk le, a pótlás gombot nem
         document.querySelectorAll('#options-box .option-btn').forEach(b => b.disabled = true);
         
         if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
-            const anim = document.getElementById('score-anim');
-            anim.classList.add('show');
-            setTimeout(() => anim.classList.remove('show'), 1000);
+            document.getElementById('score-anim').classList.add('show');
+            setTimeout(() => document.getElementById('score-anim').classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
             document.querySelectorAll('#options-box .option-btn').forEach(b => {
                 if(b.innerText === q.a) b.classList.add('correct-flash');
             });
         }
-        
-        setTimeout(() => {
-            idx++;
-            if(idx < totalQ) renderQ(); else finish();
-        }, 1500);
+        setTimeout(() => { idx++; if(idx < totalQ) renderQ(); else finish(); }, 1500);
     }
 
     function finish() {
-        if (currentSlotKey) {
-            localStorage.setItem(currentSlotKey, "completed");
-        }
-
+        if (currentSlotKey) localStorage.setItem(currentSlotKey, "completed");
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = `${score} / ${totalQ}`;
         
-        let league = "Bronz";
-        let imageFilename = "bronze";
-
-        if(score <= 4) { league = "Bronz"; imageFilename = "bronze"; }
-        else if(score <= 9) { league = "Ezüst"; imageFilename = "silver"; }
-        else if(score <= 14) { league = "Arany"; imageFilename = "gold"; }
-        else { league = "Gyémánt"; imageFilename = "diamond"; }
+        let leagues = { Bronz: "bronze", Ezüst: "silver", Arany: "gold", Gyémánt: "diamond" };
+        let league = score <= 4 ? "Bronz" : score <= 9 ? "Ezüst" : score <= 14 ? "Arany" : "Gyémánt";
         
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + league.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-        const imgElement = document.getElementById('badge-img');
-        const githubPath = "https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/";
-        imgElement.src = githubPath + imageFilename + ".png";
-        imgElement.alt = league + " fokozat";
+        document.getElementById('badge-img').src = `https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/${leagues[league]}.png`;
 
         const effDate = getEffectiveDate();
-        const year = effDate.getFullYear();
-        const month = String(effDate.getMonth() + 1).padStart(2, '0');
-        const day = String(effDate.getDate()).padStart(2, '0');
-        const dateStr = `${year}-${month}-${day}`;
-        
-        fetch(`data_${dateStr}.json?v=` + Date.now())
-            .then(r => r.text())
-            .then(enc => {
+        fetch(`data_${effDate.getFullYear()}-${String(effDate.getMonth() + 1).padStart(2, '0')}-${String(effDate.getDate()).padStart(2, '0')}.json?v=` + Date.now())
+            .then(r => r.text()).then(enc => {
                 const b = CryptoJS.AES.decrypt(enc, colorPrimaryVar);
-                const data = JSON.parse(b.toString(CryptoJS.enc.Utf8));
-                checkMissedSlots(data, dateStr, currentSlotKey.split('_').pop());
-            }).catch(() => {});
-
-        if (typeof gtag === 'function') {
-            gtag('event', 'quiz_completed', { 'score': score, 'league': league });
-        }
+                checkMissedSlots(JSON.parse(b.toString(CryptoJS.enc.Utf8)), "", currentSlotKey.split('_').pop());
+            });
     }
 
     loadQuiz();
