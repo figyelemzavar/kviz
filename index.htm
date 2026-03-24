@@ -172,7 +172,7 @@
         
         <div id="missed-offer-container" class="missed-offer" style="display:none;">
             <p id="missed-text" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
-            <button class="option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;" onclick="resetGame()">KITÖLTÖM MOST</button>
+            <button id="missed-btn" class="option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">KITÖLTÖM MOST</button>
         </div>
 
         <div class="next-quiz-info">
@@ -204,12 +204,15 @@
         if (e.key.toLowerCase() === 'r') resetGame();
     });
 
-    function resetGame() { window.location.reload(); }
+    function resetGame() { window.location.href = window.location.pathname; }
+
+    function playMissed(slotId) {
+        window.location.href = window.location.pathname + "?slot=" + slotId;
+    }
 
     function getEffectiveDate() {
         const now = new Date();
         const hour = now.getHours();
-        // Reggel 8 előtt még az előző napi kvízadag él
         if (hour < 8) {
             now.setDate(now.getDate() - 1);
         }
@@ -219,6 +222,9 @@
     async function loadQuiz() {
         const btn = document.getElementById('start-btn');
         const sessionLabel = document.getElementById('quiz-session-name');
+        const urlParams = new URLSearchParams(window.location.search);
+        const forcedSlot = urlParams.get('slot');
+
         try {
             const effDate = getEffectiveDate();
             const year = effDate.getFullYear();
@@ -235,37 +241,38 @@
             const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
             const dailyData = JSON.parse(decryptedText);
             
-            const now = new Date();
-            const hour = now.getHours();
-            let activeSlot = "08";
+            let activeSlot = "";
             let nextSlotTime = "";
 
-            // Aktuális slot meghatározása
-            if (hour < 8) {
-                activeSlot = "18"; // Reggel 8 előtt az előző esti az "aktív"
-                nextSlotTime = "Ma 08:00";
+            if (forcedSlot && dailyData.slots[forcedSlot]) {
+                activeSlot = forcedSlot;
+                nextSlotTime = "Kézi választás";
             } else {
-                for (let i = 0; i < slots.length; i++) {
-                    if (hour >= slots[i]) {
-                        activeSlot = slots[i].toString().padStart(2, '0');
-                        const next = slots[i + 1];
-                        nextSlotTime = next ? next.toString().padStart(2, '0') + ":00" : "Holnap 08:00";
+                const now = new Date();
+                const hour = now.getHours();
+                if (hour < 8) {
+                    activeSlot = "18";
+                    nextSlotTime = "Ma 08:00";
+                } else {
+                    for (let i = 0; i < slots.length; i++) {
+                        if (hour >= slots[i]) {
+                            activeSlot = slots[i].toString().padStart(2, '0');
+                            const next = slots[i + 1];
+                            nextSlotTime = next ? next.toString().padStart(2, '0') + ":00" : "Holnap 08:00";
+                        }
                     }
                 }
             }
 
             currentSlotKey = `quiz_${dateStr}_${activeSlot}`;
             sessionLabel.innerText = slotNames[activeSlot] || "Napi kvíz";
-            document.getElementById('next-time').innerText = nextSlotTime;
+            if(nextSlotTime !== "Kézi választás") document.getElementById('next-time').innerText = nextSlotTime;
 
-            // Ellenőrzés: volt-e már kitöltve?
             if (localStorage.getItem(currentSlotKey)) {
                 btn.disabled = true;
                 btn.innerText = "EZT A KVÍZT MÁR KITÖLTÖTTED";
                 btn.style.background = "#cbd5e1";
                 document.getElementById('start-msg').innerText = "Várd meg a következő időpontot az újabb kihíváshoz!";
-                
-                // Ha már kitöltötte, nézzük meg, van-e aznapi elmaradása
                 checkMissedSlots(dailyData, dateStr, activeSlot);
             }
 
@@ -287,24 +294,25 @@
     }
 
     function checkMissedSlots(dailyData, dateStr, activeSlot) {
-        const currentHour = new Date().getHours();
+        const now = new Date();
+        const hour = now.getHours();
         const effDate = getEffectiveDate();
         
-        // Végigmegyünk az összes sloton időrendben
         for (let s of slots) {
             let sStr = s.toString().padStart(2, '0');
+            let isPast = (effDate.getHours() >= 8) ? (s <= hour) : true;
             
-            // Csak azokat nézzük, amik már elérhetőek voltak (vagy a mai napon, vagy ha tegnapi adatot nézünk akkor mindet)
-            let isAvailable = (effDate.getHours() >= 8) ? (s <= currentHour) : true;
-            
-            if (isAvailable && sStr !== activeSlot) {
+            if (isPast && sStr !== activeSlot) {
                 let key = `quiz_${dateStr}_${sStr}`;
                 if (!localStorage.getItem(key) && dailyData.slots[sStr]) {
                     const container = document.getElementById('missed-offer-container');
                     const text = document.getElementById('missed-text');
+                    const mBtn = document.getElementById('missed-btn');
+                    
                     text.innerText = `Úgy látom, a ${slotNames[sStr].toLowerCase()}ról lemaradtál. Szeretnéd kitölteni?`;
+                    mBtn.disabled = false; // BIZTONSÁGI JAVÍTÁS: explicit engedélyezés
+                    mBtn.onclick = () => playMissed(sStr);
                     container.style.display = 'block';
-                    // Itt megállunk az első találatnál (időrend)
                     return; 
                 }
             }
@@ -368,7 +376,8 @@
         if(!canClick) return;
         canClick = false;
         const q = quizData[idx];
-        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        // JAVÍTÁS: Csak a válaszlehetőségeket tiltjuk le, a pótlás gombot nem
+        document.querySelectorAll('#options-box .option-btn').forEach(b => b.disabled = true);
         
         if(selected === q.a) {
             btn.classList.add('correct-flash');
@@ -378,7 +387,7 @@
             setTimeout(() => anim.classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
-            document.querySelectorAll('.option-btn').forEach(b => {
+            document.querySelectorAll('#options-box .option-btn').forEach(b => {
                 if(b.innerText === q.a) b.classList.add('correct-flash');
             });
         }
@@ -390,7 +399,6 @@
     }
 
     function finish() {
-        // Mentés, hogy ez a slot kész
         if (currentSlotKey) {
             localStorage.setItem(currentSlotKey, "completed");
         }
@@ -415,14 +423,12 @@
         imgElement.src = githubPath + imageFilename + ".png";
         imgElement.alt = league + " fokozat";
 
-        // Befejezés után is ellenőrizzük, maradt-e ki aznapra valami
         const effDate = getEffectiveDate();
         const year = effDate.getFullYear();
         const month = String(effDate.getMonth() + 1).padStart(2, '0');
         const day = String(effDate.getDate()).padStart(2, '0');
         const dateStr = `${year}-${month}-${day}`;
         
-        // Egy gyors fetch az ajánlóhoz (vagy használhatnánk a már betöltött dailyData-t ha globális lenne)
         fetch(`data_${dateStr}.json?v=` + Date.now())
             .then(r => r.text())
             .then(enc => {
