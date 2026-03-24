@@ -248,8 +248,8 @@
                     for (let s of slots) {
                         if (hour >= s) {
                             activeSlot = s.toString().padStart(2, '0');
-                            let idx = slots.indexOf(s);
-                            nextSlotTime = slots[idx+1] ? slots[idx+1].toString().padStart(2, '0') + ":00" : "Holnap 08:00";
+                            let idxS = slots.indexOf(s);
+                            nextSlotTime = slots[idxS+1] ? slots[idxS+1].toString().padStart(2, '0') + ":00" : "Holnap 08:00";
                         }
                     }
                 }
@@ -258,6 +258,15 @@
             currentSlotKey = `quiz_${dateStr}_${activeSlot}`;
             sessionLabel.innerText = slotNames[activeSlot] || "Napi kvíz";
             document.querySelectorAll('.next-time-val').forEach(el => el.innerText = nextSlotTime);
+
+            let questions = dailyData.slots[activeSlot] || dailyData.slots[Object.keys(dailyData.slots)[0]];
+            quizData = questions.sort((a,b) => ({"Könnyű":1, "Közepes":2, "Nehéz":3}[a.l] || 0) - ({"Könnyű":1, "Közepes":2, "Nehéz":3}[b.l] || 0));
+
+            // Ha pótlást kért a felhasználó (URL paraméter), AZONNAL INDUL
+            if (forcedSlot) {
+                startQuiz();
+                return;
+            }
 
             if (localStorage.getItem(currentSlotKey)) {
                 btn.disabled = true;
@@ -268,9 +277,6 @@
                 checkMissedSlots(dailyData, dateStr, activeSlot);
             }
 
-            let questions = dailyData.slots[activeSlot] || dailyData.slots[Object.keys(dailyData.slots)[0]];
-            quizData = questions.sort((a,b) => ({"Könnyű":1, "Közepes":2, "Nehéz":3}[a.l] || 0) - ({"Könnyű":1, "Közepes":2, "Nehéz":3}[b.l] || 0));
-
         } catch (e) { 
             btn.innerText = "Hiba a betöltéskor";
         }
@@ -278,17 +284,12 @@
 
     function checkMissedSlots(dailyData, dateStr, activeSlot) {
         const hour = new Date().getHours();
-        const effDate = getEffectiveDate();
-        
         for (let s of slots) {
             let sStr = s.toString().padStart(2, '0');
             let isPast = (new Date().getHours() >= 8) ? (s <= hour) : true;
-            
             if (isPast && sStr !== activeSlot) {
                 if (!localStorage.getItem(`quiz_${dateStr}_${sStr}`) && dailyData.slots[sStr]) {
-                    // Megjelenítés a start és result panelen is
                     const containers = [document.getElementById('start-missed-container'), document.getElementById('result-missed-container')];
-                    
                     containers.forEach(c => {
                         if(!c) return;
                         c.querySelector('.missed-text-val').innerText = `Úgy látom, a ${slotNames[sStr].toLowerCase()}ról lemaradtál. Szeretnéd kitölteni?`;
@@ -319,16 +320,13 @@
         const tag = document.getElementById('diff-tag');
         tag.innerText = q.l; tag.style.background = diffColors[q.l] || "#64748b";
         document.getElementById('q-text').innerText = q.q;
-        
         const box = document.getElementById('options-box');
         box.innerHTML = '';
         let options = [...q.o];
         if (options.length > 2) options.sort(() => Math.random() - 0.5);
-
         options.forEach(txt => {
             const b = document.createElement('button');
-            b.className = 'option-btn';
-            b.innerText = txt;
+            b.className = 'option-btn'; b.innerText = txt;
             b.onclick = () => check(txt, b);
             box.appendChild(b);
         });
@@ -355,7 +353,6 @@
         canClick = false;
         const q = quizData[idx];
         document.querySelectorAll('#options-box .option-btn').forEach(b => b.disabled = true);
-        
         if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
@@ -363,9 +360,7 @@
             setTimeout(() => document.getElementById('score-anim').classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
-            document.querySelectorAll('#options-box .option-btn').forEach(b => {
-                if(b.innerText === q.a) b.classList.add('correct-flash');
-            });
+            document.querySelectorAll('#options-box .option-btn').forEach(b => { if(b.innerText === q.a) b.classList.add('correct-flash'); });
         }
         setTimeout(() => { idx++; if(idx < totalQ) renderQ(); else finish(); }, 1500);
     }
@@ -375,16 +370,14 @@
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = `${score} / ${totalQ}`;
-        
         let leagues = { Bronz: "bronze", Ezüst: "silver", Arany: "gold", Gyémánt: "diamond" };
         let league = score <= 4 ? "Bronz" : score <= 9 ? "Ezüst" : score <= 14 ? "Arany" : "Gyémánt";
-        
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + league.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         document.getElementById('badge-img').src = `https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/${leagues[league]}.png`;
-
-        const effDate = getEffectiveDate();
-        fetch(`data_${effDate.getFullYear()}-${String(effDate.getMonth() + 1).padStart(2, '0')}-${String(effDate.getDate()).padStart(2, '0')}.json?v=` + Date.now())
+        
+        const effD = getEffectiveDate();
+        fetch(`data_${effD.getFullYear()}-${String(effD.getMonth()+1).padStart(2,'0')}-${String(effD.getDate()).padStart(2,'0')}.json?v=` + Date.now())
             .then(r => r.text()).then(enc => {
                 const b = CryptoJS.AES.decrypt(enc, colorPrimaryVar);
                 checkMissedSlots(JSON.parse(b.toString(CryptoJS.enc.Utf8)), "", currentSlotKey.split('_').pop());
