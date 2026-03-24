@@ -156,7 +156,7 @@
 
         <div id="start-missed-container" class="missed-offer" style="display:none;">
             <p class="missed-text-val" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
-            <button class="missed-btn-val option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">KITÖLTÖM MOST</button>
+            <button class="missed-btn-val option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">Start!</button>
         </div>
     </div>
 
@@ -183,7 +183,7 @@
         
         <div id="result-missed-container" class="missed-offer" style="display:none;">
             <p class="missed-text-val" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
-            <button class="missed-btn-val option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">KITÖLTÖM MOST</button>
+            <button class="missed-btn-val option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;">Start!</button>
         </div>
 
         <div class="next-quiz-info">
@@ -236,20 +236,31 @@
             let activeSlot = "";
             let nextSlotTime = "";
 
+            const now = new Date();
+            const hour = now.getHours();
+            if (hour < 8) {
+                nextSlotTime = "Ma 08:00";
+            } else {
+                let foundNext = false;
+                for (let s of slots) {
+                    if (s > hour) {
+                        nextSlotTime = s.toString().padStart(2, '0') + ":00";
+                        foundNext = true;
+                        break;
+                    }
+                }
+                if (!foundNext) nextSlotTime = "Holnap 08:00";
+            }
+
             if (forcedSlot && dailyData.slots[forcedSlot]) {
                 activeSlot = forcedSlot;
-                nextSlotTime = "Folyamatban...";
             } else {
-                const hour = new Date().getHours();
                 if (hour < 8) {
                     activeSlot = "18";
-                    nextSlotTime = "Ma 08:00";
                 } else {
                     for (let s of slots) {
                         if (hour >= s) {
                             activeSlot = s.toString().padStart(2, '0');
-                            let idxS = slots.indexOf(s);
-                            nextSlotTime = slots[idxS+1] ? slots[idxS+1].toString().padStart(2, '0') + ":00" : "Holnap 08:00";
                         }
                     }
                 }
@@ -262,7 +273,6 @@
             let questions = dailyData.slots[activeSlot] || dailyData.slots[Object.keys(dailyData.slots)[0]];
             quizData = questions.sort((a,b) => ({"Könnyű":1, "Közepes":2, "Nehéz":3}[a.l] || 0) - ({"Könnyű":1, "Közepes":2, "Nehéz":3}[b.l] || 0));
 
-            // Ha pótlást kért a felhasználó (URL paraméter), AZONNAL INDUL
             if (forcedSlot) {
                 startQuiz();
                 return;
