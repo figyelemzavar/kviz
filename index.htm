@@ -130,6 +130,14 @@
             color: #64748b;
             border: 1px dashed #cbd5e1;
         }
+
+        .missed-offer {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-radius: 15px;
+        }
     </style>
 </head>
 <body>
@@ -162,15 +170,21 @@
         <div id="league-text" class="league-name"></div>
         <div style="font-size:56px; font-weight:800; color:var(--primary); line-height: 1;" id="final-p">0 / 15</div>
         
+        <div id="missed-offer-container" class="missed-offer" style="display:none;">
+            <p id="missed-text" style="margin:0 0 10px 0; font-weight:600; font-size:13px; color:#92400e;"></p>
+            <button class="option-btn" style="padding:10px; font-size:14px; margin-bottom:0; background:#fbbf24; border-color:#f59e0b;" onclick="resetGame()">KITÖLTÖM MOST</button>
+        </div>
+
         <div class="next-quiz-info">
             Köszönjük a játékot! <br>
-            A következő kvíz kezdete: <br>
+            <span id="next-info-text">A következő kvíz kezdete:</span> <br>
             <strong id="next-time" style="color: var(--primary); font-size: 18px; display: block; margin-top: 5px;">--:--</strong>
         </div>
     </div>
 
 <script>
     let quizData = [];
+    let currentSlotKey = "";
     let idx = 0, score = 0, canClick = true, fiftyUsed = false;
     const totalQ = 15;
     const colorPrimaryVar = "#4f46e9"; 
@@ -192,15 +206,26 @@
 
     function resetGame() { window.location.reload(); }
 
+    function getEffectiveDate() {
+        const now = new Date();
+        const hour = now.getHours();
+        // Reggel 8 előtt még az előző napi kvízadag él
+        if (hour < 8) {
+            now.setDate(now.getDate() - 1);
+        }
+        return now;
+    }
+
     async function loadQuiz() {
         const btn = document.getElementById('start-btn');
         const sessionLabel = document.getElementById('quiz-session-name');
         try {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const fileName = `data_${year}-${month}-${day}.json`;
+            const effDate = getEffectiveDate();
+            const year = effDate.getFullYear();
+            const month = String(effDate.getMonth() + 1).padStart(2, '0');
+            const day = String(effDate.getDate()).padStart(2, '0');
+            const dateStr = `${year}-${month}-${day}`;
+            const fileName = `data_${dateStr}.json`;
 
             const response = await fetch(fileName + '?v=' + Date.now());
             if (!response.ok) throw new Error("Fájl hiba");
@@ -210,19 +235,39 @@
             const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
             const dailyData = JSON.parse(decryptedText);
             
+            const now = new Date();
             const hour = now.getHours();
             let activeSlot = "08";
-            let nextSlot = slots[0];
+            let nextSlotTime = "";
 
-            for (let i = 0; i < slots.length; i++) {
-                if (hour >= slots[i]) {
-                    activeSlot = slots[i].toString().padStart(2, '0');
-                    nextSlot = slots[i + 1] || slots[0];
+            // Aktuális slot meghatározása
+            if (hour < 8) {
+                activeSlot = "18"; // Reggel 8 előtt az előző esti az "aktív"
+                nextSlotTime = "Ma 08:00";
+            } else {
+                for (let i = 0; i < slots.length; i++) {
+                    if (hour >= slots[i]) {
+                        activeSlot = slots[i].toString().padStart(2, '0');
+                        const next = slots[i + 1];
+                        nextSlotTime = next ? next.toString().padStart(2, '0') + ":00" : "Holnap 08:00";
+                    }
                 }
             }
 
+            currentSlotKey = `quiz_${dateStr}_${activeSlot}`;
             sessionLabel.innerText = slotNames[activeSlot] || "Napi kvíz";
-            document.getElementById('next-time').innerText = nextSlot.toString().padStart(2, '0') + ":00";
+            document.getElementById('next-time').innerText = nextSlotTime;
+
+            // Ellenőrzés: volt-e már kitöltve?
+            if (localStorage.getItem(currentSlotKey)) {
+                btn.disabled = true;
+                btn.innerText = "EZT A KVÍZT MÁR KITÖLTÖTTED";
+                btn.style.background = "#cbd5e1";
+                document.getElementById('start-msg').innerText = "Várd meg a következő időpontot az újabb kihíváshoz!";
+                
+                // Ha már kitöltötte, nézzük meg, van-e aznapi elmaradása
+                checkMissedSlots(dailyData, dateStr, activeSlot);
+            }
 
             let questions = dailyData.slots[activeSlot];
             if (!questions) {
@@ -235,10 +280,34 @@
                 return (order[a.l] || 0) - (order[b.l] || 0);
             });
 
-            btn.disabled = false;
         } catch (e) { 
             btn.innerText = "Hiba a betöltéskor";
             sessionLabel.innerText = "Hiba";
+        }
+    }
+
+    function checkMissedSlots(dailyData, dateStr, activeSlot) {
+        const currentHour = new Date().getHours();
+        const effDate = getEffectiveDate();
+        
+        // Végigmegyünk az összes sloton időrendben
+        for (let s of slots) {
+            let sStr = s.toString().padStart(2, '0');
+            
+            // Csak azokat nézzük, amik már elérhetőek voltak (vagy a mai napon, vagy ha tegnapi adatot nézünk akkor mindet)
+            let isAvailable = (effDate.getHours() >= 8) ? (s <= currentHour) : true;
+            
+            if (isAvailable && sStr !== activeSlot) {
+                let key = `quiz_${dateStr}_${sStr}`;
+                if (!localStorage.getItem(key) && dailyData.slots[sStr]) {
+                    const container = document.getElementById('missed-offer-container');
+                    const text = document.getElementById('missed-text');
+                    text.innerText = `Úgy látom, a ${slotNames[sStr].toLowerCase()}ról lemaradtál. Szeretnéd kitölteni?`;
+                    container.style.display = 'block';
+                    // Itt megállunk az első találatnál (időrend)
+                    return; 
+                }
+            }
         }
     }
 
@@ -321,6 +390,11 @@
     }
 
     function finish() {
+        // Mentés, hogy ez a slot kész
+        if (currentSlotKey) {
+            localStorage.setItem(currentSlotKey, "completed");
+        }
+
         document.getElementById('game-panel').style.display='none';
         document.getElementById('result-panel').style.display='block';
         document.getElementById('final-p').innerText = `${score} / ${totalQ}`;
@@ -328,31 +402,34 @@
         let league = "Bronz";
         let imageFilename = "bronze";
 
-        if(score <= 4) { 
-            league = "Bronz"; 
-            imageFilename = "bronze"; 
-        }
-        else if(score <= 9) { 
-            league = "Ezüst"; 
-            imageFilename = "silver"; 
-        }
-        else if(score <= 14) { 
-            league = "Arany"; 
-            imageFilename = "gold"; 
-        }
-        else { 
-            league = "Gyémánt"; 
-            imageFilename = "diamond"; 
-        }
+        if(score <= 4) { league = "Bronz"; imageFilename = "bronze"; }
+        else if(score <= 9) { league = "Ezüst"; imageFilename = "silver"; }
+        else if(score <= 14) { league = "Arany"; imageFilename = "gold"; }
+        else { league = "Gyémánt"; imageFilename = "diamond"; }
         
         document.getElementById('league-text').innerText = league;
         document.getElementById('league-text').className = "league-name " + league.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-        // KÉP BEÁLLÍTÁSA A GITHUB IMG MAPPÁBÓL
         const imgElement = document.getElementById('badge-img');
         const githubPath = "https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/";
         imgElement.src = githubPath + imageFilename + ".png";
         imgElement.alt = league + " fokozat";
+
+        // Befejezés után is ellenőrizzük, maradt-e ki aznapra valami
+        const effDate = getEffectiveDate();
+        const year = effDate.getFullYear();
+        const month = String(effDate.getMonth() + 1).padStart(2, '0');
+        const day = String(effDate.getDate()).padStart(2, '0');
+        const dateStr = `${year}-${month}-${day}`;
+        
+        // Egy gyors fetch az ajánlóhoz (vagy használhatnánk a már betöltött dailyData-t ha globális lenne)
+        fetch(`data_${dateStr}.json?v=` + Date.now())
+            .then(r => r.text())
+            .then(enc => {
+                const b = CryptoJS.AES.decrypt(enc, colorPrimaryVar);
+                const data = JSON.parse(b.toString(CryptoJS.enc.Utf8));
+                checkMissedSlots(data, dateStr, currentSlotKey.split('_').pop());
+            }).catch(() => {});
 
         if (typeof gtag === 'function') {
             gtag('event', 'quiz_completed', { 'score': score, 'league': league });
