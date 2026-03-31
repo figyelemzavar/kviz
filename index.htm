@@ -33,6 +33,7 @@
             --card: #ffffff;
             --btn-bg: #eff6ff;
             --btn-border: #dbeafe;
+            --lifeline-gradient: linear-gradient(135deg, #f59e0b, #ef4444);
         }
 
         body { 
@@ -86,13 +87,33 @@
             text-transform: uppercase;
         }
 
-        .lifeline-container { display: flex; justify-content: center; margin-bottom: 20px; }
+        /* Módosított Felező gomb a fejlécben */
         .lifeline-btn { 
-            background: #fff; border: 2px solid var(--primary); color: var(--primary); 
-            padding: 10px 24px; border-radius: 50px; font-weight: 800; cursor: pointer;
-            transition: all 0.2s; font-size: 14px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+            background: var(--lifeline-gradient);
+            border: none;
+            color: white; 
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
         }
-        .lifeline-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
+        .lifeline-btn:disabled { 
+            background: #cbd5e1 !important; 
+            cursor: not-allowed; 
+            box-shadow: none;
+            transform: scale(0.95);
+        }
+        .lifeline-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
 
         .option-btn { 
             background: var(--btn-bg); border: 3px solid var(--btn-border); 
@@ -114,9 +135,16 @@
         .arany { color: #fbbf24; }
         .gyemant { color: #22d3ee; text-shadow: 0 0 20px rgba(34, 211, 238, 0.5); }
 
-        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px; }
-        .status-pill { background: #f1f5f9; padding: 6px 12px; border-radius: 12px; font-size: 13px; font-weight: 700; color: #64748b; border: 1px solid #e2e8f0; }
-        .difficulty-pill { color: white; text-transform: uppercase; font-size: 11px; padding: 5px 10px; border-radius: 10px; }
+        .progress-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 15px; 
+            gap: 8px; 
+            flex-wrap: nowrap;
+        }
+        .status-pill { background: #f1f5f9; padding: 6px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; color: #64748b; border: 1px solid #e2e8f0; white-space: nowrap; }
+        .difficulty-pill { color: white; text-transform: uppercase; font-size: 10px; padding: 5px 8px; border-radius: 10px; }
         
         .bar-bg { height: 10px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 25px; border: 1px solid #e2e8f0; }
         .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: 0.6s; }
@@ -162,13 +190,15 @@
 
     <div id="game-panel" class="card" style="display:none;">
         <div id="score-anim" class="score-pop">+1 PONT</div>
-        <div class="lifeline-container">
-            <button id="fifty-fifty" class="lifeline-btn" onclick="useFiftyFifty()">50:50 FELEZÉS</button>
-        </div>
         <div class="progress-header">
             <span class="status-pill" id="q-count">1 / 15</span>
-            <span id="diff-tag" class="status-pill difficulty-pill">SZINT</span>
+            <button id="fifty-fifty" class="lifeline-btn" onclick="useFiftyFifty()">
+                <span id="ff-count">3x</span> FELEZŐ
+            </button>
             <span class="status-pill">PONT: <span id="live-score">0</span></span>
+        </div>
+        <div style="margin-bottom:15px; display:flex; justify-content:center;">
+             <span id="diff-tag" class="status-pill difficulty-pill">SZINT</span>
         </div>
         <div class="bar-bg"><div id="bar" class="bar-fill"></div></div>
         <h2 id="q-text" style="font-size: 22px; margin-bottom: 30px; line-height: 1.4; font-weight: 600;"></h2>
@@ -196,7 +226,9 @@
 <script>
     let quizData = [];
     let currentSlotKey = "";
-    let idx = 0, score = 0, canClick = true, fiftyUsed = false;
+    let idx = 0, score = 0, canClick = true;
+    let fiftyCount = 3; // Összesen 3 felező
+    let fiftyUsedInCurrentQ = false; // Kérdésenkénti korlát
     const totalQ = 15;
     const colorPrimaryVar = "#4f46e9"; 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
@@ -323,15 +355,19 @@
 
     function renderQ() {
         canClick = true;
+        fiftyUsedInCurrentQ = false; // Új kérdésnél reseteljük a kérdésenkénti korlátot
         const q = quizData[idx];
         document.getElementById('q-count').innerText = `${idx + 1} / ${totalQ}`;
         document.getElementById('live-score').innerText = score;
         document.getElementById('bar').style.width = `${((idx + 1) / totalQ) * 100}%`;
+        
         const tag = document.getElementById('diff-tag');
         tag.innerText = q.l; tag.style.background = diffColors[q.l] || "#64748b";
+        
         document.getElementById('q-text').innerText = q.q;
         const box = document.getElementById('options-box');
         box.innerHTML = '';
+        
         let options = [...q.o];
         if (options.length > 2) options.sort(() => Math.random() - 0.5);
         options.forEach(txt => {
@@ -340,14 +376,37 @@
             b.onclick = () => check(txt, b);
             box.appendChild(b);
         });
-        document.getElementById('fifty-fifty').disabled = fiftyUsed;
+
+        updateLifelineUI();
+    }
+
+    function updateLifelineUI() {
+        const ffBtn = document.getElementById('fifty-fifty');
+        const ffLabel = document.getElementById('ff-count');
+        
+        ffLabel.innerText = `${fiftyCount}x`;
+        
+        // Letiltva, ha: elfogyott VAGY ebben a kérdésben már volt használva
+        if (fiftyCount <= 0 || fiftyUsedInCurrentQ) {
+            ffBtn.disabled = true;
+        } else {
+            ffBtn.disabled = false;
+        }
     }
 
     function useFiftyFifty() {
-        if(fiftyUsed || !canClick) return;
-        fiftyUsed = true;
+        // Ha már volt használva ebben a körben, vagy elfogyott, vagy épp animáció fut
+        if(fiftyUsedInCurrentQ || fiftyCount <= 0 || !canClick) return;
+        
+        fiftyCount--;
+        fiftyUsedInCurrentQ = true;
+        
         const q = quizData[idx];
-        let remaining = [q.a, q.o.filter(o => o !== q.a)[Math.floor(Math.random()*3)]].sort(() => Math.random()-0.5);
+        // Kiszűrjük a helyeset és egy véletlen rosszat
+        let wrongOptions = q.o.filter(o => o !== q.a);
+        let randomWrong = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
+        let remaining = [q.a, randomWrong].sort(() => Math.random() - 0.5);
+        
         document.getElementById('options-box').innerHTML = '';
         remaining.forEach(txt => {
             const b = document.createElement('button');
@@ -355,7 +414,8 @@
             b.onclick = () => check(txt, b);
             document.getElementById('options-box').appendChild(b);
         });
-        document.getElementById('fifty-fifty').disabled = true;
+        
+        updateLifelineUI();
     }
 
     function check(selected, btn) {
@@ -363,14 +423,19 @@
         canClick = false;
         const q = quizData[idx];
         document.querySelectorAll('#options-box .option-btn').forEach(b => b.disabled = true);
+        
         if(selected === q.a) {
             btn.classList.add('correct-flash');
             score++;
+            // Azonnali pontszám frissítés
+            document.getElementById('live-score').innerText = score;
             document.getElementById('score-anim').classList.add('show');
             setTimeout(() => document.getElementById('score-anim').classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
-            document.querySelectorAll('#options-box .option-btn').forEach(b => { if(b.innerText === q.a) b.classList.add('correct-flash'); });
+            document.querySelectorAll('#options-box .option-btn').forEach(b => { 
+                if(b.innerText === q.a) b.classList.add('correct-flash'); 
+            });
         }
         setTimeout(() => { idx++; if(idx < totalQ) renderQ(); else finish(); }, 1500);
     }
