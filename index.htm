@@ -356,7 +356,6 @@
         const qCountEl = document.getElementById('q-count');
         qCountEl.innerText = `${idx + 1} / ${totalQ}`;
         
-        // Szín beállítása a nehézség alapján a számlálón
         const bgCol = diffColors[q.l] || "#f1f5f9";
         qCountEl.style.backgroundColor = bgCol;
         qCountEl.style.color = "white";
@@ -424,6 +423,16 @@
             setTimeout(() => document.getElementById('score-anim').classList.remove('show'), 1000);
         } else {
             btn.classList.add('wrong-flash');
+            
+            // GOOGLE ANALYTICS ESEMÉNY KÜLDÉSE HIBA ESETÉN
+            gtag('event', 'quiz_error', {
+                'question_text': q.q,
+                'quiz_theme': q.theme || 'N/A',
+                'user_wrong_answer': selected,
+                'correct_answer': q.a,
+                'difficulty': q.l
+            });
+
             document.querySelectorAll('#options-box .option-btn').forEach(b => { 
                 if(b.innerText === q.a) b.classList.add('correct-flash'); 
             });
