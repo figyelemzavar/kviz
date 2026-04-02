@@ -426,7 +426,8 @@
             
             // GOOGLE ANALYTICS ESEMÉNY KÜLDÉSE HIBA ESETÉN
             gtag('event', 'quiz_error', {
-                'question_text': q.q,
+            
+                'question_text': q.q + " (" + q.o.join(" vs ") + ")",
                 'quiz_theme': q.theme || 'N/A',
                 'user_wrong_answer': selected,
                 'correct_answer': q.a,
