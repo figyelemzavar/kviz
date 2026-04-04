@@ -226,7 +226,7 @@
     let fiftyUsedInCurrentQ = false; 
     const totalQ = 15;
     
-    // Titkosítási kulcs (meg kell egyeznie a Python scriptben lévővel)
+    // Titkosítási kulcs
     const colorPrimaryVar = "4f46e9"; 
 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
@@ -263,9 +263,10 @@
             
             const encrypted = await response.text();
             
-            // Dekódolás
+            // JAVÍTOTT DEKÓDOLÁS
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
             const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+            
             if (!decryptedStr) throw new Error("Sikertelen dekódolás");
             
             const dailyData = JSON.parse(decryptedStr);
@@ -466,6 +467,7 @@
         
         fetch(`data_${dateStr}.json?v=` + Date.now())
             .then(r => r.text()).then(enc => {
+                // JAVÍTOTT DEKÓDOLÁS A FINISH-NÉL IS
                 const b = CryptoJS.AES.decrypt(enc, colorPrimaryVar);
                 const decryptedStr = b.toString(CryptoJS.enc.Utf8);
                 if(decryptedStr) {
