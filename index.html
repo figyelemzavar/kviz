@@ -226,7 +226,6 @@
     let fiftyUsedInCurrentQ = false; 
     const totalQ = 15;
     
-    // Titkosítási kulcs
     const colorPrimaryVar = "4f46e9"; 
 
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
@@ -247,6 +246,33 @@
         return now;
     }
 
+    // UNIVERZÁLIS DEKÓDOLÓ FÜGGVÉNY
+    function decryptData(encryptedStr, keyStr) {
+        // A kulcsot pontosan 16 karakteresre kell hozni (szóközökkel kiegészítve), ahogy a Python teszi
+        const paddedKey = keyStr.padEnd(16, ' ').slice(0, 16);
+        const key = CryptoJS.enc.Utf8.parse(paddedKey);
+        
+        // Megpróbáljuk a két leggyakoribb módot (ECB és alapértelmezett)
+        try {
+            // 1. Próbálkozás: Nyers ECB mód (Python gyakran ezt használja egyszerűbb scripteknél)
+            const decrypted = CryptoJS.AES.decrypt(encryptedStr, key, {
+                mode: CryptoJS.mode.ECB,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            const result = decrypted.toString(CryptoJS.enc.Utf8);
+            if (result && result.startsWith('{')) return result;
+        } catch(e) {}
+
+        try {
+            // 2. Próbálkozás: Alapértelmezett CryptoJS mód
+            const decrypted = CryptoJS.AES.decrypt(encryptedStr, keyStr);
+            const result = decrypted.toString(CryptoJS.enc.Utf8);
+            if (result && result.startsWith('{')) return result;
+        } catch(e) {}
+        
+        return null;
+    }
+
     async function loadQuiz() {
         const btn = document.getElementById('start-btn');
         const sessionLabel = document.getElementById('quiz-session-name');
@@ -262,10 +288,7 @@
             if (!response.ok) throw new Error("Fájl nem található");
             
             const encrypted = await response.text();
-            
-            // JAVÍTOTT DEKÓDOLÁS
-            const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+            const decryptedStr = decryptData(encrypted.trim(), colorPrimaryVar);
             
             if (!decryptedStr) throw new Error("Sikertelen dekódolás");
             
@@ -467,9 +490,7 @@
         
         fetch(`data_${dateStr}.json?v=` + Date.now())
             .then(r => r.text()).then(enc => {
-                // JAVÍTOTT DEKÓDOLÁS A FINISH-NÉL IS
-                const b = CryptoJS.AES.decrypt(enc, colorPrimaryVar);
-                const decryptedStr = b.toString(CryptoJS.enc.Utf8);
+                const decryptedStr = decryptData(enc.trim(), colorPrimaryVar);
                 if(decryptedStr) {
                     checkMissedSlots(JSON.parse(decryptedStr), dateStr, currentSlotKey.split('_').pop());
                 }
