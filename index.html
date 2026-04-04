@@ -225,7 +225,10 @@
     let fiftyCount = 3; 
     let fiftyUsedInCurrentQ = false; 
     const totalQ = 15;
+    
+    // Titkosítási kulcs (meg kell egyeznie a Python scriptben lévővel)
     const colorPrimaryVar = "#4f46e9"; 
+
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
     const slots = [8, 10, 12, 14, 16, 18];
     
@@ -256,9 +259,16 @@
             const fileName = `data_${dateStr}.json`;
 
             const response = await fetch(fileName + '?v=' + Date.now());
+            if (!response.ok) throw new Error("Fájl nem található");
+            
             const encrypted = await response.text();
+            
+            // Dekódolás
             const bytes = CryptoJS.AES.decrypt(encrypted, colorPrimaryVar);
-            const dailyData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            const decryptedStr = bytes.toString(CryptoJS.enc.Utf8);
+            if (!decryptedStr) throw new Error("Sikertelen dekódolás");
+            
+            const dailyData = JSON.parse(decryptedStr);
             
             let activeSlot = "";
             let nextSlotTime = "";
@@ -315,6 +325,7 @@
             }
 
         } catch (e) { 
+            console.error(e);
             btn.innerText = "Hiba a betöltéskor";
         }
     }
@@ -424,9 +435,7 @@
         } else {
             btn.classList.add('wrong-flash');
             
-            // GOOGLE ANALYTICS ESEMÉNY KÜLDÉSE HIBA ESETÉN
             gtag('event', 'quiz_error', {
-            
                 'question_text': q.q + " (" + q.o.join(" vs ") + ")",
                 'quiz_theme': q.theme || 'N/A',
                 'user_wrong_answer': selected,
@@ -453,10 +462,15 @@
         document.getElementById('badge-img').src = `https://raw.githubusercontent.com/figyelemzavar/kviz/main/img/${leagues[league]}.png`;
         
         const effD = getEffectiveDate();
-        fetch(`data_${effD.getFullYear()}-${String(effD.getMonth()+1).padStart(2,'0')}-${String(effD.getDate()).padStart(2,'0')}.json?v=` + Date.now())
+        const dateStr = `${effD.getFullYear()}-${String(effD.getMonth()+1).padStart(2,'0')}-${String(effD.getDate()).padStart(2,'0')}`;
+        
+        fetch(`data_${dateStr}.json?v=` + Date.now())
             .then(r => r.text()).then(enc => {
                 const b = CryptoJS.AES.decrypt(enc, colorPrimaryVar);
-                checkMissedSlots(JSON.parse(b.toString(CryptoJS.enc.Utf8)), "", currentSlotKey.split('_').pop());
+                const decryptedStr = b.toString(CryptoJS.enc.Utf8);
+                if(decryptedStr) {
+                    checkMissedSlots(JSON.parse(decryptedStr), dateStr, currentSlotKey.split('_').pop());
+                }
             });
     }
 
