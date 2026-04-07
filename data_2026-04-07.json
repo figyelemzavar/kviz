@@ -1,1 +1,1276 @@
-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
+{
+  "slots": {
+    "08": [
+      {
+        "q": "Melyik városban született Petőfi Sándor?",
+        "o": [
+          "Kecskemét",
+          "Kiskunfélegyháza",
+          "Kiskőrös",
+          "Kalocsa"
+        ],
+        "a": "Kiskőrös",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Petőfi Sándor | Születési hely",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívják Odin mágikus lándzsáját, amely sosem téveszt célt?",
+        "o": [
+          "Mjölnir",
+          "Gungnir",
+          "Gram",
+          "Tyrfing"
+        ],
+        "a": "Gungnir",
+        "l": "Nehéz",
+        "theme": "mitológia",
+        "keywords": "Gungnir | Odin fegyvere",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki alkotta meg az első logaritmustáblázatot?",
+        "o": [
+          "John Napier",
+          "Rene Descartes",
+          "Gottfried Leibniz",
+          "Blaise Pascal"
+        ],
+        "a": "John Napier",
+        "l": "Nehéz",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "John Napier | Logaritmus",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik évben csatlakozott Magyarország a NATO-hoz?",
+        "o": [
+          "1997",
+          "1999",
+          "2001",
+          "2004"
+        ],
+        "a": "1999",
+        "l": "Könnyű",
+        "theme": "magyar történelem",
+        "keywords": "NATO | 1999 | Magyarország | csatlakozás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Milyen kémhatású a szappanoldat?",
+        "o": [
+          "Erősen savas",
+          "Semleges",
+          "Lúgos",
+          "Gyengén savas"
+        ],
+        "a": "Lúgos",
+        "l": "Közepes",
+        "theme": "kémia",
+        "keywords": "Szappan | pH-érték",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívták a Macskafogó című rajzfilm egér-főhősét?",
+        "o": [
+          "Grabowski",
+          "Lusta Dick",
+          "Mr. Teufel",
+          "Safranek"
+        ],
+        "a": "Grabowski",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Grabowski | Macskafogó",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik két bolygó között található a Naprendszer aszteroida-öve?",
+        "o": [
+          "Föld és Mars",
+          "Mars és Jupiter",
+          "Jupiter és Szaturnusz",
+          "Vénusz és Föld"
+        ],
+        "a": "Mars és Jupiter",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Aszteroida-öv | Elhelyezkedés",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik kínai vezető hirdette meg a Kulturális Forradalmat 1966-ban?",
+        "o": [
+          "Teng Hsziao-ping",
+          "Mao Ce-tung",
+          "Csou En-laj",
+          "Liu Sao-csi"
+        ],
+        "a": "Mao Ce-tung",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "Mao Ce-tung | kulturális forradalom | Kína | 1966",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi Ecuador fővárosa?",
+        "o": [
+          "Guayaquil",
+          "Cuenca",
+          "Quito",
+          "Ambato"
+        ],
+        "a": "Quito",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Ecuador | Quito",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívják a kávét, ha egy gombóc vaníliafagylaltra öntik az eszpresszót?",
+        "o": [
+          "Affogato",
+          "Macchiato",
+          "Frappé",
+          "Mocha"
+        ],
+        "a": "Affogato",
+        "l": "Közepes",
+        "theme": "gasztronómia",
+        "keywords": "Affogato | Kávékülönlegességek",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik irodalmi mű született meg legkorábban?",
+        "o": [
+          "Arany János: Toldi",
+          "Petőfi Sándor: János vitéz",
+          "Kölcsey Ferenc: Himnusz",
+          "Fazekas Mihály: Lúdas Matyi"
+        ],
+        "a": "Fazekas Mihály: Lúdas Matyi",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Irodalom | Klasszikus művek",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik növénnyel kezelhetjük hatékonyan a kisebb égési sérüléseket?",
+        "o": [
+          "Aloe vera",
+          "Csalán",
+          "Rozmaring",
+          "Mustár"
+        ],
+        "a": "Aloe vera",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Aloe vera | égési sérülés kezelése",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik állat tartozik a tojásrakó emlősök közé?",
+        "o": [
+          "Kenguru",
+          "Hangyászsün",
+          "Koala",
+          "Lajhár"
+        ],
+        "a": "Hangyászsün",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Kloákások | szaporodás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik jellemző az óceáni éghajlatra?",
+        "o": [
+          "Nagy évi közepes hőingás",
+          "Egyenletes csapadékeloszlás",
+          "Forró, száraz nyár",
+          "Rendkívül hideg tél"
+        ],
+        "a": "Egyenletes csapadékeloszlás",
+        "l": "Közepes",
+        "theme": "földrajz",
+        "keywords": "Éghajlattan | óceáni típus",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Honnan ered a 'szarkazmus' szó?",
+        "o": [
+          "Görög (húst tépni)",
+          "Latin (nevetni)",
+          "Francia (gúnyolódni)",
+          "Angol (szúrni)"
+        ],
+        "a": "Görög (húst tépni)",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Szarkazmus | Etimológia",
+        "last_used": "2026-04-07 08:33:38"
+      }
+    ],
+    "10": [
+      {
+        "q": "Melyik magyar tudós találta fel a telefonközpontot?",
+        "o": [
+          "Puskás Tivadar",
+          "Eötvös Loránd",
+          "Bláthy Ottó",
+          "Kandó Kálmán"
+        ],
+        "a": "Puskás Tivadar",
+        "l": "Nehéz",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Puskás Tivadar | Telefonközpont",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt az első ember, aki körbehajózta a Földet expedíciójának részeként, bár ő maga nem élte meg a visszatérést?",
+        "o": [
+          "Vasco da Gama",
+          "Amerigo Vespucci",
+          "Ferdinand Magellán",
+          "Francis Drake"
+        ],
+        "a": "Ferdinand Magellán",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "Magellán | körülhajózás | felfedezés | 1522",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi Salvador fővárosa?",
+        "o": [
+          "San Salvador",
+          "Santa Ana",
+          "San Miguel",
+          "Sonsonate"
+        ],
+        "a": "San Salvador",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Salvador | San Salvador",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Milyen halat próbál kifogni az öreg halász Hemingway híres kisregényében?",
+        "o": [
+          "Marlint",
+          "Cápát",
+          "Tonhalat",
+          "Lazacot"
+        ],
+        "a": "Marlint",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "Az öreg halász és a tenger | Zsákmány",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi a fő összetevője a földgáznak?",
+        "o": [
+          "Etán",
+          "Propán",
+          "Metán",
+          "Bután"
+        ],
+        "a": "Metán",
+        "l": "Közepes",
+        "theme": "kémia",
+        "keywords": "Metán | Földgáz",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik évben szabadult fel Magyarország a török uralom alól Buda visszafoglalásával?",
+        "o": [
+          "1683",
+          "1686",
+          "1699",
+          "1711"
+        ],
+        "a": "1686",
+        "l": "Könnyű",
+        "theme": "magyar történelem",
+        "keywords": "Buda visszafoglalása | 1686 | török uralom | felszabadítás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik szervünk tisztítja meg a vért a méreganyagoktól és termel vizeletet?",
+        "o": [
+          "Vese",
+          "Húgyhólyag",
+          "Máj",
+          "Vastagbél"
+        ],
+        "a": "Vese",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Vese | kiválasztás folyamata",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívják a fotoszintézis azon szakaszát, amely során a szén-dioxid megkötése történik?",
+        "o": [
+          "Krebs-ciklus",
+          "Calvin-ciklus",
+          "Glikolízis",
+          "Terminális oxidáció"
+        ],
+        "a": "Calvin-ciklus",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Calvin-ciklus | szén-dioxid fixáció",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik hegységrendszer tagja az Alpok és a Kárpátok?",
+        "o": [
+          "Variszkuszi-hegységrendszer",
+          "Eurázsiai-hegységrendszer",
+          "Kaledóniai-hegységrendszer",
+          "Uráli-hegységrendszer"
+        ],
+        "a": "Eurázsiai-hegységrendszer",
+        "l": "Közepes",
+        "theme": "földrajz",
+        "keywords": "Hegységképződés | Európa földrajza",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik égitest okozza elsősorban az árapály jelenséget a Földön?",
+        "o": [
+          "Nap",
+          "Mars",
+          "Hold",
+          "Jupiter"
+        ],
+        "a": "Hold",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Árapály | Hold hatása",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt a 90-es évek 'Kung-fu' sztárja, aki a 'Walker, a texasi kopó' című sorozatban játszott?",
+        "o": [
+          "Chuck Norris",
+          "Steven Seagal",
+          "Jean-Claude Van Damme",
+          "Jackie Chan"
+        ],
+        "a": "Chuck Norris",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Chuck Norris | Sorozat",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi az 'univerzum' szó latin eredetű jelentése?",
+        "o": [
+          "Mindenség",
+          "Egyfelé forduló",
+          "Nagy üresség",
+          "Csillagos ég"
+        ],
+        "a": "Egyfelé forduló",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Univerzum | Szóelemzés",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "A skandináv mitológiában ki az az isten, aki a Ragnarök idején bosszút áll apja, Odin haláláért, és megöli Fenrir farkast?",
+        "o": [
+          "Vidar",
+          "Baldur",
+          "Heimdall",
+          "Vali"
+        ],
+        "a": "Vidar",
+        "l": "Nehéz",
+        "theme": "mitológia",
+        "keywords": "Vidar | Fenrir legyőzése",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki írta a „Nemzeti dal” című verset?",
+        "o": [
+          "Kölcsey Ferenc",
+          "Vörösmarty Mihály",
+          "Arany János",
+          "Petőfi Sándor"
+        ],
+        "a": "Petőfi Sándor",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Petőfi Sándor | Nemzeti dal szerzősége",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt az a japán kémikus, aki 1908-ban izolálta és elnevezte az umami ízt?",
+        "o": [
+          "Kikunae Ikeda",
+          "Hideki Shirakawa",
+          "Ryoji Noyori",
+          "Kenichi Fukui"
+        ],
+        "a": "Kikunae Ikeda",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Kikunae Ikeda | Umami felfedezése",
+        "last_used": "2026-04-07 08:33:38"
+      }
+    ],
+    "12": [
+      {
+        "q": "Mi volt a neve a szocialista korszak népszerű, 'kocka' alakú tejes italának?",
+        "o": [
+          "Maci kávé",
+          "Bedeco",
+          "Kakaós tej",
+          "Zacskós tej"
+        ],
+        "a": "Zacskós tej",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Zacskós tej | Retro gasztro",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik Ady Endre-verseskötet megjelenése jelentett fordulópontot a magyar irodalomban 1906-ban?",
+        "o": [
+          "A magunk szerelme",
+          "Vér és arany",
+          "Új versek",
+          "Az illés szekerén"
+        ],
+        "a": "Új versek",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Ady Endre | Új versek megjelenése",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik szél fúj a magas nyomású térítői öv felől az egyenlítői alacsony nyomás felé?",
+        "o": [
+          "Nyugati szél",
+          "Passzátszél",
+          "Sarki szél",
+          "Főn"
+        ],
+        "a": "Passzátszél",
+        "l": "Közepes",
+        "theme": "földrajz",
+        "keywords": "Légkörzés | globális szelek",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hány alapmártást (sauces mères) különített el Auguste Escoffier a modern francia konyhaművészet alapjaként?",
+        "o": [
+          "4",
+          "5",
+          "6",
+          "3"
+        ],
+        "a": "5",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Auguste Escoffier | Alapmártások száma",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik tatár kán vezette a mongol hadjáratot Magyarország ellen 1241-ben?",
+        "o": [
+          "Dzsingisz kán",
+          "Kubilaj kán",
+          "Batu kán",
+          "Ögödej kán"
+        ],
+        "a": "Batu kán",
+        "l": "Könnyű",
+        "theme": "magyar történelem",
+        "keywords": "Batu kán | tatárjárás | 1241 | mongol",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik molekula feladata az aminosavak szállítása a riboszómákhoz a fehérjeszintézis során?",
+        "o": [
+          "m-RNS",
+          "t-RNS",
+          "r-RNS",
+          "DNS"
+        ],
+        "a": "t-RNS",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Transzfer RNS | fehérjeszintézis",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki az alkotója a Frankenstein című regénynek, amely a gótikus horror egyik alapműve?",
+        "o": [
+          "Mary Shelley",
+          "Bram Stoker",
+          "Edgar Allan Poe",
+          "Oscar Wilde"
+        ],
+        "a": "Mary Shelley",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "Frankenstein | Szerző",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívták Agamemnón leányát, akit az apa feláldozott Artemisznek, hogy a görög sereg kedvező szelet kapjon Trója felé?",
+        "o": [
+          "Élektra",
+          "Klütaimnésztra",
+          "Iphigeneia",
+          "Kasszandra"
+        ],
+        "a": "Iphigeneia",
+        "l": "Nehéz",
+        "theme": "mitológia",
+        "keywords": "Iphigeneia | Áldozat Auliszban",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik vegyület okozza az izomlázat a túlzott megterhelés után?",
+        "o": [
+          "Tejsav",
+          "Húgysav",
+          "Glikogén",
+          "Adrenalin"
+        ],
+        "a": "Tejsav",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Izom | tejsav felhalmozódás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik görög istennő tiszteletére épült az athéni Akropoliszon a Parthenón?",
+        "o": [
+          "Athéné",
+          "Aphrodité",
+          "Héra",
+          "Artemisz"
+        ],
+        "a": "Athéné",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Parthenón | Athéné temploma",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik afrikai ország volt az egyetlen, amely sikeresen megverte az európai gyarmatosítókat az adwai csatában 1896-ban?",
+        "o": [
+          "Szudán",
+          "Etiópia",
+          "Szomália",
+          "Nigéria"
+        ],
+        "a": "Etiópia",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "Etiópia | Adwa | 1896 | gyarmatosítás | függetlenség",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mit jelent az 'oxigén' szó szerinti fordítása?",
+        "o": [
+          "Éltető gáz",
+          "Sav-képző",
+          "Égést segítő",
+          "Könnyű levegő"
+        ],
+        "a": "Sav-képző",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Oxigén | Etimológia",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy nevezzük azt az állapotot, amikor a Hold a Föld árnyékába kerül?",
+        "o": [
+          "Napfogyatkozás",
+          "Holdfogyatkozás",
+          "Holdtölte",
+          "Szuperhold"
+        ],
+        "a": "Holdfogyatkozás",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Holdfogyatkozás | Árnyék",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi Kolumbia fővárosa?",
+        "o": [
+          "Medellín",
+          "Cali",
+          "Barranquilla",
+          "Bogotá"
+        ],
+        "a": "Bogotá",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Kolumbia | Bogotá",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki találta fel az ingaórát?",
+        "o": [
+          "Isaac Newton",
+          "Christiaan Huygens",
+          "Johannes Kepler",
+          "Galileo Galilei"
+        ],
+        "a": "Christiaan Huygens",
+        "l": "Nehéz",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Christiaan Huygens | Ingaóra",
+        "last_used": "2026-04-07 08:33:38"
+      }
+    ],
+    "14": [
+      {
+        "q": "Melyik vitamin vizes oldatát nevezzük aszkorbinsavnak?",
+        "o": [
+          "C-vitamin",
+          "B6-vitamin",
+          "E-vitamin",
+          "D-vitamin"
+        ],
+        "a": "C-vitamin",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "C-vitamin | kémiai elnevezés",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik folyó vize teszi sebezhetetlenné azt, aki megmártózik benne, de egyben az alvilág legszentebb esküjének tanúja is?",
+        "o": [
+          "Léthé",
+          "Acherón",
+          "Styx",
+          "Phlegethón"
+        ],
+        "a": "Styx",
+        "l": "Nehéz",
+        "theme": "mitológia",
+        "keywords": "Styx | Alvilági folyó",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik Arany János-ballada szól egy gyilkos asszonyról, akit saját lelkiismerete pusztít el?",
+        "o": [
+          "A walesi bárdok",
+          "Ágnes asszony",
+          "Szondi két apródja",
+          "V. László"
+        ],
+        "a": "Ágnes asszony",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Arany János | Ágnes asszony cselekménye",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Honnan ered a 'propaganda' kifejezés?",
+        "o": [
+          "A katolikus egyháztól",
+          "A náci Németországból",
+          "A görög szofistáktól",
+          "A római szenátustól"
+        ],
+        "a": "A katolikus egyháztól",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Propaganda | Etimológia",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik évben szüntette meg a magyar országgyűlés hivatalosan a feudális nemesi kiváltságokat?",
+        "o": [
+          "1848 március",
+          "1848 április",
+          "1849 január",
+          "1867"
+        ],
+        "a": "1848 április",
+        "l": "Közepes",
+        "theme": "magyar történelem",
+        "keywords": "1848 | áprilisi törvények | nemesi kiváltságok | jobbágyfelszabadítás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik irányban nyugszik le a Nap a Földön?",
+        "o": [
+          "Észak",
+          "Dél",
+          "Kelet",
+          "Nyugat"
+        ],
+        "a": "Nyugat",
+        "l": "Könnyű",
+        "theme": "csillagászat",
+        "keywords": "Nap | Napnyugta",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi a konyhasó tudományos neve?",
+        "o": [
+          "Nátrium-karbonát",
+          "Kálium-klorid",
+          "Nátrium-klorid",
+          "Kalcium-szulfát"
+        ],
+        "a": "Nátrium-klorid",
+        "l": "Könnyű",
+        "theme": "kémia",
+        "keywords": "Nátrium-klorid | Konyhasó",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Milyen technológiai újítás tette félelmetessé a hettiták hadseregét?",
+        "o": [
+          "Vasfegyverek",
+          "Puskapor",
+          "Katapult",
+          "Hosszúíj"
+        ],
+        "a": "Vasfegyverek",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Hettiták | Vaskor kezdete",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik regényben szerepel Elizabeth Bennet és Mr. Darcy karaktere?",
+        "o": [
+          "Büszkeség és balítélet",
+          "Jane Eyre",
+          "Üvöltő szelek",
+          "Értelem és érzelem"
+        ],
+        "a": "Büszkeség és balítélet",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "Jane Austen | Karakterek",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik volt az első jelentős technikai esemény?",
+        "o": [
+          "A Titanic katasztrófája",
+          "A Wright fivérek első repülése",
+          "A Ford T-modell gyártásának kezdete",
+          "A mozgókép első nyilvános vetítése"
+        ],
+        "a": "A mozgókép első nyilvános vetítése",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Technika | Világtörténelem",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogyan nevezzük a fák évgyűrűi alapján történő kormeghatározást és éghajlatkutatást?",
+        "o": [
+          "Geokronológia",
+          "Dendrokronológia",
+          "Paleontológia",
+          "Entomológia"
+        ],
+        "a": "Dendrokronológia",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Dendrokronológia | kormeghatározás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik olasz város és környéke rendelkezik kizárólagos eredetvédelemmel a tradicionális balzsamecet (Aceto Balsamico Tradizionale) gyártására?",
+        "o": [
+          "Parma",
+          "Modena",
+          "Firenze",
+          "Nápoly"
+        ],
+        "a": "Modena",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Modena | Balzsamecet eredete",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívták a 80-as évek népszerű 'űrlényét', aki egy amerikai kertvárosi családhoz költözött?",
+        "o": [
+          "Alf",
+          "E.T.",
+          "Mork",
+          "Stitch"
+        ],
+        "a": "Alf",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Alf | Gordon Shumway",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik angol király írta alá a Magna Charta Libertatumot 1215-ben?",
+        "o": [
+          "Földnélküli János",
+          "Oroszlánszívű Richárd",
+          "VIII. Henrik",
+          "I. Edward"
+        ],
+        "a": "Földnélküli János",
+        "l": "Közepes",
+        "theme": "világtörténelem",
+        "keywords": "Magna Charta | Aláírás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi Panama fővárosa?",
+        "o": [
+          "Colón",
+          "David",
+          "Panamaváros",
+          "La Chorrera"
+        ],
+        "a": "Panamaváros",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Panama | Panamaváros",
+        "last_used": "2026-04-07 08:33:38"
+      }
+    ],
+    "16": [
+      {
+        "q": "Mi a közös eredete a 'pohár' és a 'bor' szavunknak?",
+        "o": [
+          "Finnugor",
+          "Iráni",
+          "Török",
+          "Szláv"
+        ],
+        "a": "Iráni",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Iráni jövevényszavak | Vándorlás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hány százaléka az emberi testnek víz (átlagosan)?",
+        "o": [
+          "60-70%",
+          "40-50%",
+          "80-90%",
+          "20-30%"
+        ],
+        "a": "60-70%",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Hidratáció | test víztartalma",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki alkotta meg az első programozható számítógépet, a Z3-at?",
+        "o": [
+          "Alan Turing",
+          "John von Neumann",
+          "Konrad Zuse",
+          "Charles Babbage"
+        ],
+        "a": "Konrad Zuse",
+        "l": "Nehéz",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Konrad Zuse | Z3 számítógép",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi Uruguay fővárosa?",
+        "o": [
+          "Salto",
+          "Melo",
+          "Montevideo",
+          "Paysandú"
+        ],
+        "a": "Montevideo",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Uruguay | Montevideo",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik a legkeményebb természetes ásvány?",
+        "o": [
+          "Grafit",
+          "Kvarc",
+          "Gyémánt",
+          "Korund"
+        ],
+        "a": "Gyémánt",
+        "l": "Könnyű",
+        "theme": "kémia",
+        "keywords": "Gyémánt | Keménység",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi volt a neve a magyar televíziózás első interaktív számítógépes játékának (Dévényi Tiborral)?",
+        "o": [
+          "Zenebutik",
+          "Torpedó",
+          "Elektor Kalandor",
+          "Három kívánság"
+        ],
+        "a": "Elektor Kalandor",
+        "l": "Közepes",
+        "theme": "retro",
+        "keywords": "Elektor Kalandor | TV játék",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik marhafajta Tajima vérvonalából származik a híres és szigorúan ellenőrzött Kobe marha?",
+        "o": [
+          "Angus",
+          "Wagyu",
+          "Hereford",
+          "Limousin"
+        ],
+        "a": "Wagyu",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Wagyu | Kobe marha genetikája",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt az orosz uralkodónő, aki a 18. században jelentősen kiterjesztette az Orosz Birodalom határait?",
+        "o": [
+          "II. (Nagy) Katalin",
+          "I. Erzsébet",
+          "I. Anna",
+          "Viktória királynő"
+        ],
+        "a": "II. (Nagy) Katalin",
+        "l": "Közepes",
+        "theme": "világtörténelem",
+        "keywords": "Nagy Katalin | Orosz terjeszkedés",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki alakította Schneider urat a Hyppolit, a lakájban?",
+        "o": [
+          "Csortos Gyula",
+          "Kabos Gyula",
+          "Latabár Kálmán",
+          "Mály Gerő"
+        ],
+        "a": "Kabos Gyula",
+        "l": "Közepes",
+        "theme": "retro mozi",
+        "keywords": "Kabos Gyula | Hyppolit, a lakáj",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik Babits Mihály-regény szól egy tanár lelki válságáról?",
+        "o": [
+          "Halálfiai",
+          "Timár Virgil fia",
+          "Kártyavár",
+          "Az Isten keze"
+        ],
+        "a": "Timár Virgil fia",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Babits Mihály | Timár Virgil fia témája",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik esemény történt a legkorábban?",
+        "o": [
+          "A téli olimpia megrendezése Budapesten",
+          "Az első televíziós kvízműsor indulása",
+          "A berlini fal felépítése",
+          "Gagarin űrrepülése"
+        ],
+        "a": "A berlini fal felépítése",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "20. század | Történelmi mérföldkövek",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt a krétai Pasziphaé királyné és egy bika szerelmének gyümölcse, akit a labirintusba zártak?",
+        "o": [
+          "Minótaurosz",
+          "Androgeósz",
+          "Ikarosz",
+          "Talósz"
+        ],
+        "a": "Minótaurosz",
+        "l": "Nehéz",
+        "theme": "mitológia",
+        "keywords": "Minótaurosz | Származása",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik bolygóról érkezett a kisfiú Antoine de Saint-Exupéry híres regényében?",
+        "o": [
+          "B-612-es kisbolygó",
+          "Mars",
+          "Vénusz",
+          "C-112-es aszteroida"
+        ],
+        "a": "B-612-es kisbolygó",
+        "l": "Könnyű",
+        "theme": "irodalom",
+        "keywords": "A kis herceg | Származási hely",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik szervünk felelős az inzulin nevű hormon termeléséért?",
+        "o": [
+          "Máj",
+          "Vese",
+          "Lép",
+          "Hasnyálmirigy"
+        ],
+        "a": "Hasnyálmirigy",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Inzulin | hormontermelés",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Milyen színűnek látjuk a Mars felszínét a távolból?",
+        "o": [
+          "Kék",
+          "Zöld",
+          "Vörös",
+          "Sárga"
+        ],
+        "a": "Vörös",
+        "l": "Könnyű",
+        "theme": "csillagászat",
+        "keywords": "Mars | Vörös bolygó",
+        "last_used": "2026-04-07 08:33:38"
+      }
+    ],
+    "18": [
+      {
+        "q": "Melyik tudományág foglalkozik kifejezetten a gombák tanulmányozásával?",
+        "o": [
+          "Botanika",
+          "Zoológia",
+          "Mikológia",
+          "Ökológia"
+        ],
+        "a": "Mikológia",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Mikológia | gombatan",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Hogy hívják az északi mitológiában azt a helyet, ahol az emberek élnek, és amelyet a Jörmungandr kígyó ölel körbe?",
+        "o": [
+          "Asgard",
+          "Jötunheim",
+          "Midgard",
+          "Alfheim"
+        ],
+        "a": "Midgard",
+        "l": "Nehéz",
+        "theme": "mitológia",
+        "keywords": "Midgard | Emberek világa",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi Venezuela fővárosa?",
+        "o": [
+          "Maracaibo",
+          "Valencia",
+          "Caracas",
+          "Barquisimeto"
+        ],
+        "a": "Caracas",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Venezuela | Caracas",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi volt a neve Don Quijote hűséges fegyverhordozójának Cervantes regényében?",
+        "o": [
+          "Sancho Panza",
+          "Dulcinea",
+          "Rocinante",
+          "Pascual"
+        ],
+        "a": "Sancho Panza",
+        "l": "Könnyű",
+        "theme": "irodalom",
+        "keywords": "Don Quijote | Fegyverhordozó",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt az Egyesült Államok első elnöke?",
+        "o": [
+          "George Washington",
+          "Thomas Jefferson",
+          "Abraham Lincoln",
+          "Benjamin Franklin"
+        ],
+        "a": "George Washington",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "George Washington | Elnökség",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki énekelte az 1983-as 'Girls Just Want to Have Fun' című slágert?",
+        "o": [
+          "Cyndi Lauper",
+          "Madonna",
+          "Whitney Houston",
+          "Bonnie Tyler"
+        ],
+        "a": "Cyndi Lauper",
+        "l": "Közepes",
+        "theme": "retro",
+        "keywords": "Cyndi Lauper | 80-as évek zene",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik szervünket károsítja legközvetlenebbül a túlzott alkoholfogyasztás?",
+        "o": [
+          "Máj",
+          "Lép",
+          "Vese",
+          "Tüdő"
+        ],
+        "a": "Máj",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Máj | alkoholos károsodás",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik magyar feltaláló nevéhez fűződik a dinamó-elv felfedezése (még ha nem is ő szabadalmaztatta először)?",
+        "o": [
+          "Jedlik Ányos",
+          "Eötvös Loránd",
+          "Bláthy Ottó",
+          "Zipernowsky Károly"
+        ],
+        "a": "Jedlik Ányos",
+        "l": "Közepes",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Jedlik Ányos | Dinamó-elv",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi készült el hamarabb?",
+        "o": [
+          "Madách Imre: Az ember tragédiája",
+          "A pesti lánchíd",
+          "Az Egri csillagok regény",
+          "A Szózat"
+        ],
+        "a": "A Szózat",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "Irodalom és Építészet | Magyar klasszikusok",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki volt az a makedón uralkodó, aki hatalmas birodalmat épített ki Indiáig?",
+        "o": [
+          "Nagy Sándor",
+          "II. Philipposz",
+          "Periklész",
+          "Miltiadész"
+        ],
+        "a": "Nagy Sándor",
+        "l": "Könnyű",
+        "theme": "ókor",
+        "keywords": "Nagy Sándor | Hódítások",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik égitest típusba tartozik a Nap élete végén, miután vörös óriássá vált?",
+        "o": [
+          "Fekete lyuk",
+          "Neutroncsillag",
+          "Fehér törpe",
+          "Szupernóva"
+        ],
+        "a": "Fehér törpe",
+        "l": "Nehéz",
+        "theme": "csillagászat",
+        "keywords": "Nap | csillagfejlődés",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik nyelvből származik a 'kakaó' és a 'csokoládé'?",
+        "o": [
+          "Spanyol",
+          "Azték",
+          "Maja",
+          "Portugál"
+        ],
+        "a": "Azték",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Csokoládé | Azték eredet",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Ki játszotta el Baradlay Richárdot A kőszívű ember fiai című filmben?",
+        "o": [
+          "Mécs Károly",
+          "Bitskey Tibor",
+          "Tordy Géza",
+          "Koncz Gábor"
+        ],
+        "a": "Mécs Károly",
+        "l": "Közepes",
+        "theme": "retro mozi",
+        "keywords": "Mécs Károly | A kőszívű ember fiai",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Mi a klasszikus francia mirepoix (zöldségalap) összetevőinek hagyományos súlyaránya?",
+        "o": [
+          "1 egység hagyma, 1 egység répa, 1 egység zeller",
+          "2 egység hagyma, 1 egység sárgarépa, 1 egység zeller",
+          "2 egység sárgarépa, 1 egység hagyma, 1 egység zeller",
+          "3 egység hagyma, 2 egység sárgarépa, 1 egység zeller"
+        ],
+        "a": "2 egység hagyma, 1 egység sárgarépa, 1 egység zeller",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Mirepoix | Összetevők aránya",
+        "last_used": "2026-04-07 08:33:38"
+      },
+      {
+        "q": "Melyik városban játszódik Krúdy Gyula legtöbb Szindbád-novellája?",
+        "o": [
+          "Debrecen",
+          "Pozsony",
+          "Pest",
+          "Nyíregyháza"
+        ],
+        "a": "Pest",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Krúdy Gyula | Szindbád helyszíne",
+        "last_used": "2026-04-07 08:33:38"
+      }
+    ]
+  }
+}
