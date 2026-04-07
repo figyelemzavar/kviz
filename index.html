@@ -21,7 +21,6 @@
     <meta property="og:image:height" content="630">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
     <style>
         :root {
@@ -226,8 +225,6 @@
     let fiftyUsedInCurrentQ = false; 
     const totalQ = 15;
     
-    const colorPrimaryVar = "#4f46e9"; 
-
     const diffColors = { "Könnyű": "#10b981", "Közepes": "#f59e0b", "Nehéz": "#ef4444" };
     const slots = [8, 10, 12, 14, 16, 18];
     
@@ -246,33 +243,6 @@
         return now;
     }
 
-    // UNIVERZÁLIS DEKÓDOLÓ FÜGGVÉNY
-    function decryptData(encryptedStr, keyStr) {
-        // A kulcsot pontosan 16 karakteresre kell hozni (szóközökkel kiegészítve), ahogy a Python teszi
-        const paddedKey = keyStr.padEnd(16, ' ').slice(0, 16);
-        const key = CryptoJS.enc.Utf8.parse(paddedKey);
-        
-        // Megpróbáljuk a két leggyakoribb módot (ECB és alapértelmezett)
-        try {
-            // 1. Próbálkozás: Nyers ECB mód (Python gyakran ezt használja egyszerűbb scripteknél)
-            const decrypted = CryptoJS.AES.decrypt(encryptedStr, key, {
-                mode: CryptoJS.mode.ECB,
-                padding: CryptoJS.pad.Pkcs7
-            });
-            const result = decrypted.toString(CryptoJS.enc.Utf8);
-            if (result && result.startsWith('{')) return result;
-        } catch(e) {}
-
-        try {
-            // 2. Próbálkozás: Alapértelmezett CryptoJS mód
-            const decrypted = CryptoJS.AES.decrypt(encryptedStr, keyStr);
-            const result = decrypted.toString(CryptoJS.enc.Utf8);
-            if (result && result.startsWith('{')) return result;
-        } catch(e) {}
-        
-        return null;
-    }
-
     async function loadQuiz() {
         const btn = document.getElementById('start-btn');
         const sessionLabel = document.getElementById('quiz-session-name');
@@ -287,12 +257,7 @@
             const response = await fetch(fileName + '?v=' + Date.now());
             if (!response.ok) throw new Error("Fájl nem található");
             
-            const encrypted = await response.text();
-            const decryptedStr = decryptData(encrypted.trim(), colorPrimaryVar);
-            
-            if (!decryptedStr) throw new Error("Sikertelen dekódolás");
-            
-            const dailyData = JSON.parse(decryptedStr);
+            const dailyData = await response.json();
             
             let activeSlot = "";
             let nextSlotTime = "";
@@ -489,12 +454,11 @@
         const dateStr = `${effD.getFullYear()}-${String(effD.getMonth()+1).padStart(2,'0')}-${String(effD.getDate()).padStart(2,'0')}`;
         
         fetch(`data_${dateStr}.json?v=` + Date.now())
-            .then(r => r.text()).then(enc => {
-                const decryptedStr = decryptData(enc.trim(), colorPrimaryVar);
-                if(decryptedStr) {
-                    checkMissedSlots(JSON.parse(decryptedStr), dateStr, currentSlotKey.split('_').pop());
-                }
-            });
+            .then(r => r.json())
+            .then(dailyData => {
+                checkMissedSlots(dailyData, dateStr, currentSlotKey.split('_').pop());
+            })
+            .catch(e => console.error("Hiba a betöltéskor", e));
     }
 
     loadQuiz();
