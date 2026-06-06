@@ -1,0 +1,1276 @@
+{
+  "slots": {
+    "08": [
+      {
+        "q": "Melyik hormon szintje emelkedik meg hirtelen stresszhelyzetben ('üss vagy fuss')?",
+        "o": [
+          "Adrenalin",
+          "Inzulin",
+          "Ösztrogén",
+          "Tesztoszteron"
+        ],
+        "a": "Adrenalin",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Adrenalin | stresszreakció",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki az egyiptomi mitológia krokodilfejű istene, a Nílus ura?",
+        "o": [
+          "Szobek",
+          "Hnum",
+          "Ámon",
+          "Thot"
+        ],
+        "a": "Szobek",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Szobek | Krokodilisten",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik ókori csatában állított fel Leonidász 300 spártaival hősi védelmet a perzsák ellen?",
+        "o": [
+          "Maratóni csata",
+          "Thermopülai csata",
+          "Szalamiszi csata",
+          "Plataiái csata"
+        ],
+        "a": "Thermopülai csata",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Leonidász | Thermopülai | 300 spártai | perzsák",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívják a lúgos oldatok kémhatását jelző anyagot?",
+        "o": [
+          "Indikátor",
+          "Katalizátor",
+          "Szűrőpapír",
+          "Reagens"
+        ],
+        "a": "Indikátor",
+        "l": "Könnyű",
+        "theme": "kémia",
+        "keywords": "Indikátor | pH mérés",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a 'tanul' szó finnugor töve?",
+        "o": [
+          "Tanu",
+          "Tan",
+          "Tud",
+          "Ta"
+        ],
+        "a": "Tan",
+        "l": "Nehéz",
+        "theme": "nyelv-etimológia",
+        "keywords": "Tanul | Szóelemzés",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik értékes fűszerként használt gombafaj él a tölgyfák gyökereivel szimbiózisban, a föld alatt?",
+        "o": [
+          "Szarvasgomba",
+          "Vargánya",
+          "Szalmabáb",
+          "Champignon"
+        ],
+        "a": "Szarvasgomba",
+        "l": "Közepes",
+        "theme": "gasztronómia",
+        "keywords": "Szarvasgomba | Delikátesz",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki volt a reformkor híres „árvizi hajósa”, aki az 1838-as pesti árvíz idején több száz embert mentett meg?",
+        "o": [
+          "Széchenyi István",
+          "Deák Ferenc",
+          "Batthyány Lajos",
+          "Wesselényi Miklós"
+        ],
+        "a": "Wesselényi Miklós",
+        "l": "Nehéz",
+        "theme": "magyar történelem",
+        "keywords": "Wesselényi Miklós | pesti árvíz",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki volt Petőfi Sándor felesége?",
+        "o": [
+          "Laborfalvi Róza",
+          "Szendrey Júlia",
+          "Déryné Széppataki Róza",
+          "Vachott Kornélia"
+        ],
+        "a": "Szendrey Júlia",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Petőfi Sándor | Szendrey Júlia házassága",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik volt az első tömegesen gyártott magyar autóbusz?",
+        "o": [
+          "Ikarus 31",
+          "Ikarus 55 (Faros)",
+          "Ikarus 260",
+          "Ikarus 620"
+        ],
+        "a": "Ikarus 31",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Jármű | Ikarus",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik egyezmény osztotta fel Európát szovjet és nyugati befolyási övezetekre 1945-ben?",
+        "o": [
+          "Potsdami egyezmény",
+          "Jaltai egyezmény",
+          "Teheráni egyezmény",
+          "Moszkvai egyezmény"
+        ],
+        "a": "Jaltai egyezmény",
+        "l": "Közepes",
+        "theme": "világtörténelem",
+        "keywords": "Jalta | 1945 | befolyási övezetek | Churchill | Roosevelt | Sztálin",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívják a DNS építőköveit?",
+        "o": [
+          "Aminosavak",
+          "Nukleotidok",
+          "Lipidek",
+          "Glükózmolekulák"
+        ],
+        "a": "Nukleotidok",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "DNS | Molekuláris biológia",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki a szerzője a 'Halálfiai' című családregénynek, amely a dzsentri réteg pusztulását mutatja be?",
+        "o": [
+          "Móricz Zsigmond",
+          "Babits Mihály",
+          "Jókai Mór",
+          "Hunyady Sándor"
+        ],
+        "a": "Babits Mihály",
+        "l": "Nehéz",
+        "theme": "irodalom",
+        "keywords": "Babits Mihály | regény",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik csillagászati jelenség bizonyítja a Föld Nap körüli keringését?",
+        "o": [
+          "A nappalok és éjszakák váltakozása",
+          "A csillagok évi parallaktikus elmozdulása",
+          "A Föld lapultsága a sarkoknál",
+          "A Coriolis-erő"
+        ],
+        "a": "A csillagok évi parallaktikus elmozdulása",
+        "l": "Közepes",
+        "theme": "földrajz",
+        "keywords": "Földmozgások | keringés bizonyítéka",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a neve az első mesterséges holdnak, amelyet 1957-ben lőttek fel?",
+        "o": [
+          "Explorer 1",
+          "Sputnik 1",
+          "Vostok 1",
+          "Apollo 11"
+        ],
+        "a": "Sputnik 1",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Sputnik 1 | Űrkorszak kezdete",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik volt az az ikonikus tárgy, amit a ceruzával kellett 'visszatekerni', ha összegabalyodott?",
+        "o": [
+          "Magnetofon kazetta",
+          "Filmtekercs",
+          "Spárga",
+          "Walkman szíj"
+        ],
+        "a": "Magnetofon kazetta",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Magnókazetta | Retro technika",
+        "last_used": "2026-06-06 03:26:52"
+      }
+    ],
+    "10": [
+      {
+        "q": "Hogy hívják a görög mitológiában az egyszemű óriásokat?",
+        "o": [
+          "Küklopszok",
+          "Titánok",
+          "Gigászok",
+          "Hekatonkheirek"
+        ],
+        "a": "Küklopszok",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Küklopsz | Egyszemű óriás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik gyógynövény olaját használják gyakran párologtatásra légúti tisztítás céljából?",
+        "o": [
+          "Eukaliptusz",
+          "Levendula",
+          "Körömvirág",
+          "Árnika"
+        ],
+        "a": "Eukaliptusz",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Eukaliptusz | légút tisztító hatás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik ókori görög városban születtek a leghíresebb sztoikus filozófusok?",
+        "o": [
+          "Athén",
+          "Kition",
+          "Milétosz",
+          "Epheszosz"
+        ],
+        "a": "Kition",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "sztoicizmus | Zénón | Kition | görög filozófia",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Milyen halmazállapotú a higany szobahőmérsékleten?",
+        "o": [
+          "Szilárd",
+          "Légnemű",
+          "Folyékony",
+          "Plazma"
+        ],
+        "a": "Folyékony",
+        "l": "Könnyű",
+        "theme": "kémia",
+        "keywords": "Higany | Halmazállapot",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a Naprendszer fő aszteroida-övének helye?",
+        "o": [
+          "Föld és Mars között",
+          "Mars és Jupiter között",
+          "Jupiter és Szaturnusz között",
+          "Neptunusz után"
+        ],
+        "a": "Mars és Jupiter között",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Aszteroida-öv | Elhelyezkedés",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívták a 80-as évek népszerű német duóját, akik a 'You're My Heart, You're My Soul'-t énekelték?",
+        "o": [
+          "Modern Talking",
+          "Bad Boys Blue",
+          "Pet Shop Boys",
+          "Erasure"
+        ],
+        "a": "Modern Talking",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Modern Talking | Disco",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hány ujja van a pandának (a 'hamis' hüvelykujjal együtt)?",
+        "o": [
+          "5",
+          "6",
+          "4",
+          "7"
+        ],
+        "a": "6",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Óriáspanda | Anatómia",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik kutató fedezte fel véletlenül az X-sugarakat (röntgensugárzás)?",
+        "o": [
+          "Wilhelm Conrad Röntgen",
+          "Henri Becquerel",
+          "Ernest Rutherford",
+          "Max von Laue"
+        ],
+        "a": "Wilhelm Conrad Röntgen",
+        "l": "Közepes",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Wilhelm Conrad Röntgen | X-sugárzás felfedezése",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi okozza a légnyomáskülönbséget a sarkok és az egyenlítő között globális szinten?",
+        "o": [
+          "A Föld mágneses tere",
+          "A napsugarak eltérő beesési szöge",
+          "A tengeráramlások iránya",
+          "A Hold gravitációja"
+        ],
+        "a": "A napsugarak eltérő beesési szöge",
+        "l": "Nehéz",
+        "theme": "földrajz",
+        "keywords": "Meteorológia | globális légkörzés",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki a főszereplője Dosztojevszkij 'Bűn és bűnhődés' című regényének, aki megöl egy uzsorásnőt?",
+        "o": [
+          "Raszkolnyikov",
+          "Misin herceg",
+          "Ivan Karamazov",
+          "Levin"
+        ],
+        "a": "Raszkolnyikov",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "Bűn és bűnhődés | Főszereplő",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki írta „A Pál utcai fiúk” című regényt?",
+        "o": [
+          "Kosztolányi Dezső",
+          "Molnár Ferenc",
+          "Móricz Zsigmond",
+          "Krúdy Gyula"
+        ],
+        "a": "Molnár Ferenc",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Molnár Ferenc | A Pál utcai fiúk szerzősége",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik magyarországi népszámlálás volt a legelső?",
+        "o": [
+          "II. József alatti népszámlálás",
+          "Az 1867-es népszámlálás",
+          "Az 1900-as népszámlálás",
+          "Az 1949-es népszámlálás"
+        ],
+        "a": "II. József alatti népszámlálás",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Történelem | Statisztika",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi Haiti fővárosa?",
+        "o": [
+          "Cap-Haïtien",
+          "Port-au-Prince",
+          "Les Cayes",
+          "Gonaïves"
+        ],
+        "a": "Port-au-Prince",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Haiti | Port-au-Prince",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi volt a Meidzsi-restauráció jelentősége Japán történelmében?",
+        "o": [
+          "A sógunátus és az elszigeteltség megerősítése",
+          "A feudális rendszer felszámolása és a gyorsított nyugati típusú modernizáció",
+          "A császárság megszüntetése és köztársaság kikiáltása",
+          "Japán kínai gyarmattá válása"
+        ],
+        "a": "A feudális rendszer felszámolása és a gyorsított nyugati típusú modernizáció",
+        "l": "Nehéz",
+        "theme": "világtörténelem",
+        "keywords": "Japán | modernizáció",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívták azt az 1868-as törvényt, amely rendezte a népiskolai oktatást Magyarországon?",
+        "o": [
+          "Lex Apponyi",
+          "Ratio Educationis",
+          "Eötvös-féle népiskolai törvény",
+          "Entwurf"
+        ],
+        "a": "Eötvös-féle népiskolai törvény",
+        "l": "Nehéz",
+        "theme": "magyar történelem",
+        "keywords": "Eötvös József | népiskolai törvény",
+        "last_used": "2026-06-06 03:26:52"
+      }
+    ],
+    "12": [
+      {
+        "q": "Hányas a rendszáma a hidrogénnek?",
+        "o": [
+          "0",
+          "1",
+          "2",
+          "10"
+        ],
+        "a": "1",
+        "l": "Közepes",
+        "theme": "kémia",
+        "keywords": "Hidrogén | Rendszám",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik híres magyar festőművész élt legkorábban?",
+        "o": [
+          "Csontváry Kosztka Tivadar",
+          "Munkácsy Mihály",
+          "Szinyei Merse Pál",
+          "Barabás Miklós"
+        ],
+        "a": "Barabás Miklós",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Művészet | Festészet",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi Irak fővárosa?",
+        "o": [
+          "Baszra",
+          "Moszul",
+          "Bagdad",
+          "Erbíl"
+        ],
+        "a": "Bagdad",
+        "l": "Könnyű",
+        "theme": "ország-város",
+        "keywords": "Irak | Bagdad",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik gáz koncentrációjának növekedése járul hozzá leginkább az üvegházhatáshoz a vízgőz után?",
+        "o": [
+          "Argon",
+          "Szén-dioxid",
+          "Nitrogén",
+          "Hélium"
+        ],
+        "a": "Szén-dioxid",
+        "l": "Nehéz",
+        "theme": "földrajz",
+        "keywords": "Környezetföldrajz | klímaváltozás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Milyen eredetű a 'sonka' szavunk?",
+        "o": [
+          "Szláv",
+          "Német",
+          "Francia",
+          "Olasz"
+        ],
+        "a": "Német",
+        "l": "Könnyű",
+        "theme": "nyelv-etimológia",
+        "keywords": "Sonka | német átvétel",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik ókori görög drámaíró írta az Oidipusz királyt?",
+        "o": [
+          "Euripidész",
+          "Arisztophanész",
+          "Aiszkhülosz",
+          "Szophoklész"
+        ],
+        "a": "Szophoklész",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Szophoklész | Oidipusz | görög dráma | tragédia",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki volt a római mitológiában Romulus és Remus apja?",
+        "o": [
+          "Jupiter",
+          "Mars",
+          "Neptunus",
+          "Vulcanus"
+        ],
+        "a": "Mars",
+        "l": "Közepes",
+        "theme": "mitológia",
+        "keywords": "Mars | Róma alapítása",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik népszerű üdítőitalt kezdték el gyártani a kőbányai sörgyárban 1973-ban, a Coca-Cola riválisaként?",
+        "o": [
+          "Márka",
+          "Traubisoda",
+          "Sztár",
+          "Bambi"
+        ],
+        "a": "Sztár",
+        "l": "Nehéz",
+        "theme": "retro",
+        "keywords": "Sztár üdítő | kőbányai gyártás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki írta a világirodalom egyik leghíresebb szerelmi tragédiáját, a Romeo és Júliát?",
+        "o": [
+          "William Shakespeare",
+          "Dante Alighieri",
+          "Victor Hugo",
+          "Molière"
+        ],
+        "a": "William Shakespeare",
+        "l": "Könnyű",
+        "theme": "irodalom",
+        "keywords": "William Shakespeare | Romeo és Júlia szerzője",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki volt az Egyesült Királyság miniszterelnöke a második világháború nagy része alatt?",
+        "o": [
+          "Winston Churchill",
+          "Neville Chamberlain",
+          "Margaret Thatcher",
+          "Clement Attlee"
+        ],
+        "a": "Winston Churchill",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "Winston Churchill | Miniszterelnökség",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Milyen típusú vérsejtek felelősek az oxigén szállításáért?",
+        "o": [
+          "Fehérvérsejtek",
+          "Vörösvértestek",
+          "Vérlemezkék",
+          "Plazmasejtek"
+        ],
+        "a": "Vörösvértestek",
+        "l": "Közepes",
+        "theme": "természet-biológia",
+        "keywords": "Vörösvértest | Oxigénszállítás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik magyar fejedelem nevéhez fűződik az 1606-os bécsi béke, amely biztosította a rendi jogokat és a vallásszabadságot?",
+        "o": [
+          "Bethlen Gábor",
+          "II. Rákóczi Ferenc",
+          "Bocskai István",
+          "Thököly Imre"
+        ],
+        "a": "Bocskai István",
+        "l": "Nehéz",
+        "theme": "magyar történelem",
+        "keywords": "Bocskai István | bécsi béke",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Milyen alapanyagot használnak a klasszikus erőleves (consommé) derítéséhez, hogy kristálytiszta legyen?",
+        "o": [
+          "Zselatin",
+          "Tojásfehérje",
+          "Keményítő",
+          "Tejszín"
+        ],
+        "a": "Tojásfehérje",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Consommé | Derítési eljárás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki dolgozta ki az evolúció elméletét 'A fajok eredete' című művében?",
+        "o": [
+          "Gregor Mendel",
+          "Jean-Baptiste Lamarck",
+          "Charles Darwin",
+          "Thomas Huxley"
+        ],
+        "a": "Charles Darwin",
+        "l": "Könnyű",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Charles Darwin | Evolúció elmélete",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik Móricz Zsigmond-novella szól egy szegény parasztcsalád reményvesztettségéről?",
+        "o": [
+          "Hét krajcár",
+          "Barbárok",
+          "Tragédia",
+          "Az Isten háta mögött"
+        ],
+        "a": "Hét krajcár",
+        "l": "Közepes",
+        "theme": "magyar irodalom",
+        "keywords": "Móricz Zsigmond | Hét krajcár témája",
+        "last_used": "2026-06-06 03:26:52"
+      }
+    ],
+    "14": [
+      {
+        "q": "Hogy hívják az olasz rizses húst/zöldséget, amely krémes állagú?",
+        "o": [
+          "Paella",
+          "Risotto",
+          "Piláf",
+          "Biryani"
+        ],
+        "a": "Risotto",
+        "l": "Könnyű",
+        "theme": "gasztronómia",
+        "keywords": "Risotto | Olasz konyha",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik ókori görög városállam volt az első, ahol bevezették az érmés pénzrendszert Európában?",
+        "o": [
+          "Athén",
+          "Spárta",
+          "Korinthosz",
+          "Lüdia"
+        ],
+        "a": "Lüdia",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "érmés pénz | Lüdia | Kroiszosz | kereskedelem",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogyan függ össze a 19. századi európai rasszizmus a gyarmatosítással?",
+        "o": [
+          "A tudományos felfedezések egyértelműen cáfolták",
+          "A hódítások és a kizsákmányolás morális igazolására használták fel az 'alsóbbrendűség' elméletét",
+          "A gyarmatokról érkező bevándorlás okozta",
+          "Kizárólag a vallási ellentétekből fakadt"
+        ],
+        "a": "A hódítások és a kizsákmányolás morális igazolására használták fel az 'alsóbbrendűség' elméletét",
+        "l": "Nehéz",
+        "theme": "világtörténelem",
+        "keywords": "Imperializmus | rasszizmus",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik földtörténeti időszakban zajlott a kaledóniai hegységképződés?",
+        "o": [
+          "Prekambrium",
+          "Óidő",
+          "Középidő",
+          "Újidő"
+        ],
+        "a": "Óidő",
+        "l": "Nehéz",
+        "theme": "földrajz",
+        "keywords": "Geológia | hegységképződési ciklusok",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívjuk a világűr azon tartományát, ahol a víz folyékony maradhat egy bolygón?",
+        "o": [
+          "Oort-felhő",
+          "Lakható övezet",
+          "Kuiper-öv",
+          "Eseményhorizont"
+        ],
+        "a": "Lakható övezet",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Lakható övezet | Élet feltételei",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik felfedező érte el először a Déli-sarkot 1911-ben?",
+        "o": [
+          "Roald Amundsen",
+          "Robert Falcon Scott",
+          "Ernest Shackleton",
+          "Richard Byrd"
+        ],
+        "a": "Roald Amundsen",
+        "l": "Közepes",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Roald Amundsen | Déli-sark meghódítása",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki a görög mitológiában a tengerek ura, akinek jelképe a háromágú szigony?",
+        "o": [
+          "Tritón",
+          "Néreusz",
+          "Poszeidón",
+          "Okeanosz"
+        ],
+        "a": "Poszeidón",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Poszeidón | Tengerek istene",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a neve az állatok téli, nyugalmi állapotának?",
+        "o": [
+          "Hibernáció",
+          "Migráció",
+          "Mutáció",
+          "Szelekció"
+        ],
+        "a": "Hibernáció",
+        "l": "Könnyű",
+        "theme": "természet-biológia",
+        "keywords": "Téli álom | Hibernáció",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi Egyiptom fővárosa?",
+        "o": [
+          "Alexandria",
+          "Gíza",
+          "Kairó",
+          "Luxor"
+        ],
+        "a": "Kairó",
+        "l": "Könnyű",
+        "theme": "ország-város",
+        "keywords": "Egyiptom | Kairó",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik törvény biztosította a nemesség számára az ellenállási jogot (jus resistendi) egészen 1687-ig?",
+        "o": [
+          "Diploma Leopoldinum",
+          "Pragmatica Sanctio",
+          "Aranybulla 31. cikkelye",
+          "Vérszerződés"
+        ],
+        "a": "Aranybulla 31. cikkelye",
+        "l": "Nehéz",
+        "theme": "magyar történelem",
+        "keywords": "Rendi alkotmány | ellenállási jog",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik Illyés Gyula-mű szól a pusztai szegénységről szociografikus hangvétellel?",
+        "o": [
+          "Kora tavasz",
+          "Puszták népe",
+          "Hunok Párisban",
+          "Egy meg egy"
+        ],
+        "a": "Puszták népe",
+        "l": "Közepes",
+        "theme": "magyar irodalom",
+        "keywords": "Illyés Gyula | Puszták népe műfaja",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik szerves sav adja a hangyacsípés égető érzését?",
+        "o": [
+          "Ecetsav",
+          "Hangyasav",
+          "Tejsav",
+          "Vajsav"
+        ],
+        "a": "Hangyasav",
+        "l": "Nehéz",
+        "theme": "kémia",
+        "keywords": "Hangyasav | Szerves savak",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi volt előbb a magyar televíziózásban?",
+        "o": [
+          "Az első színes adás",
+          "Az első esti mese",
+          "A Delta című műsor indulása",
+          "A TV Híradó első adása"
+        ],
+        "a": "A TV Híradó első adása",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Televízió | Média",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik Hemingway-regény játszódik a spanyol polgárháború idején?",
+        "o": [
+          "A nap is felkel",
+          "Búcsú a fegyverektől",
+          "Akiért a harang szól",
+          "Az öreg halász és a tenger"
+        ],
+        "a": "Akiért a harang szól",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "Ernest Hemingway | Akiért a harang szól korszak",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik nyelvből származik a 'kávé' szavunk közvetlen forrása?",
+        "o": [
+          "Török",
+          "Olasz",
+          "Spanyol",
+          "Angol"
+        ],
+        "a": "Török",
+        "l": "Könnyű",
+        "theme": "nyelv-etimológia",
+        "keywords": "Kávé | jövevényszó",
+        "last_used": "2026-06-06 03:26:52"
+      }
+    ],
+    "16": [
+      {
+        "q": "Ki találta fel a fényképezést (dagerrotípia)?",
+        "o": [
+          "Louis Daguerre",
+          "Nicéphore Niépce",
+          "George Eastman",
+          "William Fox Talbot"
+        ],
+        "a": "Louis Daguerre",
+        "l": "Közepes",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Louis Daguerre | Dagerrotípia",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik 1919-es olasz politikai mozgalom alapítója volt Benito Mussolini, amely a fasizmus előfutárának tekinthető?",
+        "o": [
+          "Fasci di Combattimento",
+          "Partito Nazionale Fascista",
+          "Arditi del Popolo",
+          "Camicie Nere"
+        ],
+        "a": "Fasci di Combattimento",
+        "l": "Nehéz",
+        "theme": "világtörténelem",
+        "keywords": "Mussolini | Fasci di Combattimento | 1919 | fasizmus | Olaszország",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik évben indult az első emberes Mars-misszió a jelenlegi tervek szerint (legkorábban)?",
+        "o": [
+          "2026",
+          "2030-as évek",
+          "2050",
+          "2100"
+        ],
+        "a": "2030-as évek",
+        "l": "Könnyű",
+        "theme": "csillagászat",
+        "keywords": "Mars-utazás | Jövő",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívják a sejtmag nélküli egysejtű élőlényeket?",
+        "o": [
+          "Eukarióták",
+          "Prokarióták",
+          "Metazoák",
+          "Protozoák"
+        ],
+        "a": "Prokarióták",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Prokarióta | Sejttípus",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi történt legkorábban a magyar sportban?",
+        "o": [
+          "Az Aranycsapat megalakulása",
+          "Puskás Ferenc első válogatott gólja",
+          "A Népstadion alapkőletétele",
+          "Papp László első profi mérkőzése"
+        ],
+        "a": "Puskás Ferenc első válogatott gólja",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Sport | Legendák",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki volt az a miniszterelnök, aki 1921 és 1931 között a gazdasági és politikai konszolidációt vezette?",
+        "o": [
+          "Teleki Pál",
+          "Gömbös Gyula",
+          "Károlyi Gyula",
+          "Bethlen István"
+        ],
+        "a": "Bethlen István",
+        "l": "Nehéz",
+        "theme": "magyar történelem",
+        "keywords": "Bethlen István | konszolidáció",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívták a 90-es évek ikonikus lánybandáját, akiknek a 'Wannabe' volt az első sikere?",
+        "o": [
+          "Destiny's Child",
+          "TLC",
+          "Spice Girls",
+          "All Saints"
+        ],
+        "a": "Spice Girls",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Spice Girls | Popzene",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a legegyszerűbb aromás szénhidrogén neve?",
+        "o": [
+          "Metán",
+          "Etilén",
+          "Benzol",
+          "Naftalin"
+        ],
+        "a": "Benzol",
+        "l": "Nehéz",
+        "theme": "kémia",
+        "keywords": "Benzol | aromás szénhidrogén",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik ókori perzsa király vezette a második perzsa hadjáratot Görögország ellen i.e. 480-ban?",
+        "o": [
+          "Dareiosz I.",
+          "Xerxész",
+          "Kürosz",
+          "Artaxerxész"
+        ],
+        "a": "Xerxész",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Xerxész | perzsa hadjárat | Görögország | Thermopülai",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik folyó torkolata alkot hatalmas deltát Egyiptomban?",
+        "o": [
+          "Nílus",
+          "Amazonas",
+          "Mississippi",
+          "Jangce"
+        ],
+        "a": "Nílus",
+        "l": "Könnyű",
+        "theme": "földrajz",
+        "keywords": "Nílus-delta | Egyiptom",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívják az ételek lángon való rövid idejű sütését alkohollal?",
+        "o": [
+          "Blansírozás",
+          "Flambírozás",
+          "Grillezés",
+          "Posírozás"
+        ],
+        "a": "Flambírozás",
+        "l": "Könnyű",
+        "theme": "gasztronómia",
+        "keywords": "Flambírozás | Konyhatechnika",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki a görög mitológiában a háború istene, Zeusz és Héra fia?",
+        "o": [
+          "Arész",
+          "Erisz",
+          "Niké",
+          "Phobosz"
+        ],
+        "a": "Arész",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Arész | Háború istene",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Hogy hívják a nyelvjárásokkal foglalkozó tudományt?",
+        "o": [
+          "Dialektológia",
+          "Fonológia",
+          "Morfológia",
+          "Etimológia"
+        ],
+        "a": "Dialektológia",
+        "l": "Közepes",
+        "theme": "nyelv-etimológia",
+        "keywords": "Dialektológia | Nyelvjárástan",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik Steinbeck-regény szól az Oklahomából elvándorló Joad-családról?",
+        "o": [
+          "Egerek és emberek",
+          "Édentől keletre",
+          "Érik a gyümölcs",
+          "Cannery Row"
+        ],
+        "a": "Érik a gyümölcs",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "John Steinbeck | Joad-család vándorlása",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik József Attila-vers tartalmazza a „Nem én kiáltok, a föld dübörög” sort?",
+        "o": [
+          "Nem én kiáltok",
+          "A Dunánál",
+          "Külvárosi éj",
+          "Medvetánc"
+        ],
+        "a": "Nem én kiáltok",
+        "l": "Közepes",
+        "theme": "magyar irodalom",
+        "keywords": "József Attila | Nem én kiáltok idézete",
+        "last_used": "2026-06-06 03:26:52"
+      }
+    ],
+    "18": [
+      {
+        "q": "Mi Mauritánia fővárosa?",
+        "o": [
+          "Nouadhibou",
+          "Nouakchott",
+          "Kiffa",
+          "Rosso"
+        ],
+        "a": "Nouakchott",
+        "l": "Nehéz",
+        "theme": "ország-város",
+        "keywords": "Mauritánia | Nouakchott",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik filmben játszott együtt Dayka Margit és Psota Irén?",
+        "o": [
+          "Ház a sziklák alatt",
+          "Szent Péter esernyője",
+          "Macskajáték",
+          "Egy pikoló világos"
+        ],
+        "a": "Ház a sziklák alatt",
+        "l": "Nehéz",
+        "theme": "retro mozi",
+        "keywords": "Ház a sziklák alatt | Szereplők",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Milyen márkájú volt az az ikonikus magyar cipő, aminek a logója egy 'T' betű?",
+        "o": [
+          "Tisza",
+          "Alföldi",
+          "Duna",
+          "Vörös Október"
+        ],
+        "a": "Tisza",
+        "l": "Könnyű",
+        "theme": "retro",
+        "keywords": "Tisza cipő | Magyar divat",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Ki a római mitológiában a bölcsesség istennője?",
+        "o": [
+          "Minerva",
+          "Juno",
+          "Diana",
+          "Venus"
+        ],
+        "a": "Minerva",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Minerva | Bölcsesség",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Milyen gáz keletkezik a sütőpor hevítésekor?",
+        "o": [
+          "Oxigén",
+          "Szén-monoxid",
+          "Szén-dioxid",
+          "Metán"
+        ],
+        "a": "Szén-dioxid",
+        "l": "Közepes",
+        "theme": "kémia",
+        "keywords": "Sütőpor | Bomlás",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik talajtípus alakul ki a félsivatagi, száraz füves pusztákon, magas humusztartalommal?",
+        "o": [
+          "Podzol",
+          "Csernozjom",
+          "Laterit",
+          "Terra rossa"
+        ],
+        "a": "Csernozjom",
+        "l": "Nehéz",
+        "theme": "földrajz",
+        "keywords": "Talajtan | mezőföldrajz",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a 'Quiche' alapja?",
+        "o": [
+          "Kelt tészta",
+          "Omlós tészta",
+          "Piskóta",
+          "Leveles tészta"
+        ],
+        "a": "Omlós tészta",
+        "l": "Közepes",
+        "theme": "gasztronómia",
+        "keywords": "Quiche | Francia sós pite",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik ókori görög gondolkodó írta meg az 'Állam' (Politeia) című művet?",
+        "o": [
+          "Arisztotelész",
+          "Platón",
+          "Szókratész",
+          "Thuküdidész"
+        ],
+        "a": "Platón",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Platón | Állam | Politeia | görög filozófia",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik magyar Nobel-díjas tudósunk született legkorábban?",
+        "o": [
+          "Szent-Györgyi Albert",
+          "Lénárd Fülöp",
+          "Hevesy György",
+          "Békésy György"
+        ],
+        "a": "Lénárd Fülöp",
+        "l": "Nehéz",
+        "theme": "időrend",
+        "keywords": "Tudomány | Nobel-díjasok",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik Virginia Woolf-regény cselekménye folyik le egyetlen nap alatt?",
+        "o": [
+          "Hullámok",
+          "Az évek",
+          "Mrs. Dalloway",
+          "Orlando"
+        ],
+        "a": "Mrs. Dalloway",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "Virginia Woolf | Mrs. Dalloway időkezelése",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik Mikszáth Kálmán-regényben szerepel a különc Pongrácz István gróf?",
+        "o": [
+          "A Noszty fiú esete Tóth Marival",
+          "Szent Péter esernyője",
+          "Beszterce ostroma",
+          "Különös házasság"
+        ],
+        "a": "Beszterce ostroma",
+        "l": "Közepes",
+        "theme": "magyar irodalom",
+        "keywords": "Mikszáth Kálmán | Beszterce ostroma szereplője",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Mi a neve a sejtek programozott halálának?",
+        "o": [
+          "Nekrózis",
+          "Apoptózis",
+          "Meiózis",
+          "Mitozis"
+        ],
+        "a": "Apoptózis",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Apoptózis | Sejtélettan",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik évben tört ki a Vietnami háború az Egyesült Államok aktív részvételével?",
+        "o": [
+          "1961",
+          "1964",
+          "1965",
+          "1968"
+        ],
+        "a": "1964",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "vietnami háború | USA | 1964 | Tonkini-öböl",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik szervünk választja el a mellüreget a hasüregtől?",
+        "o": [
+          "Rekeszizom",
+          "Tüdő",
+          "Máj",
+          "Gerinc"
+        ],
+        "a": "Rekeszizom",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Légzőszerv | rekeszizom elhelyezkedése",
+        "last_used": "2026-06-06 03:26:52"
+      },
+      {
+        "q": "Melyik évben tört ki az 1956-os forradalom Magyarországon?",
+        "o": [
+          "1953",
+          "1955",
+          "1956",
+          "1958"
+        ],
+        "a": "1956",
+        "l": "Könnyű",
+        "theme": "magyar történelem",
+        "keywords": "1956 | forradalom | szovjet | Budapest",
+        "last_used": "2026-06-06 03:26:52"
+      }
+    ]
+  }
+}
