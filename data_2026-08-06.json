@@ -1,0 +1,1276 @@
+{
+  "slots": {
+    "08": [
+      {
+        "q": "Melyik magyar király idején érte el Magyarország középkori területének legnagyobb kiterjedését?",
+        "o": [
+          "Szent István",
+          "Nagy Lajos",
+          "Mátyás király",
+          "III. Béla"
+        ],
+        "a": "Nagy Lajos",
+        "l": "Könnyű",
+        "theme": "magyar történelem",
+        "keywords": "Nagy Lajos | Anjou | középkori Magyarország | területi kiterjedés",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik öböl található India és Mianmar (Burma) között?",
+        "o": [
+          "Perzsa-öböl",
+          "Bengáli-öböl",
+          "Mexikói-öböl",
+          "Guineai-öböl"
+        ],
+        "a": "Bengáli-öböl",
+        "l": "Nehéz",
+        "theme": "földrajz",
+        "keywords": "Bengáli-öböl | Tengeri terület",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogy hívják a görög mitológiában a végzet három istennőjét, akik az élet fonalát szövik?",
+        "o": [
+          "Fúriák",
+          "Múzsák",
+          "Moirák",
+          "Hárpiák"
+        ],
+        "a": "Moirák",
+        "l": "Közepes",
+        "theme": "mitológia",
+        "keywords": "Moirák | Sors istennői",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi Líbia fővárosa?",
+        "o": [
+          "Bengázi",
+          "Miszráta",
+          "Tripoli",
+          "Al-Bajda"
+        ],
+        "a": "Tripoli",
+        "l": "Közepes",
+        "theme": "ország-város",
+        "keywords": "Líbia | Tripoli",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki volt a rendezője a Sose halunk meg című 1993-as sikerfilmnek?",
+        "o": [
+          "Koltai Róbert",
+          "Kern András",
+          "Eperjes Károly",
+          "Szabó István"
+        ],
+        "a": "Koltai Róbert",
+        "l": "Közepes",
+        "theme": "retro mozi",
+        "keywords": "Sose halunk meg | Koltai Róbert rendezése",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik évben jelent meg James Joyce Ulyssese?",
+        "o": [
+          "1918",
+          "1920",
+          "1922",
+          "1925"
+        ],
+        "a": "1922",
+        "l": "Közepes",
+        "theme": "irodalom",
+        "keywords": "James Joyce | Ulysses megjelenése",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik nemesgáz tölti ki leggyakrabban a hagyományos izzólámpákat?",
+        "o": [
+          "Hélium",
+          "Neon",
+          "Argon",
+          "Kripton"
+        ],
+        "a": "Argon",
+        "l": "Könnyű",
+        "theme": "kémia",
+        "keywords": "Argon | Izzólámpa",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hány vérköre van a kifejlett békáknak?",
+        "o": [
+          "Kettő",
+          "Egy",
+          "Három",
+          "Négy"
+        ],
+        "a": "Kettő",
+        "l": "Nehéz",
+        "theme": "természet-biológia",
+        "keywords": "Béka | vérkeringés",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik magyar város volt legkorábban érseki székhely?",
+        "o": [
+          "Esztergom",
+          "Kalocsa",
+          "Eger",
+          "Veszprém"
+        ],
+        "a": "Esztergom",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "Vallás | Történelem",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik a szervezetünk legnagyobb kiterjedésű szerve?",
+        "o": [
+          "Bőr",
+          "Máj",
+          "Vékonybél",
+          "Tüdő"
+        ],
+        "a": "Bőr",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Bőr | legnagyobb szerv",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogy hívják azt a folyamatot, amikor egy szó jelentése bővül (pl. toll - íróeszköz)?",
+        "o": [
+          "Jelentésátvitel",
+          "Jelentésbővülés",
+          "Jelentésszűkülés",
+          "Névátvitel"
+        ],
+        "a": "Jelentésbővülés",
+        "l": "Könnyű",
+        "theme": "nyelv-etimológia",
+        "keywords": "Jelentésváltozás | Szemantika",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogy hívják a neutroncsillagok azon típusát, amelynek rendkívül erős mágneses tere van?",
+        "o": [
+          "Kvazár",
+          "Magnetár",
+          "Pulzár",
+          "Fehér törpe"
+        ],
+        "a": "Magnetár",
+        "l": "Nehéz",
+        "theme": "csillagászat",
+        "keywords": "Magnetár | Mágneses tér",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik észak-olaszországi régió a központja a rendkívül értékes fehér szarvasgomba (Tuber magnatum) gyűjtésének?",
+        "o": [
+          "Toszkána",
+          "Piemont",
+          "Lombardia",
+          "Veneto"
+        ],
+        "a": "Piemont",
+        "l": "Nehéz",
+        "theme": "gasztronómia",
+        "keywords": "Piemont | Fehér szarvasgomba",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki volt a görög mitológia legügyesebb kovácsa és mesterembere az istenek közül?",
+        "o": [
+          "Hermész",
+          "Héphaisztosz",
+          "Prométheusz",
+          "Apollón"
+        ],
+        "a": "Héphaisztosz",
+        "l": "Könnyű",
+        "theme": "ókor",
+        "keywords": "Héphaisztosz | görög istenek | kovács",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki írta a 'Halálfiai' című nagyregényt?",
+        "o": [
+          "Móricz Zsigmond",
+          "Babits Mihály",
+          "Kosztolányi Dezső",
+          "Németh László"
+        ],
+        "a": "Babits Mihály",
+        "l": "Nehéz",
+        "theme": "magyar irodalom",
+        "keywords": "Babits Mihály | Halálfiai szerzősége",
+        "last_used": "2026-08-06 02:28:55"
+      }
+    ],
+    "10": [
+      {
+        "q": "Melyik híres francia komikus alakította a 'Csendőr' sorozat főszereplőjét?",
+        "o": [
+          "Louis de Funès",
+          "Jean-Paul Belmondo",
+          "Alain Delon",
+          "Pierre Richard"
+        ],
+        "a": "Louis de Funès",
+        "l": "Közepes",
+        "theme": "retro mozi",
+        "keywords": "A csendőr | Louis de Funès szerepe",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik hormon felelős a vércukorszint csökkentéséért?",
+        "o": [
+          "Inzulin",
+          "Glükagon",
+          "Kortizol",
+          "Adrenalin"
+        ],
+        "a": "Inzulin",
+        "l": "Könnyű",
+        "theme": "életmód és egészség",
+        "keywords": "Inzulin | vércukorszint szabályozás",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi történt legkorábban a 19. században?",
+        "o": [
+          "A Magyar Tudományos Akadémia alapítása",
+          "A Himnusz megírása",
+          "A Lánchíd építésének kezdete",
+          "A pesti árvíz"
+        ],
+        "a": "A Himnusz megírása",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "19. század | Magyarország",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi a képlete a szén-monoxidnak?",
+        "o": [
+          "CO2",
+          "CO",
+          "C2O",
+          "C2O3"
+        ],
+        "a": "CO",
+        "l": "Könnyű",
+        "theme": "kémia",
+        "keywords": "Szén-monoxid | Képlet",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi a neve a bálnák és delfinek légzőnyílásának a fejük tetején?",
+        "o": [
+          "Kopoltyú",
+          "Fúvónyílás",
+          "Nózi",
+          "Szelep"
+        ],
+        "a": "Fúvónyílás",
+        "l": "Közepes",
+        "theme": "természet-biológia",
+        "keywords": "Cetfélék | Légzés",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogy hívják Magyarország legmélyebb bányatavát, amely a Bükk lábánál található?",
+        "o": [
+          "Lázbérci-víztározó",
+          "Rudabányai-tó",
+          "Hámori-tó",
+          "Szelidi-tó"
+        ],
+        "a": "Rudabányai-tó",
+        "l": "Nehéz",
+        "theme": "földrajz",
+        "keywords": "Rudabányai-tó | Rekordmélységű tó",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik hős ölte meg a Medúzát, akinek tekintete kővé dermesztett?",
+        "o": [
+          "Héraklész",
+          "Perszeusz",
+          "Thészeusz",
+          "Iaszón"
+        ],
+        "a": "Perszeusz",
+        "l": "Közepes",
+        "theme": "mitológia",
+        "keywords": "Perszeusz | Medúza legyőzése",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik nyelvből származik a 'szalámi' és a 'rizottó'?",
+        "o": [
+          "Olasz",
+          "Spanyol",
+          "Francia",
+          "Latin"
+        ],
+        "a": "Olasz",
+        "l": "Könnyű",
+        "theme": "nyelv-etimológia",
+        "keywords": "Olasz jövevényszavak | Gasztronómia",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "\"Melyik városban került sor a Magyarországgal kötött békeszerződés aláírására 1920-ban?\"",
+        "o": [
+          "Párizs",
+          "Versailles",
+          "Trianon",
+          "Bécs"
+        ],
+        "a": "Trianon",
+        "l": "Könnyű",
+        "theme": "magyar történelem",
+        "keywords": "Trianon | 1920 | békeszerződés | területvesztés",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi Barbados fővárosa?",
+        "o": [
+          "Castries",
+          "Bridgetown",
+          "Kingstown",
+          "Roseau"
+        ],
+        "a": "Bridgetown",
+        "l": "Nehéz",
+        "theme": "ország-város",
+        "keywords": "Barbados | Bridgetown",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi a neve annak a sugárzásnak, amely az ősrobbanás utáni maradványként tölti ki az űrt?",
+        "o": [
+          "Röntgensugárzás",
+          "Kozmikus mikrohullámú háttérsugárzás",
+          "Gamma-kitörés",
+          "Neutrínó-áramlás"
+        ],
+        "a": "Kozmikus mikrohullámú háttérsugárzás",
+        "l": "Nehéz",
+        "theme": "csillagászat",
+        "keywords": "Háttérsugárzás | Ősrobbanás",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik római tisztségviselő rendelkezett vétójoggal a senatus döntéseivel szemben?",
+        "o": [
+          "Consul",
+          "Praetor",
+          "Néptribunus",
+          "Censor"
+        ],
+        "a": "Néptribunus",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Róma | néptribunus",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki volt a Nyugat első nemzedékének főszerkesztője?",
+        "o": [
+          "Osvát Ernő",
+          "Ignotus",
+          "Fenyő Miksa",
+          "Hatvany Lajos"
+        ],
+        "a": "Ignotus",
+        "l": "Nehéz",
+        "theme": "magyar irodalom",
+        "keywords": "Nyugat folyóirat | Főszerkesztő személye",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik városban tartották a francia forradalom legvéresebb eseményeit, a guillotine általi kivégzéseket?",
+        "o": [
+          "Lyon",
+          "Versailles",
+          "Párizs",
+          "Bordeaux"
+        ],
+        "a": "Párizs",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "francia forradalom | guillotine | terror | Párizs",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik városban alapította meg Misztótfalusi Kis Miklós híres nyomdáját a 17. században?",
+        "o": [
+          "Debrecen",
+          "Kolozsvár",
+          "Nagyvárad",
+          "Sárospatak"
+        ],
+        "a": "Kolozsvár",
+        "l": "Nehéz",
+        "theme": "irodalom",
+        "keywords": "Misztótfalusi Kis Miklós | nyomdászat",
+        "last_used": "2026-08-06 02:28:55"
+      }
+    ],
+    "12": [
+      {
+        "q": "Melyik állat tejéből készül az eredeti görög Feta sajt?",
+        "o": [
+          "Tehén",
+          "Juh (vagy kecske)",
+          "Bivaly",
+          "Ló"
+        ],
+        "a": "Juh (vagy kecske)",
+        "l": "Közepes",
+        "theme": "gasztronómia",
+        "keywords": "Feta sajt | Tejtermékek",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hány liter levegő cserélődik ki a tüdőben egy átlagos, nyugodt lélegzetvétel során?",
+        "o": [
+          "0,5 liter",
+          "1,5 liter",
+          "3 liter",
+          "5 liter"
+        ],
+        "a": "0,5 liter",
+        "l": "Nehéz",
+        "theme": "életmód és egészség",
+        "keywords": "Légzés | nyugalmi légzéstérfogat",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik folyó mentén épült az ókori Egyiptom civilizációja?",
+        "o": [
+          "Eufrátesz",
+          "Tigris",
+          "Nílus",
+          "Jordán"
+        ],
+        "a": "Nílus",
+        "l": "Könnyű",
+        "theme": "ókor",
+        "keywords": "Egyiptom | Nílus | folyó",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hány nap alatt mesélik el a történeteket Giovanni Boccaccio 'Dekameron' című művének szereplői?",
+        "o": [
+          "10",
+          "100",
+          "40",
+          "7"
+        ],
+        "a": "10",
+        "l": "Nehéz",
+        "theme": "irodalom",
+        "keywords": "Dekameron | Időtartam",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik görög lénynek volt kígyó haja és tekintetével kővé dermesztett?",
+        "o": [
+          "Medúza",
+          "Ekhidna",
+          "Szkülla",
+          "Gorgó"
+        ],
+        "a": "Medúza",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Medúza | Gorgó",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik évben tört ki az első világháború?",
+        "o": [
+          "1912",
+          "1914",
+          "1916",
+          "1918"
+        ],
+        "a": "1914",
+        "l": "Könnyű",
+        "theme": "világtörténelem",
+        "keywords": "első világháború | 1914 | Szarajevó | Franz Ferdinand",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi a Dominikai Közösség fővárosa?",
+        "o": [
+          "Roseau",
+          "Saint George's",
+          "Basseterre",
+          "Kingstown"
+        ],
+        "a": "Roseau",
+        "l": "Nehéz",
+        "theme": "ország-város",
+        "keywords": "Dominikai Közösség | Roseau",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi történt legkorábban a magyar irodalom történetében?",
+        "o": [
+          "Az első magyar nyelvű nyomtatott könyv",
+          "A Vizsolyi Biblia",
+          "A Halotti beszéd lejegyzése",
+          "Az Ómagyar Mária-siralom"
+        ],
+        "a": "A Halotti beszéd lejegyzése",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "Irodalom | Nyelvemlékek",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki játszotta el Grabowskit, a titkosügynök egeret (hang)?",
+        "o": [
+          "Sinkó László",
+          "Haumann Péter",
+          "Kern András",
+          "Benedek Miklós"
+        ],
+        "a": "Sinkó László",
+        "l": "Közepes",
+        "theme": "retro mozi",
+        "keywords": "Macskafogó | Grabowski hangja",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik bolygónak van a legtöbb holdja (a 2023-as adatok szerint)?",
+        "o": [
+          "Jupiter",
+          "Szaturnusz",
+          "Uránusz",
+          "Neptunusz"
+        ],
+        "a": "Szaturnusz",
+        "l": "Nehéz",
+        "theme": "csillagászat",
+        "keywords": "Szaturnusz | Holdak száma",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik elem neve jelent 'sóképzőt'?",
+        "o": [
+          "Alkálifém",
+          "Nemesgáz",
+          "Halogén",
+          "Aktinoida"
+        ],
+        "a": "Halogén",
+        "l": "Nehéz",
+        "theme": "kémia",
+        "keywords": "Halogének | Etimológia",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi a neve a növények párologtatását szabályozó pórusoknak?",
+        "o": [
+          "Háncs",
+          "Gázcserenyílás",
+          "Edénynyaláb",
+          "Szőrképlet"
+        ],
+        "a": "Gázcserenyílás",
+        "l": "Közepes",
+        "theme": "természet-biológia",
+        "keywords": "Sztóma | Növénytan",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik Móricz Zsigmond-regény szól egy erdélyi fejedelem tragédiájáról?",
+        "o": [
+          "Úri muri",
+          "Légy jó mindhalálig",
+          "Erdély-trilógia",
+          "Rokonok"
+        ],
+        "a": "Erdély-trilógia",
+        "l": "Könnyű",
+        "theme": "magyar irodalom",
+        "keywords": "Móricz Zsigmond | Erdély-trilógia témája",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik a világ legnagyobb kiterjedésű országa?",
+        "o": [
+          "Kína",
+          "USA",
+          "Oroszország",
+          "Kanada"
+        ],
+        "a": "Oroszország",
+        "l": "Könnyű",
+        "theme": "földrajz",
+        "keywords": "Oroszország | Legnagyobb terület",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi volt a fő feladata a Magyar Tudományos Akadémiának megalapításakor?",
+        "o": [
+          "A magyar nyelv művelése és a tudományok magyar nyelvű terjesztése",
+          "Az osztrák oktatási rendszer átvétele",
+          "A hadmérnöki képzés biztosítása",
+          "A cenzúra gyakorlása"
+        ],
+        "a": "A magyar nyelv művelése és a tudományok magyar nyelvű terjesztése",
+        "l": "Közepes",
+        "theme": "magyar történelem",
+        "keywords": "MTA alapítás | Fő cél",
+        "last_used": "2026-08-06 02:28:55"
+      }
+    ],
+    "14": [
+      {
+        "q": "Melyik Zweig-kisregény szól egy sakkpárbaj feszültségéről?",
+        "o": [
+          "Amok",
+          "A szenvedélyek örvényében",
+          "Sakknovella",
+          "Levél egy ismeretlentől"
+        ],
+        "a": "Sakknovella",
+        "l": "Nehéz",
+        "theme": "irodalom",
+        "keywords": "Stefan Zweig | Sakknovella azonosítása",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hány decibel felett tekinthető egy zaj tartósan halláskárosítónak?",
+        "o": [
+          "85 dB",
+          "60 dB",
+          "40 dB",
+          "120 dB"
+        ],
+        "a": "85 dB",
+        "l": "Nehéz",
+        "theme": "életmód és egészség",
+        "keywords": "Hallás | zajártalom határértéke",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Kik voltak a zsellérek a feudalizmus korában Magyarországon?",
+        "o": [
+          "Földdel rendelkező gazdag parasztok",
+          "Földnélküli vagy kevés földdel rendelkező parasztok",
+          "Városi polgárok",
+          "Kisnövényeket termesztő nemesek"
+        ],
+        "a": "Földnélküli vagy kevés földdel rendelkező parasztok",
+        "l": "Közepes",
+        "theme": "magyar történelem",
+        "keywords": "Társadalomtörténet | Társadalmi réteg",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki rendezte a Szegénylegények című filmet 1965-ben?",
+        "o": [
+          "Jancsó Miklós",
+          "Gaál István",
+          "Kósa Ferenc",
+          "Szabó István"
+        ],
+        "a": "Jancsó Miklós",
+        "l": "Nehéz",
+        "theme": "retro mozi",
+        "keywords": "Szegénylegények | Jancsó Miklós",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi Franciaország fővárosa?",
+        "o": [
+          "Marseille",
+          "Lyon",
+          "Párizs",
+          "Nizza"
+        ],
+        "a": "Párizs",
+        "l": "Könnyű",
+        "theme": "ország-város",
+        "keywords": "Franciaország | Párizs",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki írta az 1794-es 'Kártigám' című érzelmes regényt?",
+        "o": [
+          "Kármán József",
+          "Mészáros Ignác",
+          "Dugonics András",
+          "Gvadányi József"
+        ],
+        "a": "Mészáros Ignác",
+        "l": "Nehéz",
+        "theme": "magyar irodalom",
+        "keywords": "Mészáros Ignác | Kártigám szerzősége",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik nagy világvárosban indult meg legkorábban a földalatti vasút?",
+        "o": [
+          "London",
+          "Párizs",
+          "Budapest",
+          "New York"
+        ],
+        "a": "London",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "Világ | Közlekedés",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi volt a neve a római hadsereg alapegységének, amely kb. 5000-6000 katonából állt?",
+        "o": [
+          "Centuria",
+          "Phalanx",
+          "Légió",
+          "Manipulus"
+        ],
+        "a": "Légió",
+        "l": "Közepes",
+        "theme": "ókor",
+        "keywords": "Róma | légió",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik népnek tulajdonítják a papír feltalálását az i.sz. 2. század környékén?",
+        "o": [
+          "Egyiptomiak",
+          "Görögök",
+          "Kínaiak",
+          "Rómaiak"
+        ],
+        "a": "Kínaiak",
+        "l": "Könnyű",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Kína | Papír feltalálása",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik a leghosszabb folyó Afrikában?",
+        "o": [
+          "Kongó",
+          "Niger",
+          "Zambézi",
+          "Nílus"
+        ],
+        "a": "Nílus",
+        "l": "Könnyű",
+        "theme": "földrajz",
+        "keywords": "Nílus | Afrika folyója",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik húsrészből készül az eredeti 'Tatár bifsztek'?",
+        "o": [
+          "Sertéscomb",
+          "Marhabélszín",
+          "Csirkemell",
+          "Báránylapocka"
+        ],
+        "a": "Marhabélszín",
+        "l": "Közepes",
+        "theme": "gasztronómia",
+        "keywords": "Tatár bifsztek | Nyers marhahús",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Miből áll az alfa-sugárzás?",
+        "o": [
+          "Elektronokból",
+          "Fotonokból",
+          "Neutronokból",
+          "Héliumatommagokból"
+        ],
+        "a": "Héliumatommagokból",
+        "l": "Nehéz",
+        "theme": "kémia",
+        "keywords": "Alfa-sugárzás | összetétel",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogy nevezzük a 'hullócsillagokat' tudományosan, mielőtt földet érnének?",
+        "o": [
+          "Meteor",
+          "Aszteroida",
+          "Üstökös",
+          "Szupernova"
+        ],
+        "a": "Meteor",
+        "l": "Könnyű",
+        "theme": "csillagászat",
+        "keywords": "Meteor | Hullócsillag",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi volt a közvetlen gazdasági oka a nagy földrajzi felfedezések megindulásának?",
+        "o": [
+          "Az amerikai kontinens felfedezésének vágya",
+          "Az Oszmán Birodalom terjeszkedése és a keleti kereskedelmi utak megdrágulása",
+          "A bálnavadászat válsága",
+          "Az európai túlnépesedés"
+        ],
+        "a": "Az Oszmán Birodalom terjeszkedése és a keleti kereskedelmi utak megdrágulása",
+        "l": "Közepes",
+        "theme": "világtörténelem",
+        "keywords": "Felfedezések | fűszerútvonal",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik madár rakja a legnagyobb tojást?",
+        "o": [
+          "Sas",
+          "Albatrosz",
+          "Strucc",
+          "Emu"
+        ],
+        "a": "Strucc",
+        "l": "Könnyű",
+        "theme": "természet-biológia",
+        "keywords": "Strucc | Tojásméret",
+        "last_used": "2026-08-06 02:28:55"
+      }
+    ],
+    "16": [
+      {
+        "q": "Mi Brazília fővárosa?",
+        "o": [
+          "Rio de Janeiro",
+          "São Paulo",
+          "Brazíliaváros",
+          "Salvador"
+        ],
+        "a": "Brazíliaváros",
+        "l": "Könnyű",
+        "theme": "ország-város",
+        "keywords": "Brazília | Brazíliaváros",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki volt az utolsó római császár, aki még az egész birodalmat egységesen uralta?",
+        "o": [
+          "I. Constantinus",
+          "I. Theodosius",
+          "II. Theodosius",
+          "Valentinianus"
+        ],
+        "a": "I. Theodosius",
+        "l": "Nehéz",
+        "theme": "ókor",
+        "keywords": "Róma | egység",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik a világ legnagyobb emlősállata?",
+        "o": [
+          "Afrikai elefánt",
+          "Óriáskalmár",
+          "Kék bálna",
+          "Púpos bálna"
+        ],
+        "a": "Kék bálna",
+        "l": "Könnyű",
+        "theme": "természet-biológia",
+        "keywords": "Kék bálna | Legnagyobb emlős",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi volt előbb a magyar pénztörténetben?",
+        "o": [
+          "A Forint bevezetése",
+          "A Pengő bevezetése",
+          "A Korona bevezetése",
+          "Az Adópengő"
+        ],
+        "a": "A Korona bevezetése",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "Gazdaság | Pénz",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki írta a 'Mindenkihez' (A magyarokhoz I.) című ódát?",
+        "o": [
+          "Berzsenyi Dániel",
+          "Kölcsey Ferenc",
+          "Vörösmarty Mihály",
+          "Kazinczy Ferenc"
+        ],
+        "a": "Berzsenyi Dániel",
+        "l": "Nehéz",
+        "theme": "magyar irodalom",
+        "keywords": "Berzsenyi Dániel | A magyarokhoz szerzősége",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik görög hős ölte meg a trójai herceget, Hektórt?",
+        "o": [
+          "Akhilleusz",
+          "Odüsszeusz",
+          "Agamemnón",
+          "Aiász"
+        ],
+        "a": "Akhilleusz",
+        "l": "Közepes",
+        "theme": "mitológia",
+        "keywords": "Akhilleusz | Hektór halála",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki bizonyította be az 1920-as években, hogy léteznek más galaxisok is a Tejútrendszeren kívül?",
+        "o": [
+          "Albert Einstein",
+          "Edwin Hubble",
+          "Carl Sagan",
+          "Stephen Hawking"
+        ],
+        "a": "Edwin Hubble",
+        "l": "Nehéz",
+        "theme": "csillagászat",
+        "keywords": "Edwin Hubble | Galaxisok felfedezése",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik nyelv volt a diplomácia nyelve a 18-19. században?",
+        "o": [
+          "Angol",
+          "Latin",
+          "Francia",
+          "Német"
+        ],
+        "a": "Francia",
+        "l": "Közepes",
+        "theme": "nyelv-etimológia",
+        "keywords": "Francia nyelv | Történelem",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik borfajta készül kékszőlőből, de a héj rövid áztatása miatt rózsaszínű?",
+        "o": [
+          "Siller",
+          "Rozé",
+          "Furmint",
+          "Chardonnay"
+        ],
+        "a": "Rozé",
+        "l": "Könnyű",
+        "theme": "gasztronómia",
+        "keywords": "Rozé bor | Borkészítés",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki találta fel a távcsövet (bár nem ő volt az első, de ő használta először csillagászati célokra)?",
+        "o": [
+          "Galileo Galilei",
+          "Johannes Kepler",
+          "Isaac Newton",
+          "Nicolaus Copernicus"
+        ],
+        "a": "Galileo Galilei",
+        "l": "Könnyű",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Galileo Galilei | Távcső",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik csatorna köti össze az Atlanti-óceánt a Csendes-óceánnal?",
+        "o": [
+          "Szuezi-csatorna",
+          "Panama-csatorna",
+          "Kieli-csatorna",
+          "Korinthoszi-csatorna"
+        ],
+        "a": "Panama-csatorna",
+        "l": "Könnyű",
+        "theme": "földrajz",
+        "keywords": "Panama-csatorna | Vízi út",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik vitamin segít megőrizni a hajszálerek rugalmasságát (P-vitaminnak is hívják)?",
+        "o": [
+          "Rutin",
+          "Biotin",
+          "Niacin",
+          "Retinol"
+        ],
+        "a": "Rutin",
+        "l": "Nehéz",
+        "theme": "életmód és egészség",
+        "keywords": "Rutin | hajszálerek védelme",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik politikai formáció alakult meg az 1987-es lakiteleki találkozón?",
+        "o": [
+          "Fidesz",
+          "Szabad Demokraták Szövetsége",
+          "Magyar Demokrata Fórum",
+          "Kereszténydemokrata Néppárt"
+        ],
+        "a": "Magyar Demokrata Fórum",
+        "l": "Közepes",
+        "theme": "magyar történelem",
+        "keywords": "Rendszerváltás | Lakiteleki találkozó",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogyan változtatta meg az ipari forradalom a népesedési folyamatokat?",
+        "o": [
+          "Csökkentette a városi lakosság arányát",
+          "Gyors urbanizációt és demográfiai robbanást idézett elő",
+          "Megállította a migrációt",
+          "Növelte a mezőgazdaságból élők számát"
+        ],
+        "a": "Gyors urbanizációt és demográfiai robbanást idézett elő",
+        "l": "Közepes",
+        "theme": "világtörténelem",
+        "keywords": "Ipari forradalom | urbanizáció",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik helyszínen építették fel az Egri vár másolatát a filmforgatáshoz?",
+        "o": [
+          "Pilisborosjenő",
+          "Eger",
+          "Budapest",
+          "Visegrád"
+        ],
+        "a": "Pilisborosjenő",
+        "l": "Nehéz",
+        "theme": "retro mozi",
+        "keywords": "Egri csillagok | Forgatási helyszín",
+        "last_used": "2026-08-06 02:28:55"
+      }
+    ],
+    "18": [
+      {
+        "q": "Melyik magyar irodalmi mű készült el legkorábban?",
+        "o": [
+          "Egri csillagok",
+          "A kőszívű ember fiai",
+          "A Pál utcai fiúk",
+          "Légy jó mindhalálig"
+        ],
+        "a": "A kőszívű ember fiai",
+        "l": "Közepes",
+        "theme": "időrend",
+        "keywords": "Irodalom | Regények",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi volt a felvilágosodás eszméinek fő politikai hatása a 18. század végén?",
+        "o": [
+          "A feudális abszolutizmus megszilárdulása",
+          "Az amerikai és a francia forradalom ideológiai megalapozása",
+          "A vallásháborúk kiújulása",
+          "A rabszolgaság globális kiterjesztése"
+        ],
+        "a": "Az amerikai és a francia forradalom ideológiai megalapozása",
+        "l": "Közepes",
+        "theme": "világtörténelem",
+        "keywords": "Felvilágosodás | forradalom",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki fedezte fel a sejtet, miközben parafát vizsgált mikroszkóppal?",
+        "o": [
+          "Antonie van Leeuwenhoek",
+          "Robert Hooke",
+          "Matthias Schleiden",
+          "Theodor Schwann"
+        ],
+        "a": "Robert Hooke",
+        "l": "Nehéz",
+        "theme": "nagy felfedezések és találmányok",
+        "keywords": "Robert Hooke | Sejt felfedezése",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik nyelvből vettük át a 'család', 'ebéd' és 'király' szavainkat?",
+        "o": [
+          "Török",
+          "Szláv",
+          "Német",
+          "Latin"
+        ],
+        "a": "Szláv",
+        "l": "Könnyű",
+        "theme": "nyelv-etimológia",
+        "keywords": "Szláv jövevényszavak | Szókincs",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki alakította a zord Redl ezredest Szabó István azonos című filmjében?",
+        "o": [
+          "Klaus Maria Brandauer",
+          "Garas Dezső",
+          "Bálint András",
+          "Eperjes Károly"
+        ],
+        "a": "Klaus Maria Brandauer",
+        "l": "Nehéz",
+        "theme": "retro mozi",
+        "keywords": "Redl ezredes | Klaus Maria Brandauer",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik két kontinensen terül el Törökország?",
+        "o": [
+          "Európa és Afrika",
+          "Európa és Ázsia",
+          "Ázsia és Afrika",
+          "Európa és Amerika"
+        ],
+        "a": "Európa és Ázsia",
+        "l": "Közepes",
+        "theme": "földrajz",
+        "keywords": "Törökország | Kontinensek",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki a rómaiaknál a kereskedelem istene, aki a görög Hermész megfelelője?",
+        "o": [
+          "Bacchus",
+          "Mercurius",
+          "Vulcanus",
+          "Pluto"
+        ],
+        "a": "Mercurius",
+        "l": "Könnyű",
+        "theme": "mitológia",
+        "keywords": "Mercurius | Hermész római párja",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Hogy hívják a csillagok robbanásszerű megsemmisülését?",
+        "o": [
+          "Vörös eltolódás",
+          "Szupernova",
+          "Fekete lyuk",
+          "Nebula"
+        ],
+        "a": "Szupernova",
+        "l": "Közepes",
+        "theme": "csillagászat",
+        "keywords": "Szupernova | Csillaghalál",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi indítja el az emlékek áradatát Marcel Proust 'Az eltűnt idő nyomában' című regényfolyamában?",
+        "o": [
+          "Egy teába mártott madeleine sütemény",
+          "Egy régi fénykép a falon",
+          "Egy gyerekkori dallam",
+          "Egy megtalált szerelmes levél"
+        ],
+        "a": "Egy teába mártott madeleine sütemény",
+        "l": "Nehéz",
+        "theme": "irodalom",
+        "keywords": "Marcel Proust | Emlékezés szimbóluma",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik vitamin termelődik az emberi bőrben napfény hatására?",
+        "o": [
+          "A-vitamin",
+          "B12-vitamin",
+          "C-vitamin",
+          "D-vitamin"
+        ],
+        "a": "D-vitamin",
+        "l": "Könnyű",
+        "theme": "természet-biológia",
+        "keywords": "D-vitamin | Napfény hatása",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Ki a szerzője a 'Psyché' című fiktív naplónak?",
+        "o": [
+          "Weöres Sándor",
+          "Pilinszky János",
+          "Nemes Nagy Ágnes",
+          "Ottlik Géza"
+        ],
+        "a": "Weöres Sándor",
+        "l": "Nehéz",
+        "theme": "magyar irodalom",
+        "keywords": "Weöres Sándor | Psyché szerzősége",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi a 'Ratatouille'?",
+        "o": [
+          "Húsétel",
+          "Zöldségragu",
+          "Desszert",
+          "Mártás"
+        ],
+        "a": "Zöldségragu",
+        "l": "Könnyű",
+        "theme": "gasztronómia",
+        "keywords": "Ratatouille | Francia lecsó",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik hormon felelős a szervezet 'ébresztéséért' és a stresszre való felkészítéséért reggelente?",
+        "o": [
+          "Kortizol",
+          "Melatonin",
+          "Inzulin",
+          "Ösztrogén"
+        ],
+        "a": "Kortizol",
+        "l": "Nehéz",
+        "theme": "életmód és egészség",
+        "keywords": "Kortizol | élettani stresszválasz",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Melyik erdélyi fejedelem kötötte a speyeri egyezményt 1570-ben, lemondva a magyar királyi címről?",
+        "o": [
+          "Bethlen Gábor",
+          "János Zsigmond",
+          "Báthori István",
+          "Bocskai István"
+        ],
+        "a": "János Zsigmond",
+        "l": "Közepes",
+        "theme": "magyar történelem",
+        "keywords": "János Zsigmond | speyeri egyezmény | 1570 | Erdély | lemondás",
+        "last_used": "2026-08-06 02:28:55"
+      },
+      {
+        "q": "Mi Kuba fővárosa?",
+        "o": [
+          "Santiago de Cuba",
+          "Havanna",
+          "Camagüey",
+          "Holguín"
+        ],
+        "a": "Havanna",
+        "l": "Könnyű",
+        "theme": "ország-város",
+        "keywords": "Kuba | Havanna",
+        "last_used": "2026-08-06 02:28:55"
+      }
+    ]
+  }
+}
